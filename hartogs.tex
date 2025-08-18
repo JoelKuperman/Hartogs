@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\input{header-posets}
+\title{Problema de teoría de conjuntos}
+
+\begin{document}
+\begin{definition}
+    Let $X$ be any set, $WO(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\}$, and $\aleph(X):= W/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ where $=_o$ denotes initial similarity (Moschovakis, def 7.27). Note that $\aleph(X)$ is a cardinal.
+\end{definition}
+\begin{claim}
+    $\aleph(X)$ is a cardinal and $\aleph(X)\nleq_c X$
+\end{claim}
+\begin{theorem}
+For any set $X$, $\aleph(X)<_c \mathcal{P}^4(X)$.
+\end{theorem}
+\begin{proof}
+We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
+\end{proof}
+\end{document}
