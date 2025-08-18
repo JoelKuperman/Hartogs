@@ -1,11 +1,23 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
-\input{header-posets}
+%No tengo el archivo header-posets, uso uno mío que debe ser parecido
+%\input{header-posets}
+\input{header-trabajo-eng}
 \title{Problema de teoría de conjuntos}
 
+
 \begin{document}
+
+%Encierro WO en \text{} para que quede más junto, avisame si no te gusta así
 \begin{definition}
-    Let $X$ be any set, $WO(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\}$, and $\aleph(X):= W/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ where $=_o$ denotes initial similarity (Moschovakis, def 7.27). Note that $\aleph(X)$ is a cardinal.
+    Let $X$ be any set, $\text{WO}(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\}$, 
+    %or $W$ when $X$ is clear from context,
+    %Esta W debería ser WO(X)?
+    and $\aleph(X):= W/{\sim_X}$ 
+    %$\aleph(X) := \text(WO)(X)/{\sim_X}$
+    where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ where $=_o$ denotes initial similarity (Moschovakis, def 7.27 \cite{Moscho}). 
+    Note that $\aleph(X)$ is a cardinal.
+    % En el renglón anterior yo pondría más específicamente que es bien ordenado y que no es biyectivo con ningún segmento inicial propio suyo. No es un ordinal este aleph.
 \end{definition}
 \begin{claim}
     $\aleph(X)$ is a cardinal and $\aleph(X)\nleq_c X$
@@ -16,4 +28,30 @@ For any set $X$, $\aleph(X)<_c \mathcal{P}^4(X)$.
 \begin{proof}
 We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
 \end{proof}
+
+\begin{theorem}[ZFC]
+	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $X_{n+1} <_c X_n$.
+\end{theorem}
+\begin{proof}
+	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contridiction.
+\end{proof}
+
+Note how the previous result relies heavily on Choice, in fact, given any countable partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$.
+%CONSEGUIR CITA DE LO ANTERIOR
+%También, ver si puede valer el teorema anterior y fallar Elección, posiblemente salga de
+%estudiar los modelos en los que falla.
+
+\begin{theorem}[ZF]
+	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $\mathcal{P}(X_{n+1}) <_c X_n$.
+\end{theorem}
+\begin{proof}
+	fsafsa
+\end{proof}
+
+
+%Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
+\bibliographystyle{plain}
+\bibliography{bibliografia-hartogs}
+\printindex
+
 \end{document}
