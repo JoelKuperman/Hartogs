@@ -7,24 +7,29 @@
 
 
 \begin{document}
+	
 
 %Encierro WO en \text{} para que quede más junto, avisame si no te gusta así
-\begin{definition}
+\begin{definition}\label{aleph}
     Let $X$ be any set, $\text{WO}(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\}$, 
     %or $W$ when $X$ is clear from context,
     %Esta W debería ser WO(X)?
     and $\aleph(X):= W/{\sim_X}$ 
     %$\aleph(X) := \text(WO)(X)/{\sim_X}$
-    where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ where $=_o$ denotes initial similarity (Moschovakis, def 7.27 \cite{Moscho}). 
-    Note that $\aleph(X)$ is a cardinal.
+    where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity (Moschovakis, def. 7.27 \cite{Moscho}).
+    Note that $\aleph(X)\nleq_c X$, $\aleph(X)$ is well ordered and is not equinumerous with any of its initial segments.
+%    Note that $\aleph(X)$ is a cardinal.
     % En el renglón anterior yo pondría más específicamente que es bien ordenado y que no es biyectivo con ningún segmento inicial propio suyo. No es un ordinal este aleph.
 \end{definition}
-\begin{claim}
-    $\aleph(X)$ is a cardinal and $\aleph(X)\nleq_c X$
-\end{claim}
+
+%\begin{claim}
+ %   $\aleph(X)$ is a cardinal and $\aleph(X)\nleq_c X$
+%\end{claim}
+
 \begin{theorem}
-For any set $X$, $\aleph(X)<_c \mathcal{P}^4(X)$.
+	For any set $X$, $\aleph(X)<_c \mathcal{P}^4(X)$.
 \end{theorem}
+
 \begin{proof}
 We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
 \end{proof}
@@ -41,12 +46,31 @@ Note how the previous result relies heavily on Choice, in fact, given any counta
 %También, ver si puede valer el teorema anterior y fallar Elección, posiblemente salga de
 %estudiar los modelos en los que falla.
 
-\begin{theorem}[ZF]
+We shall use, following the convention from \cite[Def. I.3.1]{Kunen}, $\text{BST}^{-}$ to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset.
+%Kunen da la conjunción de Partes of Reemplazo.
+
+\begin{theorem}[$\text{BST}^{-}$]
 	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $\mathcal{P}(X_{n+1}) <_c X_n$.
 \end{theorem}
+
+Before moving on to the proof, let us note that Definition \ref{aleph} can be done in $\text{BST}^{-}$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
 \begin{proof}
-	fsafsa
+	Assume there is such a sequence, $\mathcal{S} := \{X_n\}_{n\in\omega}$, then $\text{BST}^{-}$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
+	Moreover, for all $X\in\ran(\mathcal{S})$: 
+	\[
+		\aleph(X) \subset \mathcal{P}(WO(X)) \subseteq \mathcal{P}(WO(\union \ran(\mathcal{S}))),
+	\]
+	which in turn implies $\{\aleph(X) : X\in\ran(\mathcal{s})\} \subseteq \mathcal{P}({WO(\union \ran(\mathcal{S}))}).$
+	Hence, $\text{BST}^{-}$ proves that $\{\aleph(X_n)\}_{n\in\omega}$ exists.
+	
+	It is straightforward to prove that for each $n\in\omega$, $\mathcal{P}^{4}(X_{n+4}) <_c X_n$. 
+	As a consequence, $\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$.
+	Then $\aleph(X_{n+4}) <_c \aleph(X_n)$, given that well ordered sets are all pairwise comparable with the relation $\leq_c$, and $\aleph(X_n) \leq_c \aleph(X_{n+4})$ would imply $\aleph(X_n) \leq_c X_n$, which contradicts \ref{aleph}.
+	
+	Finally, $\{\aleph(X_{4n})\}_{n\in\omega}$ is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot happen under $\text{BST}^{-}$.
 \end{proof}
+
+
 
 
 %Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
