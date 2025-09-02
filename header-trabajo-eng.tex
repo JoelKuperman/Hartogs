@@ -1,0 +1,229 @@
+\usepackage[unicode,hyperfootnotes=false,hidelinks,hyperindex=false]{hyperref}
+\usepackage{graphicx,tikz,framed,amssymb,multicol,enumerate,xcolor}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,xcolor,etoolbox,cancel}
+\usepackage{babel}
+%%\usepackage{postnotes}%%
+\usepackage[numbers]{natbib}
+\usepackage[T1]{fontenc}
+\usepackage{dsfont}
+\graphicspath{ {./logos/} }
+\usepackage[export]{adjustbox}
+
+
+%%%%%%%%%%%%% Postnotes %%%%%%%%%%%%%%%%
+%%\postnotesetup{heading=\chapter*{Notas},format=}%%
+
+%%%%%%%%%%%%%% Endnotes %%%%%%%%%%%%%%%%%%
+%% \usepackage{endnotes,endnotes-hy}
+%% \renewcommand{\enotesize}{\normalsize}
+%% \renewcommand{\notesname}{Notas}
+
+%%%%%%%%%%%%% Footnotes %%%%%%%%%%%%%%%%
+\usepackage[symbol]{footmisc}
+%% \renewcommand*{\thefootnote}{\fnsymbol{footnote}} % deja solo asteriscos!
+\usepackage{perpage}
+\MakePerPage{footnote} % resetea enumeración por páginas
+
+%%%%%%%%% Equation numbering %%%%%%%%%%%%
+\numberwithin{equation}{section}
+
+
+%flechas extensibles
+\usepackage[arrow,matrix]{xy}
+\newlength{\xywd}
+\newcommand{\xymapsto}[2][]{\mathrel{%
+  \sbox{0}{$\scriptstyle#1$}%
+  \xywd=\wd0
+  \sbox{0}{$\scriptstyle#2$}%
+  \ifdim\wd0>\xywd \xywd=\wd0 \fi
+  \xymatrix@M=0ex@C\dimexpr\xywd+0.7em\relax{{}\ar@{|->}[r]^{#2}_{#1}&{}}%
+}}
+\newcommand{\xyrightarrow}[2][]{\mathrel{%
+  \sbox{0}{$\scriptstyle#1$}%
+  \xywd=\wd0
+  \sbox{0}{$\scriptstyle#2$}%
+  \ifdim\wd0>\xywd \xywd=\wd0 \fi
+  \xymatrix@M=0ex@C\dimexpr\xywd+0.7em\relax{{}\ar@{->}[r]^{#2}_{#1}&{}}%
+}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\op}{\operatorname}
+%% Parte entera
+\newcommand{\entera}[1]{\lfloor#1\rfloor}
+\newcommand{\defi}{\mathrel{\mathop:}=}
+\newcommand{\fmaps}{\xymapsto{f}}
+\newcommand{\gmaps}{\xymapsto{g}}
+\newcommand{\True}{\textbf{V}}
+\newcommand{\False}{\textbf{F}}
+\newcommand{\Undef}{\textbf{X}}
+\newcommand{\ent}{\Rightarrow}
+\newcommand{\tne}{\Leftarrow}
+\newcommand{\sm}{\smallsetminus}
+\newcommand{\citecut}[1][\textup{\textellipsis\!}]{\textup{[}#1{\textup{]}}}
+\newcommand{\et}{\mathrel{\,\&\,}}
+\newcommand{\union}{\mathop{\textstyle\bigcup}}
+\newcommand{\bigunion}{\mathop{\raisebox{0ex}[0ex][0.6ex]{$\displaystyle\bigcup$}\vspace{0ex}}}
+\newcommand{\sbq}{\subseteq}
+\newcommand{\nsbq}{\subseteq}
+\newcommand{\Pow}{\mathop{\mathcal{P}}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\Elo}{\rotatebox[origin=c]{180}{E}loísa}
+\newcommand{\Abe}{\rotatebox[origin=c]{180}{A}belardo}
+\newcommand{\Caso}[1]{\noindent\fbox{Caso #1.}\ }
+\newcommand{\suces}[2][n]{\left\{ {#2}_{#1} \right\}_{#1\in\N}}
+\newcommand{\sucesf}[2][n]{\left\{ #2 \right\}_{#1\in\N}}
+
+
+%% Nuevos "tiende a"
+\newcommand{\subea}{\mathrel{\text{\raisebox{-0.4ex}[0ex][0ex]{\rotatebox{20}{\hspace{-0.2ex}${\to}$\hspace{-0.25ex}}}}}}
+%\newcommand{\subea}{\mathrel{\text{\raisebox{0.5ex}[0ex][0ex]{\rotatebox{-25}{$\nearrow$}}}}}
+\newcommand{\bajaa}{\mathrel{\text{\raisebox{0.5ex}[0ex][0ex]{\rotatebox{-25}{\hspace{-0.1ex}${\to}$\hspace{-0.1ex}}}}}}
+
+%% Definición temporaria
+\newcommand{\azul}[1]{\textbf{\mbox{$#1$}}}
+
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\dom}{dom}
+\let\Im\undefined
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\alt}{alt}
+\DeclareMathOperator{\type}{type}
+\DeclareMathOperator{\cat}{cat}
+\DeclareMathOperator{\bin}{bin}
+\DeclareMathOperator{\cf}{cf}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{problem}[theorem]{Problema}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}[theorem]{Ejercicio}
+\newtheorem*{exercise*}{Ejercicio}
+\theoremstyle{remark}
+\newtheorem{claim}{Claim}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{ayuditaaa*}{Ayuda}
+
+%Defino un entorno para notaciones, ver que no dé problemas
+
+\newtheorem*{notation}{Notación}
+\theoremstyle{remark*}
+\newtheorem{remark}{Observación}
+
+\newenvironment{hint*}{\pushQED{\qed}\begin{ayuditaaa*}}{\popQED\end{ayuditaaa*}}
+\newtheorem*{solveitnow*}{Solución} % \newtheorem establishes the object heading
+\newenvironment{solution}    % this is the environment name for the input
+{%
+  \pushQED{\qed}\begin{solveitnow*}}
+{\popQED\end{solveitnow*}}
+
+%
+%%%%%%%%%%%%%%%%%%%%%  ADOBE FONTS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%  END ADOBE FONTS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%  TOCLOFT  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% scrartcl incompatibility ahead but best solution so far
+\usepackage{tocloft}
+\newlength{\imarg}
+
+\newcommand{\marg}{\hspace*{0.2em}}
+\setlength{\imarg}{0.2em}
+
+\renewcommand{\cfttoctitlefont}{\hfill\normalsize\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill\hspace{0em}}
+\renewcommand{\cftsecafterpnum}{\marg}
+\renewcommand{\cftsubsecafterpnum}{\marg}
+\renewcommand{\cftsubsubsecafterpnum}{\marg}
+\setlength{\cftsecindent}{\imarg}
+\setlength{\cftsubsecindent}{\imarg}
+\setlength{\cftsubsubsecindent}{\imarg}
+%%%%%%%%%%%%%%%%%%%%%%%  END TOCLOFT  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%
+\newcommand{\Var}{\mathit{Var}}
+\newcommand{\fixref}[1]{\ref*{#1}\relax{}}
+\newcommand{\ayuda}[1]{\hyperlink{#1}{\modley}}
+\newcommand{\solucion}[1]{\hyperlink{#1}{$\circledS$}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%  INDEXING     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[nottoc]{tocbibind}  %% índice en TOC
+\usepackage{makeidx}
+%\usepackage{index}
+
+%%%%%%%
+%% Versión con links que apuntan al lugar (código de
+%% http://tex.stackexchange.com/a/77656/69595)
+\newcounter{indexanchor}
+
+%% This code is mine
+\makeatletter
+\long\def\raiseboxzero#1#2{%
+  \@begin@tempboxa\hbox{#2}%
+    \setlength\@tempdima{#1}%
+    \setlength\@tempdimb{0pt}%
+    \setbox\@tempboxa\hbox{\raise\@tempdima\box\@tempboxa}%
+    \ht\@tempboxa\@tempdimb%
+    \box\@tempboxa
+  \@end@tempboxa}
+\makeatother
+
+\newcommand*{\xindex}[1]{%
+  \stepcounter{indexanchor}% make anchor unique
+  \def\theindexterm{#1}%
+  \edef\doindexentry{\noexpand\index
+    {\expandonce\theindexterm|indexanchor{index-\theindexanchor}}}%
+  \raiseboxzero{\baselineskip}{\hypertarget{index-\theindexanchor}%
+    {\doindexentry}}%
+}
+
+\newcommand*{\indexanchor}[2]{\hyperlink{#1}{#2}}
+
+%% Me gustaba más \textsl abajo pero no está en newtx
+\makeatletter
+\newcommand{\ntrm}{\@dblarg\@mycommand}
+\def\@mycommand[#1]#2{\textit{\textbf{#2}}\xindex{#1}}
+\makeatother
+%%
+\makeindex
+%%%%%%%%%%%%%%%%%%%%%%%  END INDEXING  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Corrección de tikz por Babel
+\tikzset{
+every picture/.append style={
+  execute at begin picture={\deactivatequoting},
+  execute at end picture={\activatequoting}
+  }
+}
+
+%% HyperRef config (despues de headers)
+%%
+\hypersetup{
+  pdftitle={Teoría de Conjuntos: Árboles conjuntistas y su relación con el problema de Suslin},
+  pdfauthor={Gervasio Figueroa},
+  pdfsubject={Set Theory},
+  pdfkeywords={axiomas, funciones, límites, sucesiones, derivadas},
+  colorlinks,
+  linkcolor={blue!35!black},
+  citecolor={blue!35!black},
+  urlcolor={blue!35!black}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "trabajo_final_figueroa"
+%%% ispell-local-dictionary: "castellano8"
+%%% End:
