@@ -9,6 +9,16 @@
 \begin{document}
 	
 
+\section*{Introduction}
+
+Within the real numbers, there exist multiple decreasing sequences. Consider the following question: for which functions \(f\) does there exist an initial point \(x_0\) such that the sequence defined by \(x_{n+1} = f(x_n)\) is decreasing? Clearly, for some functions (such as logarithms) this is not the case.
+
+This motivates the following question about decreasing sequences of cardinals: in ZFC, it is possible to construct decreasing sequences of cardinals, but it is not possible to do so in such a way that
+\[
+X_n =_c \mathcal{P}(X_{n+1}),
+\]
+where $=_c$ denotes that the sets are bijective. This remains true in weaker theories, since the Axiom of Choice is not required. In this article we present a proof of this fact without using the Replacement axiom.
+
 %Encierro WO en \text{} para que quede más junto, avisame si no te gusta así
 \begin{definition}\label{aleph}
     Let $X$ be any set, $\text{WO}(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\}$, 
