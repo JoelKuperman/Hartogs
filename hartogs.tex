@@ -11,7 +11,7 @@
 
 \section*{Introduction}
 
-Within the real numbers, there exist multiple decreasing sequences. Consider the following question: for which functions \(f\) does there exist an initial point \(x_0\) such that the sequence defined by \(x_{n+1} = f(x_n)\) is decreasing? Clearly, for some functions (such as logarithms) this is not the case.
+Within the real numbers, there exist multiple infinitely decreasing sequences. Consider the following question: for which functions \(f\) does there exist an initial point \(x_0\) such that the sequence defined by \(x_{n+1} = f(x_n)\) is decreasing? Clearly, for some functions (such as logarithms) this is not the case.
 
 This motivates the following question about decreasing sequences of cardinals: in ZFC, it is possible to construct decreasing sequences of cardinals, but it is not possible to do so in such a way that
 \[
@@ -21,16 +21,21 @@ where $=_c$ denotes that the sets are bijective. This remains true in weaker the
 
 %Encierro WO en \text{} para que quede más junto, avisame si no te gusta así
 \begin{definition}\label{aleph}
-    Let $X$ be any set, $\text{WO}(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\}$, 
-    %or $W$ when $X$ is clear from context,
-    %Esta W debería ser WO(X)?
-    and $\aleph(X):= W/{\sim_X}$ 
-    %$\aleph(X) := \text(WO)(X)/{\sim_X}$
-    where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity (Moschovakis, def. 7.27 \cite{Moscho}).
-    Note that $\aleph(X)\nleq_c X$, $\aleph(X)$ is well ordered and is not equinumerous with any of its initial segments.
-%    Note that $\aleph(X)$ is a cardinal.
-    % En el renglón anterior yo pondría más específicamente que es bien ordenado y que no es biyectivo con ningún segmento inicial propio suyo. No es un ordinal este aleph.
+    Let $X$ be any set,
+    \[
+    	\text{WO}(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\} := \text{W}, 
+    \]
+    and $\aleph(X):= \text{W}/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity (Moschovakis, def. 7.27 \cite{Moscho}).
+    Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$ it holds that $U\leq_o V$, where this last relation means $U$ is isomorphic to an initial segment of $V$.
 \end{definition}
+
+\begin{lemma}\label{aleph2}
+	For all $X$, $\aleph(X)$ has the following properties:
+	\begin{enumerate}[(i)]
+		\item $\aleph(X)\nleq_c X$
+		\item $(\aleph(X),\leq_{\aleph(X)})$ is a well order and is not equinumerous with any of its initial segments.
+	\end{enumerate}
+\end{lemma}
 
 %\begin{claim}
  %   $\aleph(X)$ is a cardinal and $\aleph(X)\nleq_c X$
@@ -44,53 +49,68 @@ where $=_c$ denotes that the sets are bijective. This remains true in weaker the
 We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{partes3}
 	For any set $X$, $\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
 \begin{proof}
-	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
-\end{proof}
+%	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
+%\end{proof}
 
 Let $f:WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
-
+\end{proof}
 
 \begin{theorem}[ZFC]
 	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $X_{n+1} <_c X_n$.
 \end{theorem}
 \begin{proof}
-	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contridiction.
+	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contradiction.
 \end{proof}
 
-Note how the previous result relies heavily on Choice, in fact, given any countable partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$.
+The previous result relies heavily on Choice, in fact, given any countable partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$.
 %CONSEGUIR CITA DE LO ANTERIOR
 %También, ver si puede valer el teorema anterior y fallar Elección, posiblemente salga de
 %estudiar los modelos en los que falla.
 
-We shall use, following the convention from \cite[Def. I.3.1]{Kunen}, $\text{BST}^{-}$ to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset.
+We shall use, following the convention from \cite[Def. I.3.1]{Kunen}, $\Bst$ to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. Let us use $\Bsti$ to denote $\Bst$ with the axiom of Infinity.
+
+%Ver si se puede sacar Infinito sin problemas
+
 %Kunen da la conjunción de Partes of Reemplazo.
 
-\begin{theorem}[$\text{BST}^{-}$]
+\begin{theorem}[$\Bst$]
 	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $\mathcal{P}(X_{n+1}) <_c X_n$.
 \end{theorem}
 
-Before moving on to the proof, let us note that Definition \ref{aleph} can be done in $\text{BST}^{-}$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
+Before moving on to the proof, let us note that Definition \ref{aleph} does not rely on any axiom outside of $\Bst$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
+
 \begin{proof}
-	Assume there is such a sequence, $\mathcal{S} := \{X_n\}_{n\in\omega}$, then $\text{BST}^{-}$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
+	Assume there is such a sequence, $\mathcal{S} := \{X_n\}_{n\in\omega}$, then $\Bst$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
-		\aleph(X) \subset \mathcal{P}(WO(X)) \subseteq \mathcal{P}(WO(\union \ran(\mathcal{S}))),
+		\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \ran(\mathcal{S}))),
 	\]
-	which in turn implies $\{\aleph(X) : X\in\ran(\mathcal{s})\} \subseteq \mathcal{P}({WO(\union \ran(\mathcal{S}))}).$
-	Hence, $\text{BST}^{-}$ proves that $\{\aleph(X_n)\}_{n\in\omega}$ exists.
+	where both inclusions follow from Definition \ref{aleph}.
 	
-	It is straightforward to prove that for each $n\in\omega$, $\mathcal{P}^{4}(X_{n+4}) <_c X_n$. 
-	As a consequence, $\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$.
-	Then $\aleph(X_{n+4}) <_c \aleph(X_n)$, given that well ordered sets are all pairwise comparable with the relation $\leq_c$, and $\aleph(X_n) \leq_c \aleph(X_{n+4})$ would imply $\aleph(X_n) \leq_c X_n$, which contradicts \ref{aleph}.
+	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\Bst$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in\omega}$, which would of course be trivial using Replacement.
 	
-	Finally, $\{\aleph(X_{4n})\}_{n\in\omega}$ is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot happen under $\text{BST}^{-}$.
+	It is straightforward to prove that for each $n\in\omega$, $\mathcal{P}^{3}(X_{n+3}) <_c X_n$, indeed, applying the hypothesis on $\mathcal{S}$ yields:
+	\begin{align*}
+		&\mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
+		\\ \implies &\mathcal{P}^2(X_{n+3}) \leq_c \hspace{4.5 pt} \mathcal{P}(X_{n+2}) <_c X_{n+1}
+		\\ \implies &\mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^{2}(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
+	\end{align*}
+	As a consequence, $\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$, where the first inequality comes from applying Theorem \ref{partes3}.
+	
+	\noindent Let us now show that $\aleph(X_{n+3}) <_c \aleph(X_n)$ for all $n\in\omega$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+3}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+3})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
+	
+	Finally, $\{\aleph(X_{3n})\}_{n\in\omega}$ is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot happen under $\Bst$.
 \end{proof}
 
+The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\Bsti$.
 
+\begin{theorem}[$\Bsti$]
+	There cannot be a formula with one free variable 
+\end{theorem}
 
 
 %Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
