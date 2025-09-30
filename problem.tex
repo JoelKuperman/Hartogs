@@ -31,6 +31,12 @@
 \begin{theorem}\label{partes3}
 	For any set $X$, $\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
+
+% Ver si es consistente con ZFC que valga $\aleph(X)<_c \mathcal{P}(X)$ (es consistente el igual en todos lados, ver si pueden fallar todas las instancias de GCH).
+% GCH puede fallar en todos lados: https://www.jstor.org/stable/2944324
+% Ver si se puede probar en ZFC que $\aleph(X)<_c \mathcal{P}^2(X)$. Prueba rapida: $|X| = \kappa$, $\aleph(X) = \kappa^{+} \leq_c 2^{\kappa} <_c 2^{2^{\kappa}} = |\mathcal(P)^{2}(\kappa)|$.
+% ¿Es consistente en BST que no valga con $\mathcal(P)^{2}$ para algun X?
+
 \begin{proof}
 	%	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
 	%\end{proof}
@@ -44,6 +50,10 @@
 \begin{proof}
 	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contradiction.
 \end{proof}
+
+% Ver si en ZF, el teorema anterior es equivalente a AC. AC lo implica, falta ver la vuelta.
+% Se llama NDS el teorema anterior.
+% Lectura inicial:  https://link.springer.com/article/10.1007/s00153-015-0472-5#:~:text=Abstract,m%E2%80%9D%20%E2%86%9B%20NDS%20in%20ZFA
 
 The previous result relies heavily on Choice, in fact, given any countable partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$.
 %CONSEGUIR CITA DE LO ANTERIOR
@@ -90,7 +100,7 @@ The following theorem is equivalent to the previous one when using Replacement b
 \begin{theorem}[$\Bsti$]
 	There cannot be a formula with one free variable 
 \end{theorem}
-
+% Terminar este teorema
 
 %Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
 \bibliographystyle{plain}
