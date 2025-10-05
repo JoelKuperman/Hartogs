@@ -60,7 +60,8 @@ The previous result relies heavily on Choice, in fact, given any countable parti
 %También, ver si puede valer el teorema anterior y fallar Elección, posiblemente salga de
 %estudiar los modelos en los que falla.
 
-We shall use, following the convention from \cite[Def. I.3.1]{Kunen}, $\Bst$ to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. Let us use $\Bsti$ to denote $\Bst$ with the axiom of Infinity.
+We shall use, following the convention from \cite[Def. I.3.1]{Kunen}, $\Bst$ to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
+Let us use $\Bsti$ to denote $\Bst$ with the axiom of Infinity.
 
 %Ver si se puede sacar Infinito sin problemas
 
@@ -82,25 +83,64 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	
 	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\Bst$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in\omega}$, which would of course be trivial using Replacement.
 	
-	It is straightforward to prove that for each $n\in\omega$, $\mathcal{P}^{3}(X_{n+3}) <_c X_n$, indeed, applying the hypothesis on $\mathcal{S}$ yields:
+	It is straightforward to prove that for each $n\in\omega$, 
+	$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
+	indeed, applying the hypothesis on $\mathcal{S}$ yields:
 	\begin{align*}
 		&\mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
 		\\ \implies &\mathcal{P}^2(X_{n+3}) \leq_c \hspace{4.5 pt} \mathcal{P}(X_{n+2}) <_c X_{n+1}
 		\\ \implies &\mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^{2}(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
 	\end{align*}
-	As a consequence, $\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$, where the first inequality comes from applying Theorem \ref{partes3}.
+	As a consequence,
+	$\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$, where the first inequality comes from applying Theorem \ref{partes3}.
 	
 	\noindent Let us now show that $\aleph(X_{n+3}) <_c \aleph(X_n)$ for all $n\in\omega$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+3}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+3})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
 	Finally, $\{\aleph(X_{3n})\}_{n\in\omega}$ is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot happen under $\Bst$.
 \end{proof}
 
-The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\Bsti$.
+The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\Bst$.
 
-\begin{theorem}[$\Bsti$]
-	There cannot be a formula with one free variable 
+\begin{theorem}[$\Bst$]
+	\label{hartogs_class}
+	Let $\Phi(\cdot,\cdot)$ be a formula with two free variables, then $\Phi$ cannot satisfy both of the following properties:
+	\begin{enumerate}[(i)]
+		\item \label{nat_define} For each natural number $n$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
+		\item \label{dec_seq} For every $n\in\omega$ the following holds: 
+		\[
+			(\Phi(n,X) \land \Phi(n+1,Y)) \implies \mathcal{P}(Y) <_c X.
+		\] 
+	\end{enumerate}
 \end{theorem}
-% Terminar este teorema
+
+Before giving a proof for Theorem \ref{hartogs_class} we note the following result from \cite[Corollary 7.33]{Moscho}.
+
+\begin{prop}\label{class_wo}
+	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
+\end{prop}
+
+Given that without the Axiom of Infinity $\omega$ could be a proper class, when we say $n\in\omega$ we shall really mean $\forall x\in n \ (x = \emptyset \lor \exists y \in n \ x = S(y))$, where $S(a) = a \cup \{a\}$.
+
+\begin{proof}[Proof of Theorem \ref{hartogs_class}]
+	Let $\Phi$ be a formula with two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
+	\[
+		 \mathcal{C} := \{X: \exists Y ((\exists n\in\omega \ \Phi(n,Y)) \land X = \aleph(Y))\}.
+	\]
+	By (\ref{nat_define}), Definition \ref{aleph} and Lemma \ref{aleph2}, $\mathcal{C}$ is a non-empty class of well ordered sets. By Proposition \ref{class_wo}, there must be a $\leq_o$-least member of $\mathcal{C}$.
+	Let $X_0$ be such a member of $\mathcal{C}$, then there must be some $Y_0$ and $n_0 \in\omega$ such that $X_0 = \aleph(Y_0) \land \Phi(n_0,Y_0)$.
+	The assumption (\ref{nat_define}) implies there are $Y_1 , Y_2, Y_3$ such that $\Phi(n_0 + i , Y_i)$ for $i\in\{1,2,3\}$.
+	Applying (\ref{dec_seq}), we get:
+	
+	\begin{align*}
+		&\mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
+		\\ \implies &\mathcal{P}^2(Y_3) \leq_c \hspace{4.5 pt} \mathcal{P}(Y_2) <_c Y_1
+		\\ \implies &\mathcal{P}^3(Y_3) \leq_c \mathcal{P}^{2}(Y_2) \leq_c \mathcal{P}(Y_1) <_c Y_0.
+	\end{align*}
+	Recall from Theorem \ref{partes3} that $\aleph(Y_3) <_c \mathcal{P}^{3}(Y_3)$, and using the inequality above, we obtain $\aleph(Y_3) <_c Y_0$. But $\aleph(Y_3)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
+\end{proof}
+
+DUDA IMPORTANTE, ¿CUÁL ES EL ALEPH DE UN CONJUNTO DEDEKIND FINITO (NO FINITO)? ¿SIEMPRE VA A SER UN BUEN ORDEN FINITO? EN CASO CONTRARIO, EN UN MODELO DE BST SIN EL AXIOMA DE INFINITO TIENE QUE EXISTIR ESE ALEPH, ¿PERO EL HECHO DE QUE HAYA UN BUEN ORDEN INFINITO NO IMPLICA QUE $\omega$ EXISTE?
+
 
 %Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
 \bibliographystyle{plain}
