@@ -61,30 +61,90 @@ The previous result relies heavily on Choice, in fact, given any countable parti
 %También, ver si puede valer el teorema anterior y fallar Elección, posiblemente salga de
 %estudiar los modelos en los que falla.
 
-We shall use, following the convention from \cite[Def. I.3.1]{Kunen}, $\Bst$ to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
-Let us use $\Bsti$ to denote $\Bst$ with the axiom of Infinity.
+We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
+Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, 
+(VER BIEN CUÁLES HAY: SE ME OCURREN CONJUNTOS AMORFOS, DEDEKIND FINITOS NO FINITOS, EL AXIOMA DE INFINITO DE ZERMELO) which motivates the following weaker version of the Axiom of Infinity:
+
+\begin{WeakInf}
+	There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
+\end{WeakInf}
+
+Let us use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity.
+
+\begin{question}
+	Is it consistent with $\esti$ for $\omega$ to not exist? (SEE ZERMELO'S AXIOM OF INFINITY).
+\end{question}
+
+Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that essentially states "the order $\langle X , < \rangle$ is isomorphic to $\omega$ if the latter exists".
+
+\begin{definition}
+	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
+	
+	\begin{enumerate}[(i)]
+		\item $\text{First}(x) \equiv \forall y \in A \neg(y < x)$
+		\item $\text{Succ}(y,x) \equiv y<x \land \forall z\in A (z < x \implies (z=y \lor z < y))$
+	\end{enumerate}
+
+	Whenever $x$ and $y$ satisfy $\text{Succ}(y,x)$, we shall denote $x = y+1$. For good measure: $y+2 := (y+1)+1$, $y+3 := (y+2)+1$ and $y+4 := (y+3)+1$.
+\end{definition}
+
+\begin{definition}
+	\label{omega_type}
+	Let $\langle A,< \rangle$ be a well ordering, we will denote $\type(A,<) = \omega$ iff $\langle A,< \rangle$ satisfies the following sentence:
+	\[
+		\forall x\in A \ ((\text{First}(x) \lor \exists y\in A \ (\text{Succ}(y,x))) \land \exists z\in A \ (\text{Succ}(x,z)))
+	\]
+\end{definition}
+
+\begin{lemma}[$\esti$]
+	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders such that $\type(A,<) = \omega$ and $\type(B,\sqsubset) = \omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
+\end{lemma}
+\begin{proof}
+	¿TRIVIAL?
+\end{proof}
+
+\begin{lemma}[$\esti$]
+	$\type(\omega,\in) = \omega$
+\end{lemma}
+\begin{proof}
+	¿TRIVIAL?
+\end{proof}
+
+\begin{corollary}
+	Assuming the usual formulation of the Axiom of Infinity (SEE KUNEN!!!!!), our notation  $\type(A,<) = \omega$ coincides with its usual form stating that $\omega$ is an ordinal and $\langle A,< \rangle$ is order isomorphic to it.
+\end{corollary}
+
+
 
 %Ver si se puede sacar Infinito sin problemas
 
-%Kunen da la conjunción de Partes of Reemplazo.
+%Kunen da la conjunción de Partes o Reemplazo.
 
-\begin{theorem}[$\Bst$]
-	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $\mathcal{P}(X_{n+1}) <_c X_n$.
+\begin{prop}[$\esti$]
+	There is a well ordering $\langle A,< \rangle$ such that 
+	$\type(A,<) = \omega$.
+\end{prop}
+
+\begin{theorem}[$\esti$]
+	\label{hartogs_set}
+	Let $\langle A,< \rangle$ be a well order such that $\type(A,<) = \omega$, then there is no sequence $\{X_n\}_{n\in A}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
 \end{theorem}
 
-Before moving on to the proof, let us note that Definition \ref{aleph} does not rely on any axiom outside of $\Bst$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
+Before moving on to the proof, let us note that Definition \ref{aleph} does not rely on any axiom outside of $\estf$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
 
 \begin{proof}
-	Assume there is such a sequence, $\mathcal{S} := \{X_n\}_{n\in\omega}$, then $\Bst$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
+	Assume there is such a sequence, 
+	$\mathcal{S} := \{X_n\}_{n\in A}$,
+	then $\estf$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
 	\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \ran(\mathcal{S}))),
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
-	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\Bst$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in\omega}$, which would of course be trivial using Replacement.
+	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in A}$, which would of course be trivial using Replacement.
 	
-	It is straightforward to prove that for each $n\in\omega$, 
+	It is straightforward to prove that for each $n\in A$, 
 	$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
 	indeed, applying the hypothesis on $\mathcal{S}$ yields:
 	\begin{align*}
@@ -97,30 +157,36 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	
 	\noindent Let us now show that $\aleph(X_{n+3}) <_c \aleph(X_n)$ for all $n\in\omega$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+3}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+3})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
-	Finally, $\{\aleph(X_{3n})\}_{n\in\omega}$ is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot happen under $\Bst$.
+	Finally, $\{\aleph(X_n)\}_{n\in A}$
+	%$\{\aleph(X_{3n})\}_{n\in\omega}$ 
+	is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot exist under $\estf$. Indeed, 
+	it is non empty and it has no least element: for any $\aleph(X_n)$, we have $\aleph(X_{n+3}) <_c \aleph(X_n)$.
+	
 \end{proof}
 
-The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\Bst$.
+\begin{notation}
+	Given that without the Axiom of Infinity $\omega$ could be a proper class, when we say $n\in\omega$ we shall really mean $\forall x\in n \ (x = \emptyset \lor \exists y \in n \ x = S(y))$, where $S(a) = a \cup \{a\}$.
+\end{notation}
 
-\begin{theorem}[$\Bst$]
+The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from (¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?) Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
+
+\begin{theorem}[$\estf$]
 	\label{hartogs_class}
 	Let $\Phi(\cdot,\cdot)$ be a formula with two free variables, then $\Phi$ cannot satisfy both of the following properties:
 	\begin{enumerate}[(i)]
-		\item \label{nat_define} For each natural number $n$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
-		\item \label{dec_seq} For every $n\in\omega$ the following holds: 
+		\item \label{nat_define} For each $n\in\omega$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
+		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
 			(\Phi(n,X) \land \Phi(n+1,Y)) \implies \mathcal{P}(Y) <_c X.
 		\] 
 	\end{enumerate}
 \end{theorem}
 
-Before giving a proof for Theorem \ref{hartogs_class} we note the following result from \cite[Corollary 7.33]{Moscho}.
+Before giving a proof for Theorem \ref{hartogs_class} we note the following result from \cite[Corollary 7.33]{Moscho}, which can be proven in $\estf$.
 
 \begin{prop}\label{class_wo}
 	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
 \end{prop}
-
-Given that without the Axiom of Infinity $\omega$ could be a proper class, when we say $n\in\omega$ we shall really mean $\forall x\in n \ (x = \emptyset \lor \exists y \in n \ x = S(y))$, where $S(a) = a \cup \{a\}$.
 
 \begin{proof}[Proof of Theorem \ref{hartogs_class}]
 	Let $\Phi$ be a formula with two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
@@ -144,14 +210,56 @@ DUDA IMPORTANTE, ¿CUÁL ES EL ALEPH DE UN CONJUNTO DEDEKIND FINITO (NO FINITO)?
 
 OTRA DUDA, ¿EN $\Bst$ VALE EL SIGUIENTE TEOREMA? ES SIQUIERA ENUNCIABLE?
 
-\begin{theorem}[$\Bst$]
-	For every $n\in\omega$, let $\Phi_n(\cdot)$ be a formula with one free variable satisfied by exactly one set $X$, then there must be a $k \in\omega$ and two sets $X,Y$ such that 
+We would like to prove the following stronger version of Theorem \ref{hartogs_class}.
+
+\begin{theorem}[$\estf$]
+	\label{hartogs_inf_classes}
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable satisfied by exactly one set $X$, then there must be a $k \in \mathbb{N}$ and two sets $X,Y$ such that 
 	\[
 		\Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
 	\]
 \end{theorem}
 
+Before giving a proof let us note that it is equivalent to the following lemma. (ESCRIBIR LA PRUEBA DE LA EQUIVALENCIA)
 
+\begin{lemma}
+	\label{easier_hartogs_class}
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable satisfied by exactly one well ordered set $\langle X,< \rangle$, then there must be a $k \in \mathbb{N}$ and two sets $X,Y$ such that 
+	\[
+		\Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
+	\]
+\end{lemma}
+
+We would like to have a unified way of referring to well orderings like $\aleph_1$ or $\aleph_\omega$ in the absence of Replacement. We cannot even prove $\omega+\omega$ exists in ZC (¿AGREGAMOS REFERENCIA A ESTO O SÓLO MENCIONAMOS EL MODELO?), much less the aforementioned cardinals, so we will introduce a notion analogous to Definition \ref{omega_type}, which was a way of talking about well orderings that were "essentially $\omega$".
+
+\begin{definition}
+	Let $\langle A,< \rangle$ be a well ordering. Then:
+	\begin{enumerate}[(i)]
+		\item Let $x\in A$, then $x{\downarrow} := \{y\in A: y<x\}$ and $<_x = \{(a,b) \in x{\downarrow}\times x{\downarrow} : a<b\}$.
+		\item $\langle A,< \rangle$ is a \emph{cardinal order} iff for all $x\in A$, $x{\downarrow} <_c A$.
+		\item $\langle A,< \rangle$ is an \emph{infinite cardinal order} iff it is a cardinal order and ${\type(A,<)} = \omega$ or there is some $x\in A$ such that $\type(x{\downarrow},<_x) = \omega$.
+		\item If $\langle A,< \rangle$ is an infinite cardinal order, we define its cardinal length as $\mathcal{C}(A,<) = \mathcal{C}(A) = \{x\in A: (x{\downarrow},<_x) \text{ is an infinite cardinal order}\}$. We give $\mathcal{C}(A)$ the inherited order from $A$.
+	\end{enumerate}
+\end{definition}
+
+VER SI EFECTIVAMENTE ES CIERTO LO SIGUIENTE!!!
+
+\begin{lemma}
+	\label{weak_aleph}
+	Let $A$ and $B$ be two infinite cardinal orders, then $A <_c B$ iff $\mathcal{C}(A) <_o \mathcal{C}(B)$ and $A =_c B$ iff $\mathcal{C}(A) =_o \mathcal{C}(B)$.
+\end{lemma}
+
+\begin{lemma}
+	For any set $X$, $\aleph(X)$ is a cardinal order. Moreover, if $X$ is not finite, $\aleph(X)$ is an infinite cardinal order.
+\end{lemma}
+
+In this manner, any infinite cardinal whose $\mathcal{C}$ has exactly one element behaves like $\aleph_1$, even when the latter does not exist as an ordinal number.
+
+\begin{proof}
+	\emph{Sketch of a proof of the equivalence between \ref{hartogs_inf_classes} and \ref{easier_hartogs_class}.}
+	
+	Given $\Phi_n (\cdot)$, we can take $\Psi_n (X) \equiv \exists Y \ (\Phi_n (Y) \land X = \aleph(Y))$. Using our usual trick of taking the sequence of the alephs, we get a sequence of well ordered sets. Now we apply Lemma \ref{weak_aleph}, which gives us one of the directions of the equivalence, the other should be trivial.
+\end{proof}
 
 %Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
 \bibliographystyle{plain}
