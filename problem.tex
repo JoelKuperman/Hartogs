@@ -208,15 +208,15 @@ Before giving a proof for Theorem \ref{hartogs_class} we note the following resu
 
 DUDA IMPORTANTE, ¿CUÁL ES EL ALEPH DE UN CONJUNTO DEDEKIND FINITO (NO FINITO)? ¿SIEMPRE VA A SER UN BUEN ORDEN FINITO? EN CASO CONTRARIO, EN UN MODELO DE BST SIN EL AXIOMA DE INFINITO TIENE QUE EXISTIR ESE ALEPH, ¿PERO EL HECHO DE QUE HAYA UN BUEN ORDEN INFINITO NO IMPLICA QUE $\omega$ EXISTE?
 
-OTRA DUDA, ¿EN $\Bst$ VALE EL SIGUIENTE TEOREMA? ES SIQUIERA ENUNCIABLE?
+OTRA DUDA, ¿EN $\estf$ VALE EL SIGUIENTE TEOREMA? ES SIQUIERA ENUNCIABLE?
 
 We would like to prove the following stronger version of Theorem \ref{hartogs_class}.
 
 \begin{theorem}[$\estf$]
 	\label{hartogs_inf_classes}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable satisfied by exactly one set $X$, then there must be a $k \in \mathbb{N}$ and two sets $X,Y$ such that 
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
 	\]
 \end{theorem}
 
@@ -224,9 +224,9 @@ We would like to show the equivalence of the previous theorem to the following r
 
 \begin{lemma}
 	\label{easier_hartogs_class}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable satisfied by exactly one well ordered set $\langle X,< \rangle$, then there must be a $k \in \mathbb{N}$ and two sets $X,Y$ such that 
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle)$, then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
+		\estf \vdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
 	\]
 \end{lemma}
 
@@ -234,9 +234,9 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 
 \begin{lemma}
 	\label{easier_inf_classes}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable satisfied by exactly one set $X$, then there must be a $k \in \mathbb{N}$ and two sets $X,Y$ such that 
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
 	\]
 \end{lemma}
 
@@ -271,6 +271,13 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	So the inequality $\aleph(Y) <_o \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_o A$, which contradicts \ref{eq_wo}.
 	
 	We have thus derived a contradiction from assuming Lemma \ref{easier_hartogs_class} and the negation of Lemma \ref{easier_inf_classes}.
+\end{proof}
+
+\begin{theorem}
+	Lemma \ref{easier_inf_classes} implies Theorem \ref{hartogs_inf_classes}.
+\end{theorem}
+\begin{proof}
+	HACER
 \end{proof}
 
 We would like to have a unified way of referring to well orderings like $\aleph_1$ or $\aleph_\omega$ in the absence of Replacement. We cannot even prove $\omega+\omega$ exists in ZC (¿AGREGAMOS REFERENCIA A ESTO O SÓLO MENCIONAMOS EL MODELO?), much less the aforementioned cardinals, so we will introduce a notion analogous to Definition \ref{omega_type}, which was a way of talking about well orderings that were "essentially $\omega$".
