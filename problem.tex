@@ -258,13 +258,19 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 		\mathcal{A}_k \vDash \forall X,Y ,\, \neg (\Phi_k (X) \land \Phi_{k+1} (Y)) \lor (\mathcal{P}^{3}(Y) <_c X)
 	\]
 	Which is equivalent to
-	\[
+	\begin{equation}\tag{1}
+		\label{absurdo}
 		\mathcal{A}_k \vDash \forall X,Y , \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies (\mathcal{P}^{3}(Y) <_c X)
-	\]
+	\end{equation}
 
 	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
-	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have $\estf \vdash \exists! A \ \Psi_n (A)$. So we can apply Lemma \ref{easier_hartogs_class} with the formulae $\Psi_n$. Let $k$ be a natural number and $A,B$ such that 
-	\begin{equation}\tag{1}
+	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have 
+	\begin{equation}\tag{2}
+		\label{psi_unique}
+		\estf \vdash \exists! A \ \Psi_n (A)
+	\end{equation}
+	So we can apply Lemma \ref{easier_hartogs_class} with the formulae $\Psi_n$. Let $k$ be a natural number such that 
+	\begin{equation}\tag{3}
 		\label{eq_wo}
 		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
 	\end{equation}
@@ -274,10 +280,10 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 		\mathcal{A}_k \vDash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
 	\]	
 	Let $X$ and $Y$ be the unique sets in $\mathcal{A}_k$ such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
-	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By uniqueness of the $\Psi_n (\cdot)$ and (\ref{eq_wo}), we have $A \leq_o B$.
+	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
 
-	By assumption, $\mathcal{P}^{3}(Y) <_c X$; and applying Theorem \ref{partes3} yields
-	\begin{equation}\tag{2}
+	Using (\ref{absurdo}), we obtain $\mathcal{P}^{3}(Y) <_c X$; and applying Theorem \ref{partes3} yields
+	\begin{equation}\tag{4}
 		\label{eq_order}
 		\aleph(Y) <_c \mathcal{P}^{3} (Y) <_c X. 
 	\end{equation}
