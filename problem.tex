@@ -245,30 +245,46 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 \end{theorem}
 
 \begin{proof}
-	By contradiction, let us assume Lemma \ref{easier_inf_classes} does not hold. Then for every $k\in\mathbb{N}$ there exist two sets $X$ and $Y$ such that
+	By contradiction, let us assume Lemma \ref{easier_inf_classes} does not hold. Then for every $k\in\mathbb{N}$:
 	\[
-		\Phi_k (X) \land \Phi_{k+1} (Y) \land \mathcal{P}^{3}(Y) <_c X.
+		\estf \nvdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
 	\]
+	By the Completeness Theorem, for every $k\in\mathbb{N}$ there is a model $\mathcal{A}_k$ of $\estf$ such that
+	\[
+		\mathcal{A}_k \nvDash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+	\]
+	In particular,
+	\[
+		\mathcal{A}_k \vDash \forall X,Y ,\, \neg (\Phi_k (X) \land \Phi_{k+1} (Y)) \lor (\mathcal{P}^{3}(Y) <_c X)
+	\]
+	Which is equivalent to
+	\[
+		\mathcal{A}_k \vDash \forall X,Y , \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies (\mathcal{P}^{3}(Y) <_c X)
+	\]
+
 	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
-	Given that each $n\in\mathbb{N}$ defines a unique well ordered set, we can apply Lemma \ref{easier_hartogs_class} with the formulae $\Psi_n$. Let $k$ be a natural number and $A,B$ such that 
+	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have $\estf \vdash \exists! A \ \Psi_n (A)$. So we can apply Lemma \ref{easier_hartogs_class} with the formulae $\Psi_n$. Let $k$ be a natural number and $A,B$ such that 
 	\begin{equation}\tag{1}
 		\label{eq_wo}
-		\Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
+		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
 	\end{equation}
-	Let $X$ and $Y$ be the unique sets satisfying 
-	\begin{align*}
-		\Phi_k (X) \land A &= \aleph(X) 
-		\\ \Phi_{k+1} (Y) \land B &= \aleph(Y).
-	\end{align*}
+
+	By Soundness:	
+	\[
+		\mathcal{A}_k \vDash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
+	\]	
+	Let $X$ and $Y$ be the unique sets in $\mathcal{A}_k$ such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
+	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By uniqueness of the $\Psi_n (\cdot)$ and (\ref{eq_wo}), we have $A \leq_o B$.
+
 	By assumption, $\mathcal{P}^{3}(Y) <_c X$; and applying Theorem \ref{partes3} yields
 	\begin{equation}\tag{2}
 		\label{eq_order}
 		\aleph(Y) <_c \mathcal{P}^{3} (Y) <_c X. 
 	\end{equation}
 	Given that all well orders are pairwise comparable with the $\leq_o$ relation, it must be the case that $\aleph(Y) <_o \aleph(X)$ or $\aleph(X) \leq_o \aleph(Y)$.
-	But $\aleph(X) \leq_o \aleph(Y)$, together with \ref{eq_order}, would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
+	But $\aleph(X) \leq_o \aleph(Y)$, together with (\ref{eq_order}), would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
 	
-	So the inequality $\aleph(Y) <_o \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_o A$, which contradicts \ref{eq_wo}.
+	So the inequality $\aleph(Y) <_o \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_o A$, which contradicts (\ref{eq_wo}).
 	
 	We have thus derived a contradiction from assuming Lemma \ref{easier_hartogs_class} and the negation of Lemma \ref{easier_inf_classes}.
 \end{proof}
