@@ -230,12 +230,12 @@ We would like to show the equivalence of the previous theorem to the following r
 	\label{easier_hartogs_class}
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
 	\[
-		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
+		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle A,<\rangle) \land 
 		\emph{WO}(\langle X, < \rangle)
 	\]
 	then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\estf \vdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
+		\estf \vdash \exists A,B, \, \Phi_k (A) \land \Phi_{k+1} (B) \land A \leq_o B
 	\]
 \end{lemma}
 
@@ -254,45 +254,26 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 \end{theorem}
 
 \begin{proof}
-	By contradiction, let us assume Lemma \ref{easier_inf_classes} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $k\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_k (X)$ and
+	Assume Lemma \ref{easier_hartogs_class} and let $\Phi_n$ be a scheme of formulas with one free variable such that for each $n\in\mathbb{N}$
 	\[
-		\estf \nvdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+		\estf \vdash \exists! X \ \Phi_n (X)
 	\]
-	By the Completeness Theorem, for every $k\in\mathbb{N}$ there is a model $\mathcal{A}_k$ of $\estf$ such that
-	\[
-		\mathcal{A}_k \nvDash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
-	\]
-	In particular,
-	\[
-		\mathcal{A}_k \vDash \forall X,Y ,\, \neg (\Phi_k (X) \land \Phi_{k+1} (Y)) \lor (\mathcal{P}^{3}(Y) <_c X)
-	\]
-	Which is equivalent to
-	\begin{equation}\tag{1}
-		\label{absurdo}
-		\mathcal{A}_k \vDash \forall X,Y , \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies (\mathcal{P}^{3}(Y) <_c X)
-	\end{equation}
-
 	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
 	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have 
-	\begin{equation}\tag{2}
+	\begin{equation}\tag{1}
 		\label{psi_unique}
-		\estf \vdash \exists! A \ \Psi_n (A)
+		\estf \vdash \exists! A \ \Psi_n (A)	
 	\end{equation}
-	So we can apply Lemma \ref{easier_hartogs_class} with the formulae $\Psi_n$. Let $k$ be a natural number such that 
-	\begin{equation}\tag{3}
+	So we can apply Lemma \ref{easier_hartogs_class} with the formulas $\Psi_n$. Let $k$ be a natural number such that 
+	\begin{equation}\tag{2}
 		\label{eq_wo}
 		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
 	\end{equation}
-
-	By Soundness:	
-	\[
-		\mathcal{A}_k \vDash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
-	\]	
-	Let $X$ and $Y$ be the unique sets in $\mathcal{A}_k$ such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
+	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
 	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
 
-	Using (\ref{absurdo}), we obtain $\mathcal{P}^{3}(Y) <_c X$; and applying Theorem \ref{partes3} yields
-	\begin{equation}\tag{4}
+	Assume $\mathcal{P}^{3}(Y) <_c X$, applying Theorem \ref{partes3} yields
+	\begin{equation}\tag{3}
 		\label{eq_order}
 		\aleph(Y) <_c \mathcal{P}^{3} (Y) <_c X. 
 	\end{equation}
@@ -301,13 +282,17 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	
 	So the inequality $\aleph(Y) <_o \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_o A$, which contradicts (\ref{eq_wo}).
 	
-	We have thus derived a contradiction from assuming Lemma \ref{easier_hartogs_class} and the negation of Lemma \ref{easier_inf_classes}.
+	We have thus derived a contradiction from assuming $\mathcal{P}^{3}(Y) <_c X$, hence
+	\[
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+	\]
 \end{proof}
 
 \begin{theorem}
 	Lemma \ref{easier_inf_classes} implies Lemma \ref{easier_hartogs_class} .
 \end{theorem}
 \begin{proof}
+	IGNORAR ESTA PRUEBA POR AHORA!!!
 	By contradiction, let us assume Lemma \ref{easier_hartogs_class} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $n\in\mathbb{N}$
 	\[
 		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
