@@ -220,11 +220,20 @@ We would like to prove the following stronger version of Theorem \ref{hartogs_cl
 	\]
 \end{theorem}
 
+\begin{notation}
+	LIMPIAR ESTO DESPUÉS!!! We shall take WO($\langle A,<\rangle$) to be an abbreviation of any first order logic formula stating "$\langle A,<\rangle$ is a well-order".
+\end{notation}
+
 We would like to show the equivalence of the previous theorem to the following result.
 
 \begin{lemma}
 	\label{easier_hartogs_class}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle)$, then there must be a $k \in \mathbb{N}$ such that 
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
+	\[
+		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
+		\emph{WO}(\langle X, < \rangle)
+	\]
+	then there must be a $k \in \mathbb{N}$ such that 
 	\[
 		\estf \vdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
 	\]
@@ -245,7 +254,7 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 \end{theorem}
 
 \begin{proof}
-	By contradiction, let us assume Lemma \ref{easier_inf_classes} does not hold. Then for every $k\in\mathbb{N}$:
+	By contradiction, let us assume Lemma \ref{easier_inf_classes} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $k\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_k (X)$ and
 	\[
 		\estf \nvdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
 	\]
@@ -296,10 +305,37 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 \end{proof}
 
 \begin{theorem}
-	Lemma \ref{easier_inf_classes} implies Theorem \ref{hartogs_inf_classes}.
+	Lemma \ref{easier_inf_classes} implies Lemma \ref{easier_hartogs_class} .
 \end{theorem}
 \begin{proof}
-	HACER
+	By contradiction, let us assume Lemma \ref{easier_hartogs_class} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $n\in\mathbb{N}$
+	\[
+		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
+		\emph{WO}(\langle X, < \rangle)
+	\]
+	And for every $k\in\mathbb{N}$ the following must hold
+	\[			
+		\estf \nvdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
+	\]	
+	Using Completeness and Soundness as in the previous proof, there must be for each $k\in\mathbb{N}$ a model $\mathcal{A}_k$ of $\estf$ such that
+	\[
+		\mathcal{A}_k \vDash \forall X,Y, \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies X >_o Y
+	\]	
+	%Let $\Psi_n (X) = \exists R (R \subseteq {X\times X} \land \Phi_k(\langle X, R\rangle) \land \text{WO}(\langle X, R\rangle))$.
+	%Applying Lemma \ref{easier_inf_classes}, there must be a $k\in\mathbb{N}$ such that 
+	%\[
+	%	\estf \vdash \exists X,Y ,\, \Psi_k (X) \land \Psi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+	%\]
+	%Using Soundness again:
+	%\[
+	%	\mathcal{A}_k \vDash \exists X,Y ,\, \Psi_k (X) \land \Psi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+	%\]
+	%Let $X$ and $Y$ be the only sets in $\mathcal{A}_k$ such that 
+	%\[
+	%	\Psi_k (X) \land \Psi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+	%\]
+	%By definition of $\Psi_k$, there are relations $R$ and $S$ that well order $X$ and $Y$.
+	%Moreover, $\langle X,R \rangle >_o \langle Y,S\rangle$. This implies $Y <_c X$
 \end{proof}
 
 We would like to have a unified way of referring to well orderings like $\aleph_1$ or $\aleph_\omega$ in the absence of Replacement. We cannot even prove $\omega+\omega$ exists in ZC (¿AGREGAMOS REFERENCIA A ESTO O SÓLO MENCIONAMOS EL MODELO?), much less the aforementioned cardinals, so we will introduce a notion analogous to Definition \ref{omega_type}, which was a way of talking about well orderings that were "essentially $\omega$".
