@@ -62,7 +62,7 @@ The previous result relies heavily on Choice, in fact, given any countable parti
 %estudiar los modelos en los que falla.
 
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
-Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, 
+Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (See Dedekind finite sets, amorphous sets, etc). 
 (VER BIEN CUÁLES HAY: SE ME OCURREN CONJUNTOS AMORFOS, DEDEKIND FINITOS NO FINITOS, EL AXIOMA DE INFINITO DE ZERMELO) which motivates the following weaker version of the Axiom of Infinity:
 
 \begin{WeakInf}
@@ -100,7 +100,12 @@ Given that we shall be working in an axiomatic system too weak to prove the exis
 	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders such that $\type(A,<) = \omega$ and $\type(B,\sqsubset) = \omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
-	¿TRIVIAL?
+	Lets denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(x+1)=f(x)+1$. We claim that $f$ is an order isomorphism: 
+	\begin{itemize}
+		\item $x<y \implies f(x)\sqsubset f(y)$. Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=x+1$ (since this would imply $f(y)=f(x)+1)$. Then, there must exist a $z\neq x$ such that $y=z+1)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset f(z)+1 = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
+		\item $f$ is surjective. Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=z+1$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(x+1)=z+1=y$, a contradiction.
+		\item The fact that the inverse of $f$ is order-preserving follows by the same argument used to show that $f$ itself is order-preserving.
+	\end{itemize} 
 \end{proof}
 
 \begin{lemma}[$\esti$]
@@ -206,7 +211,10 @@ Before giving a proof for Theorem \ref{hartogs_class} we note the following resu
 	Recall from Theorem \ref{partes3} that $\aleph(Y_3) <_c \mathcal{P}^{3}(Y_3)$, and using the inequality above, we obtain $\aleph(Y_3) <_c Y_0$. But $\aleph(Y_3)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
 \end{proof}
 
-DUDA IMPORTANTE, ¿CUÁL ES EL ALEPH DE UN CONJUNTO DEDEKIND FINITO (NO FINITO)? ¿SIEMPRE VA A SER UN BUEN ORDEN FINITO? EN CASO CONTRARIO, EN UN MODELO DE BST SIN EL AXIOMA DE INFINITO TIENE QUE EXISTIR ESE ALEPH, ¿PERO EL HECHO DE QUE HAYA UN BUEN ORDEN INFINITO NO IMPLICA QUE $\omega$ EXISTE?
+DUDA IMPORTANTE, ¿CUÁL ES EL ALEPH DE UN CONJUNTO DEDEKIND FINITO (NO FINITO)? ¿SIEMPRE VA A SER UN BUEN ORDEN FINITO? RTA: Parece ser omega: un conjunto asi tiene subconjuntos finitos de cualquier tamaño (por ser infinito) pero no tiene ninguno de tipo omega (por definicion). El resultado parece de realizar la operacion de Hartogs(Moschovakis) parece ser la colección de todos los buenos ordenes finitos (i.e, $\omega$).
+
+
+EN CASO CONTRARIO, EN UN MODELO DE BST SIN EL AXIOMA DE INFINITO TIENE QUE EXISTIR ESE ALEPH, ¿PERO EL HECHO DE QUE HAYA UN BUEN ORDEN INFINITO NO IMPLICA QUE $\omega$ EXISTE? RTA: No se, de todas formas la existencia de conjuntos infinitos dedekind finitos no se deduce de BST, más aún, es inconsistente con AC.
 
 OTRA DUDA, ¿EN $\estf$ VALE EL SIGUIENTE TEOREMA? ES SIQUIERA ENUNCIABLE?
 
