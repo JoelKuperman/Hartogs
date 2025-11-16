@@ -33,10 +33,7 @@ This is the best bound we can obtain in ZF: it is consistent with ZF that the st
 
 % ¿Es consistente en BST que no valga con $\mathcal(P)^{2}$ para algun X?
 
-\begin{proof}
-	%	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
-	%\end{proof}
-	
+\begin{proof}	
 	Let $f:WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
 \end{proof}
 
@@ -58,14 +55,8 @@ This result by Foreman and Woodin motivates the question "is this large cardinal
 	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contradiction.
 \end{proof}
 
-% Ver si en ZF, el teorema anterior es equivalente a AC. AC lo implica, falta ver la vuelta.
-% Se llama NDS el teorema anterior.
-% Lectura inicial:  https://link.springer.com/article/10.1007/s00153-015-0472-5#:~:text=Abstract,m%E2%80%9D%20%E2%86%9B%20NDS%20in%20ZFA
-
-The previous result relies heavily on Choice, in fact, given any partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
-%CONSEGUIR CITA DE LO ANTERIOR
-%También, ver si puede valer el teorema anterior y fallar Elección, posiblemente salga de
-%estudiar los modelos en los que falla.
+This theorem is called the Non Decreasing Sequence principle (NDS) and it is an open problem whether $\text{NDS}{\implies}\text{AC}$.
+It is implied by AC, and in its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
 
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
 Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (See Dedekind finite sets, amorphous sets, etc). 
