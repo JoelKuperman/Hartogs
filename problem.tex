@@ -17,7 +17,8 @@
 \end{lemma}
 
 \begin{theorem}
-	For any set $X$, $\aleph(X)<_c \mathcal{P}^4(X)$.
+	For any set $X$, $\aleph(X)\leq_c \mathcal{P}^{4}(X)$.
+	%$\aleph(X)<_c \mathcal{P}^4(X)$.
 \end{theorem}
 
 \begin{proof}
@@ -25,7 +26,8 @@
 \end{proof}
 
 \begin{theorem}\label{partes3}
-	For any set $X$, $\aleph(X)<_c \mathcal{P}^3(X)$.
+	For any set $X$, $\aleph(X)\leq_c \mathcal{P}^3(X)$.
+	%$\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
 
 This is the best bound we can obtain in ZF: it is consistent with ZF that the stronger inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails. ¿CITA DE ESTO? NO ME ACUERDO SI ERA MÁS O MENOS DIRECTO.
@@ -36,6 +38,10 @@ This is the best bound we can obtain in ZF: it is consistent with ZF that the st
 \begin{proof}	
 	Let $f:WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
 \end{proof}
+
+\begin{question}
+	Does ZF prove the strict inequality $\forall \ X \ \aleph(X) <_c \mathcal{P}^3(X)$?
+\end{question}
 
 The full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, moreover, the statement $\forall X \ \aleph(X) =_c \mathcal{P}(X)$ (GCH) and its negation are both consistent with ZFC. The above remark naturally leads to the question "what can we say about the consistency of $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$?".
 
