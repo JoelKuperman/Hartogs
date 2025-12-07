@@ -61,24 +61,21 @@ This result by Foreman and Woodin motivates the question "is this large cardinal
 	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contradiction.
 \end{proof}
 
-This theorem is called the Non Decreasing Sequence principle (NDS) and it is an open problem whether $\text{NDS}{\implies}\text{AC}$.
+This theorem is called the Non Decreasing Sequence principle (NDS) and it is an open problem whether $\text{ZF$+$NDS}{\implies}\text{ZFC}$.
 It is implied by AC, and in its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
 
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
-Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (See Dedekind finite sets, amorphous sets, etc). 
-(VER BIEN CUÁLES HAY: SE ME OCURREN CONJUNTOS AMORFOS, DEDEKIND FINITOS NO FINITOS, EL AXIOMA DE INFINITO DE ZERMELO) which motivates the following weaker version of the Axiom of Infinity:
+Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
 
 \begin{WeakInf}
-	There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
+	There is an infinite set.
+	%There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
 \end{WeakInf}
 
-Let us use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity.
+We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and I to mean the Axiom of Infinity in its usual formulation.
+Note that it is consistent with ZC$-$I for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives one such model), in particular $\esti+\neg \text{I}$ is consistent.
 
-\begin{question}
-	Is it consistent with $\esti$ for $\omega$ to not exist? (SEE ZERMELO'S AXIOM OF INFINITY).
-\end{question}
-
-Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that essentially states "the order $\langle X , < \rangle$ is isomorphic to $\omega$ if the latter exists".
+Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that essentially states ``the order $\langle X , < \rangle$ would be isomorphic to $\omega$ if the latter existed''.
 
 \begin{definition}
 	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
