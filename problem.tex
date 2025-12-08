@@ -141,27 +141,21 @@ A useful definition to work with recursion in the absence of any instance of Rep
 	\end{itemize} 
 \end{proof}
 
-\begin{lemma}[$\esti$]
-	$\type(\omega,\in) = \omega$
+\begin{lemma}[$\estf+\text{AI}$]
+	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
 \end{lemma}
-\begin{proof}
-	¿TRIVIAL?
-\end{proof}
 
-\begin{corollary}
-	Assuming the usual formulation of the Axiom of Infinity (SEE KUNEN!!!!!), our notation  $\type(A,<) = \omega$ coincides with its usual form stating that $\omega$ is an ordinal and $\langle A,< \rangle$ is order isomorphic to it.
+\begin{corollary}[$\estf+\text{AI}$]
+	Our notation  $\type(A,<) = \omega$ coincides with its standard form stating that $\omega$ is an ordinal and $\langle A,< \rangle$ is order isomorphic to it. \qed
 \end{corollary}
-
-
-
-%Ver si se puede sacar Infinito sin problemas
-
-%Kunen da la conjunción de Partes o Reemplazo.
 
 \begin{prop}[$\esti$]
 	There is a well ordering $\langle A,< \rangle$ such that 
 	$\type(A,<) = \omega$.
 \end{prop}
+\begin{proof}
+	Let $X$ be any infinite set, of course if there was a well order on it we could simply restrict it to an appropriate subset and get one of type $\omega$. In the absence of Choice, we may not be so fortunate. Let us take $A = \aleph(X)$. Then $A$ is an infinite well order COMPLETAR MAS TARDE
+\end{proof}
 
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
