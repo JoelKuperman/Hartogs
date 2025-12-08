@@ -64,6 +64,8 @@ This result by Foreman and Woodin motivates the question "is this large cardinal
 This theorem is called the Non Decreasing Sequence principle (NDS) and it is an open problem whether $\text{ZF$+$NDS}{\implies}\text{ZFC}$.
 It is implied by AC, and in its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
 
+APARENTEMENTE ZFA$+$NDS$+\neg$AC ES CONSISTENTE (BUSCAR CITA), VER CÓMO ES EL MODELO QUE CONSTRUYEN DE ESO.
+
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
 Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
 
@@ -72,8 +74,8 @@ Without Replacement or Choice it is consistent for several common definitions of
 	%There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
 \end{WeakInf}
 
-We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and I to mean the Axiom of Infinity in its usual formulation.
-Note that it is consistent with ZC$-$I for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives one such model), in particular $\esti+\neg \text{I}$ is consistent.
+We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
+Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives one such model), in particular $\esti+\neg \text{AI}$ is consistent.
 
 Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that essentially states ``the order $\langle X , < \rangle$ would be isomorphic to $\omega$ if the latter existed''.
 
@@ -90,17 +92,48 @@ Given that we shall be working in an axiomatic system too weak to prove the exis
 
 \begin{definition}
 	\label{omega_type}
-	Let $\langle A,< \rangle$ be a well ordering, we will denote $\type(A,<) = \omega$ iff $\langle A,< \rangle$ satisfies the following sentence:
+	Let $\langle A,< \rangle$ be a non-empty well ordering, we will denote $\type(A,<) = \omega$ iff $\langle A,< \rangle$ satisfies the following sentence:
 	\[
 		\forall x\in A \ ((\text{First}(x) \lor \exists y\in A \ (\text{Succ}(y,x))) \land \exists z\in A \ (\text{Succ}(x,z)))
 	\]
 \end{definition}
 
+A useful definition to work with recursion in the absence of any instance of Replacement is the following.
+
+\begin{definition}\cite[Definition 5.1]{Moscho}
+	A \emph{Peano System} is any structure $(\mathbb{N},0,S)$ which satisfies the following properties:
+	\begin{enumerate}[(1)]
+		\item $\mathbb{N}$ is a set and $0\in\mathbb{N}$.
+		\item $S$ is a function on $\mathbb{N}$, $S: \mathbb{N}\rightarrow\mathbb{N}$.
+		\item $S$ is an injection.
+		\item For each $n\in\mathbb{N}$, $S(n) \neq 0$.
+		\item For each $X\subseteq\mathbb{N}$,
+		\[
+			(0\in X \land (\forall n\in \mathbb{N} \ (n\in X \implies S(n)\in X))) \implies X = \mathbb{N}.
+		\]
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	Assume $\langle A,< \rangle$ is a well order such that $\type(A,<) = \omega$, let $a_0$ be its first element. Then the following are provable in $\esti$:
+	\begin{enumerate}[(i)]
+		\item There is a function $S_A : A \rightarrow A$ such that $\forall x\in A$ $\text{Succ}(x,S_A (x))$.
+		\item The structure $(A,a_0,S_A)$ is a Peano system.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Item \emph{(i)} requires only to use Comprehension on the set $A\times A$: we simply take $S_A$ as the set $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now prove item \emph{(ii)}. Properties (1) through (4) of the definition of a Peano system are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ such that 
+	\[
+		a_0\in X \land (\forall n\in A \ (n\in X \implies S_A(n)\in X)).
+	\]
+	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using the hypothesis $\type(A,<) = \omega$ we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts the assumption on $X$. So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, and the contradiction arose from assuming $A\setminus X$ was non-empty.
+\end{proof}
+
 \begin{lemma}[$\esti$]
 	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders such that $\type(A,<) = \omega$ and $\type(B,\sqsubset) = \omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
-	Lets denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(x+1)=f(x)+1$. We claim that $f$ is an order isomorphism: 
+	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(x+1)=f(x)+1$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
 	\begin{itemize}
 		\item $x<y \implies f(x)\sqsubset f(y)$. Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=x+1$ (since this would imply $f(y)=f(x)+1)$. Then, there must exist a $z\neq x$ such that $y=z+1)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset f(z)+1 = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
 		\item $f$ is surjective. Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=z+1$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(x+1)=z+1=y$, a contradiction.
