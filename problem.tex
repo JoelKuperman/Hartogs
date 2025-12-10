@@ -65,6 +65,7 @@ This theorem is called the Non Decreasing Sequence principle (NDS) and it is an 
 It is implied by AC, and in its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
 
 APARENTEMENTE ZFA$+$NDS$+\neg$AC ES CONSISTENTE (BUSCAR CITA), VER CÓMO ES EL MODELO QUE CONSTRUYEN DE ESO.
+PARECE QUE \cite{NDS} PRUEBA ESTO, LEER BIEN QUÉ PRUEBAN EXACTAMENTE.
 
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
 Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
@@ -75,7 +76,7 @@ Without Replacement or Choice it is consistent for several common definitions of
 \end{WeakInf}
 
 We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
-Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives one such model), in particular $\esti+\neg \text{AI}$ is consistent.
+Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
 
 Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that essentially states ``the order $\langle X , < \rangle$ would be isomorphic to $\omega$ if the latter existed''.
 
@@ -115,14 +116,14 @@ A useful definition to work with recursion in the absence of any instance of Rep
 \end{definition}
 
 \begin{lemma}
-	Assume $\langle A,< \rangle$ is a well order such that $\type(A,<) = \omega$, let $a_0$ be its first element. Then the following are provable in $\esti$:
+	Assume $\langle A,< \rangle$ is a well order such that $\type(A,<) = \omega$, let $a_0$ be its first element. Then the following are provable in \emph{$\esti$}:
 	\begin{enumerate}[(i)]
-		\item There is a function $S_A : A \rightarrow A$ such that $\forall x\in A$ $\text{Succ}(x,S_A (x))$.
+		\item There is a function $S_A : A \rightarrow A$ such that $\forall x\in A$ $\emph{\text{Succ}}(x,S_A (x))$.
 		\item The structure $(A,a_0,S_A)$ is a Peano system.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	Item \emph{(i)} requires only to use Comprehension on the set $A\times A$: we simply take $S_A$ as the set $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now prove item \emph{(ii)}. Properties (1) through (4) of the definition of a Peano system are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ such that 
+	Item \emph{(i)} requires only to use Comprehension on the set $A\times A$: we simply take $S_A$ as the set $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now prove item \emph{(ii)}. Properties (1) through (4) of the definition of a Peano system are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
 	\[
 		a_0\in X \land (\forall n\in A \ (n\in X \implies S_A(n)\in X)).
 	\]
@@ -149,12 +150,42 @@ A useful definition to work with recursion in the absence of any instance of Rep
 	Our notation  $\type(A,<) = \omega$ coincides with its standard form stating that $\omega$ is an ordinal and $\langle A,< \rangle$ is order isomorphic to it. \qed
 \end{corollary}
 
+\begin{lemma}
+	If $\langle X,< \rangle$ is an infinite well order such that $\neg \type(X,<) = \omega$, there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
+\end{lemma}
+\begin{proof}
+	Since $\langle X,< \rangle$ does not have type $\omega$, there must be some $x\in X$ such that
+	\[
+		\neg(\text{First}(x) \lor \exists y\in X \ (\text{Succ}(y,x)) \lor \neg \exists z\in X \ (\text{Succ}(x,z)).
+	\]
+	We shall see that in both cases $x{\downarrow}$ is infinite. Let us assume 
+	\[
+		\neg(\text{First}(x) \lor \exists y\in X \ (\text{Succ}(y,x)),
+	\]
+	then if $x{\downarrow}$ is non empty and it must be infinite, indeed: if it was finite, it would have a greatest element $y$, which would imply $\text{Succ}(y,x)$.
+	
+	On the other hand, if we assume
+	\[
+		\neg \exists z\in X \ (\text{Succ}(x,z)),
+	\]
+	then $X = x{\downarrow} \cup \{x\}$. Given that $X$ is infinite by assumption, it follows that $x{\downarrow}$ must be infinite.
+	
+	Finally, let us take $Y = \{x\in X : x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $\type(y\downarrow,<) = \omega$.
+	Recall that we need to show:
+	\[
+		\forall a\in y{\downarrow} \ ((\text{First}(a) \lor \exists b\in y{\downarrow} \ (\text{Succ}(b,a))) \land \exists c\in y{\downarrow} \ (\text{Succ}(a,c)))
+	\]
+	Let $a\in y{\downarrow}$, since $y$ is the first element whose set of predecessors is infinite, $a{\downarrow}$ is necessarily finite. In particular it is either empty, in which case First$(a)$, or it has a greatest element $b$ which satisfies $b\in y{\downarrow}$ and Succ$(b,a)$. All that remains to verify is the existence of some $c\in y{\downarrow}$ such that Succ$(a,c)$.
+	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} : a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
+\end{proof}
+
 \begin{prop}[$\esti$]
 	There is a well ordering $\langle A,< \rangle$ such that 
 	$\type(A,<) = \omega$.
 \end{prop}
 \begin{proof}
-	Let $X$ be any infinite set, of course if there was a well order on it we could simply restrict it to an appropriate subset and get one of type $\omega$. In the absence of Choice, we may not be so fortunate. Let us take $A = \aleph(X)$. Then $A$ is an infinite well order COMPLETAR MAS TARDE
+	Let $X$ be any infinite set, of course if there was a well order on it we could simply restrict it to an appropriate subset and get one of type $\omega$. In the absence of Choice, we may not be so fortunate. Let us take $A = \aleph(X)$. Using the previous lemma, all we need to do is to show that $A$ is not finite.
+	But this is trivial by Lemma \ref{aleph2}, if it was finite, then we would have $\aleph(X) <_c X$.
 \end{proof}
 
 \begin{theorem}[$\esti$]
