@@ -412,19 +412,24 @@ We would like to have a unified way of referring to well orderings like $\aleph_
 	\begin{enumerate}[(i)]
 		\item Let $x\in A$, then $x{\downarrow} := \{y\in A: y<x\}$ and $<_x = \{(a,b) \in x{\downarrow}\times x{\downarrow} : a<b\}$.
 		\item $\langle A,< \rangle$ is an $\estf$ \emph{cardinal} iff for all $x\in A$, $x{\downarrow} <_c A$.
-		\item If $\langle A,< \rangle$ is an infinite $\estf$ cardinal, we define its length as $\mathcal{C}(A,<) = \mathcal{C}(A) = \{x\in A: (x{\downarrow},<_x) \text{ is an infinite $\estf$ cardinal}\}$. We give $\mathcal{C}(A)$ the inherited order from $A$.
+		\item If $\langle A,< \rangle$ is an infinite $\estf$ cardinal, we define its length as $\mathcal{L}(A,<) = \mathcal{L}(A) = \{x\in A: (x{\downarrow},<_x) \text{ is an infinite $\estf$ cardinal}\}$. We give $\mathcal{L}(A)$ the inherited order from $A$.
 	\end{enumerate}
 \end{definition}
 
-VER SI EFECTIVAMENTE ES CIERTO LO SIGUIENTE!!!
+Note that under Replacement, we can take the length of $\aleph_{\alpha}$ and it is a well order isomorphic to $\alpha$. The above definition simply codifies the behavior of the $\alpha$ subscript in theories where we cannot produce ordinals larger than $\omega+\omega$.
+The following two lemmas show that the length of EST cardinals has the properties we would expect when working with cardinals in stronger theories.
 
 \begin{lemma}
 	\label{weak_aleph}
-	Let $A$ and $B$ be two infinite $\estf$ cardinals, then $A <_c B$ iff $\mathcal{C}(A) <_o \mathcal{C}(B)$ and $A =_c B$ iff $\mathcal{C}(A) =_o \mathcal{C}(B)$.
+	Let $A$ and $B$ be two infinite $\estf$ cardinals, then $A <_c B$ iff $\mathcal{L}(A) <_o \mathcal{L}(B)$ and $A =_c B$ iff $\mathcal{L}(A) =_o \mathcal{L}(B)$.
 \end{lemma}
 
 \begin{proof}
-	sfafsa
+	Recall that $A \leq_o B$ iff $A$ is isomorphic to an initial segment of $B$ and $A =_o B$ iff $A$ is isomorphic to $B$. Naturally, $A <_o B$ iff $A \leq_o B$ and $A \neq_o B$.
+	\begin{itemize}
+		\item[($\Rightarrow$)]
+		\item[($\Leftarrow$)]
+	\end{itemize}
 \end{proof}
 
 \begin{lemma}
