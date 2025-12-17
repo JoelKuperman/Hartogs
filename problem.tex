@@ -208,22 +208,34 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in A}$, which would of course be trivial using Replacement.
 	
 	It is straightforward to prove that for each $n\in A$, 
-	$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
+	%$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
+	$\mathcal{P}^{4}(X_{n+4}) <_c X_n$, 
 	indeed, applying the hypothesis on $\mathcal{S}$ yields:
+	
+%	\begin{align*}
+%		&\mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
+%		\\ \implies &\mathcal{P}^2(X_{n+3}) \leq_c \hspace{4.5 pt} \mathcal{P}(X_{n+2}) <_c X_{n+1}
+%		\\ \implies &\mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^{2}(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
+%	\end{align*}
+	
 	\begin{align*}
-		&\mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
-		\\ \implies &\mathcal{P}^2(X_{n+3}) \leq_c \hspace{4.5 pt} \mathcal{P}(X_{n+2}) <_c X_{n+1}
-		\\ \implies &\mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^{2}(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
+		&\mathcal{P}(X_{n+4}) \hspace{4.5 pt} <_c X_{n+3}
+		\\ \implies &\mathcal{P}^2(X_{n+4}) \leq_c %\hspace{4.5 pt}
+		 \mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
+		\\ \implies &\mathcal{P}^3(X_{n+4}) \leq_c \mathcal{P}^{2}(X_{n+3}) \leq_c \mathcal{P}(X_{n+2}) \hspace{4.5 pt} <_c X_{n+1}
+		\\ \implies &\mathcal{P}^4(X_{n+4}) \leq_c \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2}) \leq_c \mathcal{P}^1(X_{n+1}) <_c X_n.
 	\end{align*}
 	As a consequence,
-	$\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$, where the first inequality comes from applying Theorem \ref{partes3}.
+	%$\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$,
+	$\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$,
+	where the first inequality comes from applying Theorem \ref{partes3}.
 	
-	\noindent Let us now show that $\aleph(X_{n+3}) <_c \aleph(X_n)$ for all $n\in\omega$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+3}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+3})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
+	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in A$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
 	Finally, $\{\aleph(X_n)\}_{n\in A}$
 	%$\{\aleph(X_{3n})\}_{n\in\omega}$ 
 	is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot exist under $\estf$. Indeed, 
-	it is non empty and it has no least element: for any $\aleph(X_n)$, we have $\aleph(X_{n+3}) <_c \aleph(X_n)$.
+	it is non empty and it has no least element: for any $\aleph(X_n)$, we have $\aleph(X_{n+4}) <_c \aleph(X_n)$.
 	
 \end{proof}
 
@@ -231,7 +243,8 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	Given that without the Axiom of Infinity $\omega$ could be a proper class, when we say $n\in\omega$ we shall really mean $\forall x\in n \ (x = \emptyset \lor \exists y \in n \ x = S(y))$, where $S(a) = a \cup \{a\}$.
 \end{notation}
 
-The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from (¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?) Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
+The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from %(¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?)
+Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
 
 \begin{theorem}[$\estf$]
 	\label{hartogs_class}
@@ -256,29 +269,32 @@ Before giving a proof for Theorem \ref{hartogs_class} we note the following resu
 	\[
 		 \mathcal{C} := \{X: \exists Y ((\exists n\in\omega \ \Phi(n,Y)) \land X = \aleph(Y))\}.
 	\]
-	By (\ref{nat_define}), Definition \ref{aleph} and Lemma \ref{aleph2}, $\mathcal{C}$ is a non-empty class of well ordered sets. By Proposition \ref{class_wo}, there must be a $\leq_o$-least member of $\mathcal{C}$.
+	Using (\ref{nat_define}), Definition \ref{aleph} and Lemma \ref{aleph2}, $\mathcal{C}$ is a non-empty class of well ordered sets. By Proposition \ref{class_wo}, there must be a $\leq_o$-least member of $\mathcal{C}$.
 	Let $X_0$ be such a member of $\mathcal{C}$, then there must be some $Y_0$ and $n_0 \in\omega$ such that $X_0 = \aleph(Y_0) \land \Phi(n_0,Y_0)$.
-	The assumption (\ref{nat_define}) implies there are $Y_1 , Y_2, Y_3$ such that $\Phi(n_0 + i , Y_i)$ for $i\in\{1,2,3\}$.
-	Applying (\ref{dec_seq}), we get:
+	The assumption (\ref{nat_define}) implies there are $Y_1 , Y_2, Y_3, Y_4$ such that $\Phi(n_0 + i , Y_i)$ for $i\in\{1,2,3,4\}$.
+	Applying (\ref{dec_seq}), we get:	
+
+%	\begin{align*}
+%		&\mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
+%		\\ \implies &\mathcal{P}^2(Y_3) \leq_c \hspace{4.5 pt} \mathcal{P}(Y_2) <_c Y_1
+%		\\ \implies &\mathcal{P}^3(Y_3) \leq_c \mathcal{P}^{2}(Y_2) \leq_c \mathcal{P}(Y_1) <_c Y_0.
+%	\end{align*}
 	
 	\begin{align*}
-		&\mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
-		\\ \implies &\mathcal{P}^2(Y_3) \leq_c \hspace{4.5 pt} \mathcal{P}(Y_2) <_c Y_1
-		\\ \implies &\mathcal{P}^3(Y_3) \leq_c \mathcal{P}^{2}(Y_2) \leq_c \mathcal{P}(Y_1) <_c Y_0.
+		&\mathcal{P}(Y_4) \hspace{4.5 pt} <_c Y_3
+		\\ \implies &\mathcal{P}^2(Y_4) \leq_c \mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
+		\\ \implies &\mathcal{P}^3(Y_4) \leq_c \mathcal{P}^{2}(Y_3) \leq_c \mathcal{P}(Y_2) \hspace{4.5 pt} <_c Y_1
+		\\ \implies &\mathcal{P}^4(Y_4) \leq_c \mathcal{P}^3(Y_3) \leq_c \mathcal{P}^2(Y_2) \leq_c \mathcal{P}^1(Y_1) <_c Y_0
 	\end{align*}
-	Recall from Theorem \ref{partes3} that $\aleph(Y_3) <_c \mathcal{P}^{3}(Y_3)$, and using the inequality above, we obtain $\aleph(Y_3) <_c Y_0$. But $\aleph(Y_3)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
+	
+	Recall from Theorem \ref{partes3} that $\aleph(Y_4) \leq_c \mathcal{P}^{3}(Y_4)$, and using the inequality above, we obtain $\aleph(Y_4) <_c Y_0$, which implies $\aleph(Y_4) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_4)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
 \end{proof}
-
-DUDA IMPORTANTE, ¿CUÁL ES EL ALEPH DE UN CONJUNTO DEDEKIND FINITO (NO FINITO)? ¿SIEMPRE VA A SER UN BUEN ORDEN FINITO? RTA: Parece ser omega: un conjunto asi tiene subconjuntos finitos de cualquier tamaño (por ser infinito) pero no tiene ninguno de tipo omega (por definicion). El resultado parece de realizar la operacion de Hartogs(Moschovakis) parece ser la colección de todos los buenos ordenes finitos (i.e, $\omega$).
-
-
-EN CASO CONTRARIO, EN UN MODELO DE BST SIN EL AXIOMA DE INFINITO TIENE QUE EXISTIR ESE ALEPH, ¿PERO EL HECHO DE QUE HAYA UN BUEN ORDEN INFINITO NO IMPLICA QUE $\omega$ EXISTE? RTA: No se, de todas formas la existencia de conjuntos infinitos dedekind finitos no se deduce de BST, más aún, es inconsistente con AC.
 
 OTRA DUDA, ¿EN $\estf$ VALE EL SIGUIENTE TEOREMA? ES SIQUIERA ENUNCIABLE?
 
 We would like to prove the following stronger version of Theorem \ref{hartogs_class}.
 
-\begin{theorem}[$\estf$]
+\begin{theorem}
 	\label{hartogs_inf_classes}
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
 	\[
@@ -287,7 +303,7 @@ We would like to prove the following stronger version of Theorem \ref{hartogs_cl
 \end{theorem}
 
 \begin{notation}
-	LIMPIAR ESTO DESPUÉS!!! We shall take WO($\langle A,<\rangle$) to be an abbreviation of any first order logic formula stating "$\langle A,<\rangle$ is a well-order".
+	We shall take WO($A,<$), or WO($A$) when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
 \end{notation}
 
 We would like to show the equivalence of the previous theorem to the following result.
@@ -311,7 +327,7 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	\label{easier_inf_classes}
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{4}(Y) <_c X)
 	\]
 \end{lemma}
 
@@ -338,40 +354,40 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
 	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
 
-	Assume $\mathcal{P}^{3}(Y) <_c X$, applying Theorem \ref{partes3} yields
+	Assume $\mathcal{P}^{4}(Y) <_c X$, applying Theorem \ref{partes3} yields
 	\begin{equation}\tag{3}
 		\label{eq_order}
-		\aleph(Y) <_c \mathcal{P}^{3} (Y) <_c X. 
+		\aleph(Y) <_c \mathcal{P}^{4} (Y) <_c X. 
 	\end{equation}
-	Given that all well orders are pairwise comparable with the $\leq_o$ relation, it must be the case that $\aleph(Y) <_o \aleph(X)$ or $\aleph(X) \leq_o \aleph(Y)$.
-	But $\aleph(X) \leq_o \aleph(Y)$, together with (\ref{eq_order}), would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
+	Given that all well orders are pairwise comparable with the $\leq_c$ relation, it must be the case that $\aleph(Y) <_c \aleph(X)$ or $\aleph(X) \leq_c \aleph(Y)$.
+	But $\aleph(X) \leq_c \aleph(Y)$, together with (\ref{eq_order}), would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
 	
-	So the inequality $\aleph(Y) <_o \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_o A$, which contradicts (\ref{eq_wo}).
+	So the inequality $\aleph(Y) <_c \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_c A$, which contradicts (\ref{eq_wo}).
 	
-	We have thus derived a contradiction from assuming $\mathcal{P}^{3}(Y) <_c X$, hence
+	We have thus derived a contradiction from assuming $\mathcal{P}^{4}(Y) <_c X$, hence
 	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{4}(Y) <_c X)
 	\]
 \end{proof}
 
-\begin{theorem}
-	Lemma \ref{easier_inf_classes} implies Lemma \ref{easier_hartogs_class} .
-\end{theorem}
-\begin{proof}
-	IGNORAR ESTA PRUEBA POR AHORA!!!
-	By contradiction, let us assume Lemma \ref{easier_hartogs_class} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $n\in\mathbb{N}$
-	\[
-		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
-		\emph{WO}(\langle X, < \rangle)
-	\]
-	And for every $k\in\mathbb{N}$ the following must hold
-	\[			
-		\estf \nvdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
-	\]	
-	Using Completeness and Soundness as in the previous proof, there must be for each $k\in\mathbb{N}$ a model $\mathcal{A}_k$ of $\estf$ such that
-	\[
-		\mathcal{A}_k \vDash \forall X,Y, \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies X >_o Y
-	\]	
+\begin{question}
+	Does Lemma \ref{easier_inf_classes} imply Lemma \ref{easier_hartogs_class}?
+\end{question}
+%\begin{proof}
+%	IGNORAR ESTA PRUEBA POR AHORA!!!
+%	By contradiction, let us assume Lemma \ref{easier_hartogs_class} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $n\in\mathbb{N}$
+%	\[
+%		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
+%		\emph{WO}(\langle X, < \rangle)
+%	\]
+%	And for every $k\in\mathbb{N}$ the following must hold
+%	\[			
+%		\estf \nvdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
+%	\]	
+%	Using Completeness and Soundness as in the previous proof, there must be for each $k\in\mathbb{N}$ a model $\mathcal{A}_k$ of $\estf$ such that
+%	\[
+%		\mathcal{A}_k \vDash \forall X,Y, \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies X >_o Y
+%	\]	
 	%Let $\Psi_n (X) = \exists R (R \subseteq {X\times X} \land \Phi_k(\langle X, R\rangle) \land \text{WO}(\langle X, R\rangle))$.
 	%Applying Lemma \ref{easier_inf_classes}, there must be a $k\in\mathbb{N}$ such that 
 	%\[
@@ -387,17 +403,16 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	%\]
 	%By definition of $\Psi_k$, there are relations $R$ and $S$ that well order $X$ and $Y$.
 	%Moreover, $\langle X,R \rangle >_o \langle Y,S\rangle$. This implies $Y <_c X$
-\end{proof}
+%\end{proof}
 
-We would like to have a unified way of referring to well orderings like $\aleph_1$ or $\aleph_\omega$ in the absence of Replacement. We cannot even prove $\omega+\omega$ exists in ZC (¿AGREGAMOS REFERENCIA A ESTO O SÓLO MENCIONAMOS EL MODELO?), much less the aforementioned cardinals, so we will introduce a notion analogous to Definition \ref{omega_type}, which was a way of talking about well orderings that were "essentially $\omega$".
+We would like to have a unified way of referring to well orderings like $\aleph_1$ or $\aleph_\omega$ in the absence of Replacement. We cannot even prove $\omega+\omega$ exists in ZC, much less the aforementioned cardinals, so we will introduce a notion analogous to Definition \ref{omega_type}, which was a way of talking about well orderings that were ``essentially $\omega$''.
 
 \begin{definition}
-	Let $\langle A,< \rangle$ be a well ordering. Then:
+	Let $\langle A,< \rangle$ be a well ordering.
 	\begin{enumerate}[(i)]
 		\item Let $x\in A$, then $x{\downarrow} := \{y\in A: y<x\}$ and $<_x = \{(a,b) \in x{\downarrow}\times x{\downarrow} : a<b\}$.
-		\item $\langle A,< \rangle$ is a \emph{cardinal order} iff for all $x\in A$, $x{\downarrow} <_c A$.
-		\item $\langle A,< \rangle$ is an \emph{infinite cardinal order} iff it is a cardinal order and ${\type(A,<)} = \omega$ or there is some $x\in A$ such that $\type(x{\downarrow},<_x) = \omega$.
-		\item If $\langle A,< \rangle$ is an infinite cardinal order, we define its cardinal length as $\mathcal{C}(A,<) = \mathcal{C}(A) = \{x\in A: (x{\downarrow},<_x) \text{ is an infinite cardinal order}\}$. We give $\mathcal{C}(A)$ the inherited order from $A$.
+		\item $\langle A,< \rangle$ is an $\estf$ \emph{cardinal} iff for all $x\in A$, $x{\downarrow} <_c A$.
+		\item If $\langle A,< \rangle$ is an infinite $\estf$ cardinal, we define its length as $\mathcal{C}(A,<) = \mathcal{C}(A) = \{x\in A: (x{\downarrow},<_x) \text{ is an infinite $\estf$ cardinal}\}$. We give $\mathcal{C}(A)$ the inherited order from $A$.
 	\end{enumerate}
 \end{definition}
 
@@ -405,11 +420,15 @@ VER SI EFECTIVAMENTE ES CIERTO LO SIGUIENTE!!!
 
 \begin{lemma}
 	\label{weak_aleph}
-	Let $A$ and $B$ be two infinite cardinal orders, then $A <_c B$ iff $\mathcal{C}(A) <_o \mathcal{C}(B)$ and $A =_c B$ iff $\mathcal{C}(A) =_o \mathcal{C}(B)$.
+	Let $A$ and $B$ be two infinite $\estf$ cardinals, then $A <_c B$ iff $\mathcal{C}(A) <_o \mathcal{C}(B)$ and $A =_c B$ iff $\mathcal{C}(A) =_o \mathcal{C}(B)$.
 \end{lemma}
 
+\begin{proof}
+	sfafsa
+\end{proof}
+
 \begin{lemma}
-	For any set $X$, $\aleph(X)$ is a cardinal order. Moreover, if $X$ is not finite, $\aleph(X)$ is an infinite cardinal order.
+	For any set $X$, $\aleph(X)$ is an $\estf$ cardinal. Moreover, if $X$ is not finite, $\aleph(X)$ is an infinite $\estf$ cardinal.
 \end{lemma}
 
 In this manner, any infinite cardinal whose $\mathcal{C}$ has exactly one element behaves like $\aleph_1$, even when the latter does not exist as an ordinal number.
