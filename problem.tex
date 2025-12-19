@@ -417,32 +417,69 @@ We would like to have a unified way of referring to well orderings like $\aleph_
 \end{definition}
 
 Note that under Replacement, we can take the length of $\aleph_{\alpha}$ and it is a well order isomorphic to $\alpha$. The above definition simply codifies the behavior of the $\alpha$ subscript in theories where we cannot produce ordinals larger than $\omega+\omega$.
-The following two lemmas show that the length of EST cardinals has the properties we would expect when working with cardinals in stronger theories.
+The following three lemmas show that the length of EST cardinals has the properties we would expect when working with cardinals in  theories with Replacement. A notable exception is that $\esti$ can only prove the existence of EST cardinals of finite length.
 
 \begin{lemma}
 	\label{weak_aleph}
-	Let $A$ and $B$ be two infinite $\estf$ cardinals, then $A <_c B$ iff $\mathcal{L}(A) <_o \mathcal{L}(B)$ and $A =_c B$ iff $\mathcal{L}(A) =_o \mathcal{L}(B)$.
+	Let $A$ and $B$ be two infinite $\estf$ cardinals, then 
+	$A <_c B$ iff $\mathcal{L}(A) <_o \mathcal{L}(B)$.
 \end{lemma}
 
 \begin{proof}
-	Recall that $A \leq_o B$ iff $A$ is isomorphic to an initial segment of $B$ and $A =_o B$ iff $A$ is isomorphic to $B$. Naturally, $A <_o B$ iff $A \leq_o B$ and $A \neq_o B$.
+	Recall that $A \leq_o B$ iff $A$ is isomorphic to an initial segment of $B$ and $A =_o B$ iff $A$ is isomorphic to $B$. Naturally, $A <_o B$ iff $A \leq_o B$ and $A \neq_o B$. 
+	%Let us start by proving $\emph{(i)}$.
 	\begin{itemize}
-		\item[($\Rightarrow$)]
-		\item[($\Leftarrow$)]
+		\item[($\Rightarrow$)] Assume $A <_c B$, since they are both well ordered, we have $A <_o B$. Let $f: A \mapsto B$ be an order isomorphism onto an initial segment of $B$. To show that $f{\upharpoonright}\mathcal{L}(A)$ is an order isomorphism onto an initial segment of $\mathcal{L}(B)$, we need only prove that its range is contained in $\mathcal{L}(B)$.
+		Working towards a proof by contradiction: assume $\ran(f{\upharpoonright}\mathcal{L}(A)) \not\subseteq \mathcal{L}(B)$ and take the first $x\in\mathcal{L}(A)$ such that $f(x)\notin\mathcal{L}(B)$. Then $f(x){\downarrow}$ is not an EST cardinal, which means there is some $y\in x{\downarrow}$ such that 
+		\[
+			\hspace{-0.4cm} f(y){\downarrow} =_c f(x){\downarrow}.
+		\] 
+		Note that $f$ being an order isomorphism onto its image implies 
+		\begin{align*}
+			x{\downarrow} &=_c f(x){\downarrow}
+			\\ y{\downarrow} &=_c f(y){\downarrow}.
+		\end{align*}
+		 And so $y{\downarrow} = x{\downarrow}$. But $x$ is an EST cardinal, so $y{\downarrow} <_c x{\downarrow}$, which contradicts the previous equalities.
+		\item[($\Leftarrow$)] Recall that any two well orders are comparable with the $<_o$ relation, so either $A <_o B$ or $B \leq_o A$. By contradiction: let us assume $\mathcal{L}(A) <_o \mathcal{L}(B)$ and $B \leq_o A$. Any order isomorphism from $B$ onto an initial segment of $A$ can be restricted to $\mathcal{L}(B)$ and has its range contained in $\mathcal{L}(A)$. So we have $\mathcal{L}(A) <_o \mathcal{L}(B)$ and $\mathcal{L}(B) \leq_o \mathcal{L}(A)$. In particular:
+		\[
+			\mathcal{L}(A) \leq_o \mathcal{L}(B) \land
+			\mathcal{L}(B) \leq_o \mathcal{L}(A).
+		\]
+		Finally, this implies $\mathcal{L}(A) =_o \mathcal{L}(B)$ (\cite[Proposition 7.29]{Moscho}), which contradicts the assumption $\mathcal{L}(A) <_o \mathcal{L}(B)$. \qedhere
 	\end{itemize}
+\end{proof}
+
+\begin{lemma}
+	Let $A$ and $B$ be two infinite $\estf$ cardinals, then $A =_c B$ iff $\mathcal{L}(A) =_o \mathcal{L}(B)$.
+\end{lemma}
+\begin{proof}
+	Let us note that our problem is equivalent to showing that $A \neq_c B$ iff $\mathcal{L}(A) \neq_o \mathcal{L}(B)$.
+	Via the trichotomy of the $<_o$ relation for well orders, we obtain
+	\begin{align*}
+		A \neq_c B &\iff A\neq_c B \land (A \leq_o B \lor B \leq_o A)
+		\\ 		   &\iff (A\neq_c B \land A \leq_o B) \lor (A\neq_c B \land B \leq_o A)
+		\\		   &\iff A <_o B \lor B <_o A
+		\\ \text{(By Lemma \ref{weak_aleph})}		   &\iff \mathcal{L}(A) <_o \mathcal{L}(B) \lor \mathcal{L}(B) <_o \mathcal{L}(A)
+		\\ 		   &\iff \mathcal{L}(A) \neq_o \mathcal{L}(B).
+	\end{align*}
 \end{proof}
 
 \begin{lemma}
 	For any set $X$, $\aleph(X)$ is an $\estf$ cardinal. Moreover, if $X$ is not finite, $\aleph(X)$ is an infinite $\estf$ cardinal.
 \end{lemma}
-
-In this manner, any infinite cardinal whose $\mathcal{C}$ has exactly one element behaves like $\aleph_1$, even when the latter does not exist as an ordinal number.
-
 \begin{proof}
-	\emph{Sketch of a proof of the equivalence between \ref{hartogs_inf_classes} and \ref{easier_hartogs_class}.}
-	
-	Given $\Phi_n (\cdot)$, we can take $\Psi_n (X) \equiv \exists Y \ (\Phi_n (Y) \land X = \aleph(Y))$. Using our usual trick of taking the sequence of the alephs, we get a sequence of well ordered sets. Now we apply Lemma \ref{weak_aleph}, which gives us one of the directions of the equivalence, the other should be trivial.
+	Immediate from Lemma \ref{aleph2}.
 \end{proof}
+
+In this manner, any infinite cardinal whose $\mathcal{C}$ has exactly one element behaves like $\aleph_1$, even when the latter does not exist as an ordinal.
+
+%Dejo comentada esta prueba por si había algo rescatable acá
+
+%\begin{proof}
+%	\emph{Sketch of a proof of the equivalence between \ref{hartogs_inf_classes} and \ref{easier_hartogs_class}.}
+	
+%	Given $\Phi_n (\cdot)$, we can take $\Psi_n (X) \equiv \exists Y \ (\Phi_n (Y) \land X = \aleph(Y))$. Using our usual trick of taking the sequence of the alephs, we get a sequence of well ordered sets. Now we apply Lemma \ref{weak_aleph}, which gives us one of the directions of the equivalence, the other should be trivial.
+%\end{proof}
 
 %Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
 \bibliographystyle{plain}
