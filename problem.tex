@@ -39,20 +39,22 @@ This is the best bound we can obtain in ZF: it is consistent with ZF that the st
 	Let $f:WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
 \end{proof}
 
-\begin{question}
-	Does ZF prove the strict inequality $\forall \ X \ \aleph(X) <_c \mathcal{P}^3(X)$?
-\end{question}
 
-The full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, moreover, the statement $\forall X \ \aleph(X) =_c \mathcal{P}(X)$ (GCH) and its negation are both consistent with ZFC. The above remark naturally leads to the question "what can we say about the consistency of $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$?".
+%Comento estas preguntas y la discusión porque no tengo idea de cómo encararlas todavía :/
+%\begin{question}
+%	Does ZF prove the strict inequality $\forall \ X \ \aleph(X) <_c \mathcal{P}^3(X)$?
+%\end{question}
 
-Matthew Foreman and W. Hugh Woodin proved in 1991 \cite{GCH_Fail} that, assuming there is a supercompact cardinal with infinitely many inaccessible cardinals above it, it is consistent with ZFC for the relation $\aleph(X) <_c \mathcal{P}(X)$ to hold for every $X$. 
+%The full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, moreover, the statement $\forall X \ \aleph(X) =_c \mathcal{P}(X)$ (GCH) and its negation are both consistent with ZFC. The above remark naturally leads to the question "what can we say about the consistency of $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$?".
 
-This result by Foreman and Woodin motivates the question "is this large cardinal assumption necessary?", or equivalently:
+%Matthew Foreman and W. Hugh Woodin proved in 1991 \cite{GCH_Fail} that, assuming there is a supercompact cardinal with infinitely many inaccessible cardinals above it, it is consistent with ZFC for the relation $\aleph(X) <_c \mathcal{P}(X)$ to hold for every $X$. 
 
-\begin{question}
-	Does $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$ 
-	prove the existence of a supercompact cardinal?
-\end{question}
+%This result by Foreman and Woodin motivates the question "is this large cardinal assumption necessary?", or equivalently:
+
+%\begin{question}
+%	Does $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$ 
+%	prove the existence of a supercompact cardinal?
+%\end{question}
 
 \begin{theorem}[ZFC]
 	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $X_{n+1} <_c X_n$.
@@ -290,9 +292,7 @@ Before giving a proof for Theorem \ref{hartogs_class} we note the following resu
 	Recall from Theorem \ref{partes3} that $\aleph(Y_4) \leq_c \mathcal{P}^{3}(Y_4)$, and using the inequality above, we obtain $\aleph(Y_4) <_c Y_0$, which implies $\aleph(Y_4) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_4)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
 \end{proof}
 
-OTRA DUDA, ¿EN $\estf$ VALE EL SIGUIENTE TEOREMA? ES SIQUIERA ENUNCIABLE?
-
-We would like to prove the following stronger version of Theorem \ref{hartogs_class}.
+Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds when there is no single formula defining the sets. What if there is a formula with one free variable $\Phi_n$ for each natural number $n$ in the metatheory, such that for each $n$, $\Phi_n$ defines a set? Specifically, is the following theorem true?
 
 \begin{theorem}
 	\label{hartogs_inf_classes}
@@ -306,7 +306,7 @@ We would like to prove the following stronger version of Theorem \ref{hartogs_cl
 	We shall take WO($A,<$), or WO($A$) when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
 \end{notation}
 
-We would like to show the equivalence of the previous theorem to the following result.
+A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_classes} would be to prove it is equivalent to the following lemma.
 
 \begin{lemma}
 	\label{easier_hartogs_class}
@@ -321,7 +321,7 @@ We would like to show the equivalence of the previous theorem to the following r
 	\]
 \end{lemma}
 
-We state a weaker version of Theorem \ref{hartogs_inf_classes}.
+Continuing this line of thought, we would also like to prove the following lemma to be equivalent to Lemma \ref{easier_hartogs_class}.
 
 \begin{lemma}
 	\label{easier_inf_classes}
@@ -370,9 +370,10 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	\]
 \end{proof}
 
-\begin{question}
-	Does Lemma \ref{easier_inf_classes} imply Lemma \ref{easier_hartogs_class}?
-\end{question}
+Finally, we are left with the question ``Does Lemma \ref{easier_inf_classes} imply Lemma \ref{easier_hartogs_class}?''
+
+We suspect that once we have a proof in ZF of this implication, we could use Hartog's lemma without Replacement (\ref{aleph2}) to translate it into a proof in $\esti$. If the implication does not hold in ZF, then it trivially does not hold in $\esti$ either.
+
 %\begin{proof}
 %	IGNORAR ESTA PRUEBA POR AHORA!!!
 %	By contradiction, let us assume Lemma \ref{easier_hartogs_class} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $n\in\mathbb{N}$
@@ -405,73 +406,6 @@ We state a weaker version of Theorem \ref{hartogs_inf_classes}.
 	%Moreover, $\langle X,R \rangle >_o \langle Y,S\rangle$. This implies $Y <_c X$
 %\end{proof}
 
-We would like to have a unified way of referring to well orderings like $\aleph_1$ or $\aleph_\omega$ in the absence of Replacement. We cannot even prove $\omega+\omega$ exists in ZC, much less the aforementioned cardinals, so we will introduce a notion analogous to Definition \ref{omega_type}, which was a way of talking about well orderings that were ``essentially $\omega$''.
-
-\begin{definition}
-	Let $\langle A,< \rangle$ be a well ordering.
-	\begin{enumerate}[(i)]
-		\item Let $x\in A$, then $x{\downarrow} := \{y\in A: y<x\}$ and $<_x = \{(a,b) \in x{\downarrow}\times x{\downarrow} : a<b\}$.
-		\item $\langle A,< \rangle$ is an $\estf$ \emph{cardinal} iff for all $x\in A$, $x{\downarrow} <_c A$.
-		\item If $\langle A,< \rangle$ is an infinite $\estf$ cardinal, we define its length as $\mathcal{L}(A,<) = \mathcal{L}(A) = \{x\in A: (x{\downarrow},<_x) \text{ is an infinite $\estf$ cardinal}\}$. We give $\mathcal{L}(A)$ the inherited order from $A$.
-	\end{enumerate}
-\end{definition}
-
-Note that under Replacement, we can take the length of $\aleph_{\alpha}$ and it is a well order isomorphic to $\alpha$. The above definition simply codifies the behavior of the $\alpha$ subscript in theories where we cannot produce ordinals larger than $\omega+\omega$.
-The following three lemmas show that the length of EST cardinals has the properties we would expect when working with cardinals in  theories with Replacement. A notable exception is that $\esti$ can only prove the existence of EST cardinals of finite length.
-
-\begin{lemma}
-	\label{weak_aleph}
-	Let $A$ and $B$ be two infinite $\estf$ cardinals, then 
-	$A <_c B$ iff $\mathcal{L}(A) <_o \mathcal{L}(B)$.
-\end{lemma}
-
-\begin{proof}
-	Recall that $A \leq_o B$ iff $A$ is isomorphic to an initial segment of $B$ and $A =_o B$ iff $A$ is isomorphic to $B$. Naturally, $A <_o B$ iff $A \leq_o B$ and $A \neq_o B$. 
-	%Let us start by proving $\emph{(i)}$.
-	\begin{itemize}
-		\item[($\Rightarrow$)] Assume $A <_c B$, since they are both well ordered, we have $A <_o B$. Let $f: A \mapsto B$ be an order isomorphism onto an initial segment of $B$. To show that $f{\upharpoonright}\mathcal{L}(A)$ is an order isomorphism onto an initial segment of $\mathcal{L}(B)$, we need only prove that its range is contained in $\mathcal{L}(B)$.
-		Working towards a proof by contradiction: assume $\ran(f{\upharpoonright}\mathcal{L}(A)) \not\subseteq \mathcal{L}(B)$ and take the first $x\in\mathcal{L}(A)$ such that $f(x)\notin\mathcal{L}(B)$. Then $f(x){\downarrow}$ is not an EST cardinal, which means there is some $y\in x{\downarrow}$ such that 
-		\[
-			\hspace{-0.4cm} f(y){\downarrow} =_c f(x){\downarrow}.
-		\] 
-		Note that $f$ being an order isomorphism onto its image implies 
-		\begin{align*}
-			x{\downarrow} &=_c f(x){\downarrow}
-			\\ y{\downarrow} &=_c f(y){\downarrow}.
-		\end{align*}
-		 And so $y{\downarrow} = x{\downarrow}$. But $x$ is an EST cardinal, so $y{\downarrow} <_c x{\downarrow}$, which contradicts the previous equalities.
-		\item[($\Leftarrow$)] Recall that any two well orders are comparable with the $<_o$ relation, so either $A <_o B$ or $B \leq_o A$. By contradiction: let us assume $\mathcal{L}(A) <_o \mathcal{L}(B)$ and $B \leq_o A$. Any order isomorphism from $B$ onto an initial segment of $A$ can be restricted to $\mathcal{L}(B)$ and has its range contained in $\mathcal{L}(A)$. So we have $\mathcal{L}(A) <_o \mathcal{L}(B)$ and $\mathcal{L}(B) \leq_o \mathcal{L}(A)$. In particular:
-		\[
-			\mathcal{L}(A) \leq_o \mathcal{L}(B) \land
-			\mathcal{L}(B) \leq_o \mathcal{L}(A).
-		\]
-		Finally, this implies $\mathcal{L}(A) =_o \mathcal{L}(B)$ (\cite[Proposition 7.29]{Moscho}), which contradicts the assumption $\mathcal{L}(A) <_o \mathcal{L}(B)$. \qedhere
-	\end{itemize}
-\end{proof}
-
-\begin{lemma}
-	Let $A$ and $B$ be two infinite $\estf$ cardinals, then $A =_c B$ iff $\mathcal{L}(A) =_o \mathcal{L}(B)$.
-\end{lemma}
-\begin{proof}
-	Let us note that our problem is equivalent to showing that $A \neq_c B$ iff $\mathcal{L}(A) \neq_o \mathcal{L}(B)$.
-	Via the trichotomy of the $<_o$ relation for well orders, we obtain
-	\begin{align*}
-		A \neq_c B &\iff A\neq_c B \land (A \leq_o B \lor B \leq_o A)
-		\\ 		   &\iff (A\neq_c B \land A \leq_o B) \lor (A\neq_c B \land B \leq_o A)
-		\\		   &\iff A <_o B \lor B <_o A
-		\\ \text{(By Lemma \ref{weak_aleph})}		   &\iff \mathcal{L}(A) <_o \mathcal{L}(B) \lor \mathcal{L}(B) <_o \mathcal{L}(A)
-		\\ 		   &\iff \mathcal{L}(A) \neq_o \mathcal{L}(B).
-	\end{align*}
-\end{proof}
-
-\begin{lemma}
-	For any set $X$, $\aleph(X)$ is an $\estf$ cardinal. Moreover, if $X$ is not finite, $\aleph(X)$ is an infinite $\estf$ cardinal.
-\end{lemma}
-\begin{proof}
-	Immediate from Lemma \ref{aleph2}.
-\end{proof}
-
-In this manner, any infinite cardinal whose $\mathcal{C}$ has exactly one element behaves like $\aleph_1$, even when the latter does not exist as an ordinal.
 
 %Dejo comentada esta prueba por si había algo rescatable acá
 
