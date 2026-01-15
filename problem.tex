@@ -80,30 +80,34 @@ Without Replacement or Choice it is consistent for several common definitions of
 We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
 Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
 
-Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that essentially states ``the order $\langle X , < \rangle$ would be isomorphic to $\omega$ if the latter existed''.
+Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that more or less states that an object captures the essence of $\omega$ as a well ordering, without necessarily being an ordinal.
 
-\begin{definition}
-	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
+\begin{notation}
+	Let us say that an order has \emph{type $\omega$} iff it has a first element, every element has an immediate successor, and every element (except the first one) is someone's immediate successor. Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exists.
+\end{notation}
+
+%\begin{definition}
+%	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
 	
-	\begin{enumerate}[(i)]
-		\item $\text{First}(x) \equiv \forall y \in A \neg(y < x)$
-		\item $\text{Succ}(y,x) \equiv y<x \land \forall z\in A (z < x \implies (z=y \lor z < y))$
-	\end{enumerate}
+%	\begin{enumerate}[(i)]
+%		\item $\text{First}(x) \equiv \forall y \in A \neg(y < x)$
+%		\item $\text{Succ}(y,x) \equiv y<x \land \forall z\in A (z < x \implies (z=y \lor z < y))$
+%	\end{enumerate}
 
-	Whenever $x$ and $y$ satisfy $\text{Succ}(y,x)$, we shall denote $x = y+1$. For good measure: $y+2 := (y+1)+1$, $y+3 := (y+2)+1$ and $y+4 := (y+3)+1$.
-\end{definition}
+%	Whenever $x$ and $y$ satisfy $\text{Succ}(y,x)$, we shall denote $x = y+1$. For good measure: $y+2 := (y+1)+1$, $y+3 := (y+2)+1$ and $y+4 := (y+3)+1$.
+%\end{definition}
 
-\begin{definition}
-	\label{omega_type}
-	Let $\langle A,< \rangle$ be a non-empty well ordering, we will denote $\type(A,<) = \omega$ iff $\langle A,< \rangle$ satisfies the following sentence:
-	\[
-		\forall x\in A \ ((\text{First}(x) \lor \exists y\in A \ (\text{Succ}(y,x))) \land \exists z\in A \ (\text{Succ}(x,z)))
-	\]
-\end{definition}
+%\begin{definition}
+%	\label{omega_type}
+%	Let $\langle A,< \rangle$ be a non-empty well ordering, we will denote $\type(A,<) = \omega$ iff $\langle A,< \rangle$ satisfies the following sentence:
+%	\[
+%		\forall x\in A \ ((\text{First}(x) \lor \exists y\in A \ (\text{Succ}(y,x))) \land \exists z\in A \ (\text{Succ}(x,z)))
+%	\]
+%\end{definition}
 
-A useful definition to work with recursion in the absence of any instance of Replacement is the following.
+To this end, we shall keep in mind the following definition.
 
-\begin{definition}\cite[Definition 5.1]{Moscho}
+\begin{definition}\cite[Definition 5.1]{Moscho}\label{peano}
 	A \emph{Peano System} is any structure $(\mathbb{N},0,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
 		\item $\mathbb{N}$ is a set and $0\in\mathbb{N}$.
@@ -117,23 +121,42 @@ A useful definition to work with recursion in the absence of any instance of Rep
 	\end{enumerate}
 \end{definition}
 
-\begin{lemma}
-	Assume $\langle A,< \rangle$ is a well order such that $\type(A,<) = \omega$, let $a_0$ be its first element. Then the following are provable in \emph{$\esti$}:
-	\begin{enumerate}[(i)]
-		\item There is a function $S_A : A \rightarrow A$ such that $\forall x\in A$ $\emph{\text{Succ}}(x,S_A (x))$.
-		\item The structure $(A,a_0,S_A)$ is a Peano system.
+Note that the existence of a Peano system already implies the Weak Axiom of Infinity.
+
+Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there it is straightforward to define addition in a given Peano system as $n+0 = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
+
+The following lemma highlights the relation between Peano systems and well orderings. 
+
+\begin{lemma}[$\esti$]
+	\label{peano_is_order}
+	The following implications hold:
+	\begin{enumerate}[(1)]
+		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
+		\item Let $(\mathbb{N}, 0, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathbb{N}{\setminus} 0$ such that $n+k = m$. Then $\langle \mathbb{N},< \rangle$ is a well ordering and it has type $\omega$.
 	\end{enumerate}
 \end{lemma}
+
+The above lemma is trivial to prove in ZF, the only obstacle is showing that we do not need any instance of Replacement.
+
+%\begin{lemma}
+%	Assume $\langle A,< \rangle$ is a well order such that $\type(A,<) = \omega$, let $a_0$ be its first element. Then the following are provable in \emph{$\esti$}:
+%	\begin{enumerate}[(i)]
+%		\item There is a function $S_A : A \rightarrow A$ such that $\forall x\in A$ $\emph{\text{Succ}}(x,S_A (x))$.
+%		\item The structure $(A,a_0,S_A)$ is a Peano system.
+%	\end{enumerate}
+%\end{lemma}
 \begin{proof}
-	Item \emph{(i)} requires only to use Comprehension on the set $A\times A$: we simply take $S_A$ as the set $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now prove item \emph{(ii)}. Properties (1) through (4) of the definition of a Peano system are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
+	Let us start by proving \emph{(1)}. First we note that ``$y$ is an immediate successor of $x$'' can be written in first order logic (in the language of set theory if we need to) as $x<y \land \forall z\in A (z < y \implies (z=x \lor z < x))$, which we will abbreviate as $\text{Succ}(x,y)$. Having done this, we can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
 	\[
 		a_0\in X \land (\forall n\in A \ (n\in X \implies S_A(n)\in X)).
 	\]
-	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using the hypothesis $\type(A,<) = \omega$ we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts the assumption on $X$. So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, and the contradiction arose from assuming $A\setminus X$ was non-empty.
+	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using that $A$ has type $\omega$, we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts the assumption on $X$. So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, and the contradiction arose from assuming $A\setminus X$ was non-empty.
+	
+	To show \emph{(2)}, we first note that $\langle \mathbb{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
 
 \begin{lemma}[$\esti$]
-	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders such that $\type(A,<) = \omega$ and $\type(B,\sqsubset) = \omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
+	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders such that of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
 	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(x+1)=f(x)+1$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
@@ -144,27 +167,27 @@ A useful definition to work with recursion in the absence of any instance of Rep
 	\end{itemize} 
 \end{proof}
 
-\begin{lemma}[$\estf+\text{AI}$]
-	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
-\end{lemma}
+%\begin{lemma}[$\estf+\text{AI}$]
+%	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
+%\end{lemma}
 
 \begin{corollary}[$\estf+\text{AI}$]
 	Our notation  $\type(A,<) = \omega$ coincides with its standard form stating that $\omega$ is an ordinal and $\langle A,< \rangle$ is order isomorphic to it. \qed
 \end{corollary}
 
 \begin{lemma}
-	If $\langle X,< \rangle$ is an infinite well order such that $\neg \type(X,<) = \omega$, there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
+	If $\langle X,< \rangle$ is an infinite well order that does not have type $\omega$, then there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
 \end{lemma}
 \begin{proof}
-	Since $\langle X,< \rangle$ does not have type $\omega$, there must be some $x\in X$ such that
+	Since $\langle X,< \rangle$ does not have type $\omega$, there must be some $x\in X$ that is not the first element of $X$ and satisfies
 	\[
-		\neg(\text{First}(x) \lor \exists y\in X \ (\text{Succ}(y,x)) \lor \neg \exists z\in X \ (\text{Succ}(x,z)).
+		\neg(\exists y\in X \ (\text{Succ}(y,x)) \lor \neg \exists z\in X \ (\text{Succ}(x,z)).
 	\]
 	We shall see that in both cases $x{\downarrow}$ is infinite. Let us assume 
 	\[
-		\neg(\text{First}(x) \lor \exists y\in X \ (\text{Succ}(y,x)),
+		\neg(\exists y\in X \ (\text{Succ}(y,x)),
 	\]
-	then if $x{\downarrow}$ is non empty and it must be infinite, indeed: if it was finite, it would have a greatest element $y$, which would imply $\text{Succ}(y,x)$.
+	then $x{\downarrow}$ must be infinite. It cannot be empty, because the first element of $X$ belongs to $x{\downarrow}$; and if it was finite with more than one element, it would have a maximum $y$, which would imply $\text{Succ}(y,x)$.
 	
 	On the other hand, if we assume
 	\[
@@ -172,34 +195,35 @@ A useful definition to work with recursion in the absence of any instance of Rep
 	\]
 	then $X = x{\downarrow} \cup \{x\}$. Given that $X$ is infinite by assumption, it follows that $x{\downarrow}$ must be infinite.
 	
-	Finally, let us take $Y = \{x\in X : x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $\type(y\downarrow,<) = \omega$.
+	Finally, let us take $Y = \{x\in X : x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $y{\downarrow}$ has type $\omega$ with the restricted order.
 	Recall that we need to show:
 	\[
-		\forall a\in y{\downarrow} \ ((\text{First}(a) \lor \exists b\in y{\downarrow} \ (\text{Succ}(b,a))) \land \exists c\in y{\downarrow} \ (\text{Succ}(a,c)))
+		\forall a\in y{\downarrow} \ ((\forall b\in y{\downarrow} \ \neg (b<a) \ \lor \ \exists b\in y{\downarrow} \ (\text{Succ}(b,a))) \land \exists c\in y{\downarrow} \ (\text{Succ}(a,c)))
 	\]
-	Let $a\in y{\downarrow}$, since $y$ is the first element whose set of predecessors is infinite, $a{\downarrow}$ is necessarily finite. In particular it is either empty, in which case First$(a)$, or it has a greatest element $b$ which satisfies $b\in y{\downarrow}$ and Succ$(b,a)$. All that remains to verify is the existence of some $c\in y{\downarrow}$ such that Succ$(a,c)$.
+	Let $a\in y{\downarrow}$, since $y$ is the first element whose set of predecessors is infinite, $a{\downarrow}$ is necessarily finite. In particular it is either empty, in which case $a$ is the first element of $y{\downarrow}$, or it has a greatest element $b$ which satisfies $b\in y{\downarrow}$ and Succ$(b,a)$. All that remains to verify is the existence of some $c\in y{\downarrow}$ such that Succ$(a,c)$.
 	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} : a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
 \end{proof}
 
 \begin{prop}[$\esti$]
-	There is a well ordering $\langle A,< \rangle$ such that 
-	$\type(A,<) = \omega$.
+	There is a well ordering $\langle A,< \rangle$ of type $\omega$
 \end{prop}
 \begin{proof}
 	Let $X$ be any infinite set, of course if there was a well order on it we could simply restrict it to an appropriate subset and get one of type $\omega$. In the absence of Choice, we may not be so fortunate. Let us take $A = \aleph(X)$. Using the previous lemma, all we need to do is to show that $A$ is not finite.
 	But this is trivial by Lemma \ref{aleph2}, if it was finite, then we would have $\aleph(X) <_c X$.
 \end{proof}
 
+As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
+
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
-	Let $\langle A,< \rangle$ be a well order such that $\type(A,<) = \omega$, then there is no sequence $\{X_n\}_{n\in A}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
+	Let $(\mathbb{N},0,S)$ be a Peano System, then there is no sequence $\{X_n\}_{n\in \mathbb{N}}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
 \end{theorem}
 
 Before moving on to the proof, let us note that Definition \ref{aleph} does not rely on any axiom outside of $\estf$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
 
 \begin{proof}
 	Assume there is such a sequence, 
-	$\mathcal{S} := \{X_n\}_{n\in A}$,
+	$\mathcal{S} := \{X_n\}_{n\in \mathbb{N}}$,
 	then $\estf$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
@@ -207,19 +231,17 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
-	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in A}$, which would of course be trivial using Replacement.
+	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in \mathbb{N}}$, which would of course be trivial using Replacement.
 	
-	It is straightforward to prove that for each $n\in A$, 
+	It is straightforward to show that for each $n\in \mathbb{N}$, 
 	%$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
 	$\mathcal{P}^{4}(X_{n+4}) <_c X_n$, 
 	indeed, applying the hypothesis on $\mathcal{S}$ yields:
-	
 %	\begin{align*}
 %		&\mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
 %		\\ \implies &\mathcal{P}^2(X_{n+3}) \leq_c \hspace{4.5 pt} \mathcal{P}(X_{n+2}) <_c X_{n+1}
 %		\\ \implies &\mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^{2}(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
-%	\end{align*}
-	
+%	\end{align*}	
 	\begin{align*}
 		&\mathcal{P}(X_{n+4}) \hspace{4.5 pt} <_c X_{n+3}
 		\\ \implies &\mathcal{P}^2(X_{n+4}) \leq_c %\hspace{4.5 pt}
@@ -232,9 +254,9 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	$\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$,
 	where the first inequality comes from applying Theorem \ref{partes3}.
 	
-	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in A$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
+	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in \mathbb{N}$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
-	Finally, $\{\aleph(X_n)\}_{n\in A}$
+	Finally, $\{\aleph(X_n)\}_{n\in \mathbb{N}}$
 	%$\{\aleph(X_{3n})\}_{n\in\omega}$ 
 	is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot exist under $\estf$. Indeed, 
 	it is non empty and it has no least element: for any $\aleph(X_n)$, we have $\aleph(X_{n+4}) <_c \aleph(X_n)$.
@@ -415,7 +437,6 @@ We suspect that once we have a proof in ZF of this implication, we could use Har
 %	Given $\Phi_n (\cdot)$, we can take $\Psi_n (X) \equiv \exists Y \ (\Phi_n (Y) \land X = \aleph(Y))$. Using our usual trick of taking the sequence of the alephs, we get a sequence of well ordered sets. Now we apply Lemma \ref{weak_aleph}, which gives us one of the directions of the equivalence, the other should be trivial.
 %\end{proof}
 
-%Voy agregando bibliografía, con el Kunen y el Jech por si llegan a hacer falta
 \bibliographystyle{plain}
 \bibliography{bibliografia-hartogs}
 \printindex
