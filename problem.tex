@@ -132,7 +132,7 @@ The following lemma highlights the relation between Peano systems and well order
 	The following implications hold:
 	\begin{enumerate}[(1)]
 		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
-		\item Let $(\mathbb{N}, 0, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathbb{N}{\setminus} 0$ such that $n+k = m$. Then $\langle \mathbb{N},< \rangle$ is a well ordering and it has type $\omega$.
+		\item Let $(\mathbb{N}, 0, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathbb{N}{\setminus} \{0\}$ such that $n+k = m$. Then $\langle \mathbb{N},< \rangle$ is a well ordering and it has type $\omega$.
 	\end{enumerate}
 \end{lemma}
 
@@ -204,8 +204,10 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} : a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
 \end{proof}
 
+We use the version of Hartog's Lemma without Replacement to show that, under $\estf$, the mere assumption of the existence of any infinite set already implies the existence of an infinite well ordering. In particular, for any infinite $X$ that is Dedekind-finite, $\aleph(X)$ is a well order whose initial segments are all finite. In ZF this order would actually be isomorphic to $\omega$, but $\esti$ cannot prove the existence of the ordinal $\omega$.
+
 \begin{prop}[$\esti$]
-	There is a well ordering $\langle A,< \rangle$ of type $\omega$
+	There is a well ordering $\langle A,< \rangle$ of type $\omega$.
 \end{prop}
 \begin{proof}
 	Let $X$ be any infinite set, of course if there was a well order on it we could simply restrict it to an appropriate subset and get one of type $\omega$. In the absence of Choice, we may not be so fortunate. Let us take $A = \aleph(X)$. Using the previous lemma, all we need to do is to show that $A$ is not finite.
