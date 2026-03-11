@@ -2,9 +2,9 @@
 \begin{definition}\label{aleph}
 	Let $X$ be any set,
 	\[
-	\text{WO}(X):=\{\langle A,R\rangle\ |A\subset X \ \text{is well-ordered by}\ R\} := \text{W}, 
+	\WO(X):=\{\langle A,R\rangle \mid A\subset X \ \text{is well-ordered by}\ R\}, 
 	\]
-	and $\aleph(X):= \text{W}/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity (Moschovakis, def. 7.27 \cite{Moscho}).
+	and $\aleph(X):= \WO(X)/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity (Moschovakis, def. 7.27 \cite{Moscho}).
 	Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$ it holds that $U\leq_o V$, where this last relation means $U$ is isomorphic to an initial segment of $V$.
 \end{definition}
 
@@ -22,7 +22,7 @@
 \end{theorem}
 
 \begin{proof}
-	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\}| a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) | s\in S\}$. This shows that $\mathcal{P} (WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (WO(X))$, we obtained what we wanted to show.
+	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:\WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\} \mid a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) \mid s\in S\}$. This shows that $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (\WO(X))$, we obtained what we wanted to show.
 \end{proof}
 
 \begin{theorem}\label{partes3}
@@ -36,7 +36,7 @@ This is the best bound we can obtain in ZF: it is consistent with ZF that the st
 % ¿Es consistente en BST que no valga con $\mathcal(P)^{2}$ para algun X?
 
 \begin{proof}	
-	Let $f:WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
+	Let $f:\WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
 \end{proof}
 
 
@@ -55,22 +55,18 @@ This is the best bound we can obtain in ZF: it is consistent with ZF that the st
 %	Does $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$ 
 %	prove the existence of a supercompact cardinal?
 %\end{question}
-
-\begin{theorem}[ZFC]
-	There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $X_{n+1} <_c X_n$.
-\end{theorem}
-\begin{proof}
-	Assume by contradiction that there is such a sequence, and let us take $\{\alpha_n\}_{n\in\omega}$ such that each $\alpha_n$ is an ordinal with the same cardinality as $X_n$. We then have an infinite sequence of ordinals of decreasing cardinality, which leads us to a contradiction.
-\end{proof}
-
-This theorem is called the Non Decreasing Sequence principle (NDS) and it is an open problem whether $\text{ZF$+$NDS}{\implies}\text{ZFC}$.
-It is implied by AC, and in its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
+In our context we recall that it is an open problem whether the following $\ZFC$ theorem,
+\begin{quote}
+  \emph{Nondecreasing Sequence principle (NDS)}:
+  There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $X_{n+1} <_c X_n$.
+\end{quote}
+is equivalente to full $\AC$ over $\ZF$. Its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
 
 APARENTEMENTE ZFA$+$NDS$+\neg$AC ES CONSISTENTE (BUSCAR CITA), VER CÓMO ES EL MODELO QUE CONSTRUYEN DE ESO.
 PARECE QUE \cite{NDS} PRUEBA ESTO, LEER BIEN QUÉ PRUEBAN EXACTAMENTE.
 
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
-Without Replacement or Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
+Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
 
 \begin{WeakInf}
 	There is an infinite set.
@@ -82,10 +78,11 @@ Note that it is consistent with ZC$-$AI for an infinite well order to exist and 
 
 Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that more or less states that an object captures the essence of $\omega$ as a well ordering, without necessarily being an ordinal.
 
-\begin{notation}
-	Let us say that an order has \emph{type $\omega$} iff it has a first element, every element has an immediate successor, and every element (except the first one) is someone's immediate successor. Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exists.
-\end{notation}
+\begin{definition}
+  An order has \emph{type $\omega$} iff it has a first element, every element has an immediate successor, and every element (except the first one) is someone's immediate successor.
+\end{definition}
 
+Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exists.
 %\begin{definition}
 %	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
 	
@@ -107,7 +104,7 @@ Given that we shall be working in an axiomatic system too weak to prove the exis
 
 To this end, we shall keep in mind the following definition.
 
-\begin{definition}\cite[Definition 5.1]{Moscho}\label{peano}
+\begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano System} is any structure $(\mathbb{N},0,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
 		\item $\mathbb{N}$ is a set and $0\in\mathbb{N}$.
@@ -156,7 +153,7 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 \end{proof}
 
 \begin{lemma}[$\esti$]
-	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders such that of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
+	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
 	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(x+1)=f(x)+1$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
@@ -172,7 +169,7 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 %\end{lemma}
 
 \begin{corollary}[$\estf+\text{AI}$]
-	Our notation  $\type(A,<) = \omega$ coincides with its standard form stating that $\omega$ is an ordinal and $\langle A,< \rangle$ is order isomorphic to it. \qed
+  The statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
 \end{corollary}
 
 \begin{lemma}
@@ -210,12 +207,14 @@ We use the version of Hartog's Lemma without Replacement to show that, under $\e
 	There is a well ordering $\langle A,< \rangle$ of type $\omega$.
 \end{prop}
 \begin{proof}
-	Let $X$ be any infinite set, of course if there was a well order on it we could simply restrict it to an appropriate subset and get one of type $\omega$. In the absence of Choice, we may not be so fortunate. Let us take $A = \aleph(X)$. Using the previous lemma, all we need to do is to show that $A$ is not finite.
-	But this is trivial by Lemma \ref{aleph2}, if it was finite, then we would have $\aleph(X) <_c X$.
+	Let $X$ be any infinite set, and take $A = \aleph(X)$. By the previous lemma, it is enough to show that $A$ is not finite. But this is immediate by Lemma~\ref{aleph2}: If it were finite, then we would have $\aleph(X) <_c X$.
 \end{proof}
 
 As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
 
+\begin{framed}
+  Please introduce this as one of the main theorems.
+\end{framed}
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
 	Let $(\mathbb{N},0,S)$ be a Peano System, then there is no sequence $\{X_n\}_{n\in \mathbb{N}}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
@@ -229,7 +228,7 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	then $\estf$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
-	\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \ran(\mathcal{S}))),
+	\aleph(X) \subset \mathcal{P}(\\WO(X)) \subseteq \mathcal{P}(\\WO(\union \ran(\mathcal{S}))),
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
@@ -265,13 +264,9 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	
 \end{proof}
 
-\begin{notation}
-	Given that without the Axiom of Infinity $\omega$ could be a proper class, when we say $n\in\omega$ we shall really mean $\forall x\in n \ (x = \emptyset \lor \exists y \in n \ x = S(y))$, where $S(a) = a \cup \{a\}$.
-\end{notation}
-
 The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from %(¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?)
 Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
-
+In the following, we write “$n\in\omega$” for the formula defining finite ordinals: $\forall x, \, (x = n \lor x \in n \implies (x = \emptyset \lor \exists y \in n, \, x = y \cup \{y\})$.
 \begin{theorem}[$\estf$]
 	\label{hartogs_class}
 	Let $\Phi(\cdot,\cdot)$ be a formula with two free variables, then $\Phi$ cannot satisfy both of the following properties:
@@ -279,7 +274,7 @@ Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsisten
 		\item \label{nat_define} For each $n\in\omega$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
-			(\Phi(n,X) \land \Phi(n+1,Y)) \implies \mathcal{P}(Y) <_c X.
+			\Phi(n,X) \land \Phi(n+1,Y) \implies \mathcal{P}(Y) <_c X.
 		\] 
 	\end{enumerate}
 \end{theorem}
@@ -439,6 +434,3 @@ We suspect that once we have a proof in ZF of this implication, we could use Har
 %	Given $\Phi_n (\cdot)$, we can take $\Psi_n (X) \equiv \exists Y \ (\Phi_n (Y) \land X = \aleph(Y))$. Using our usual trick of taking the sequence of the alephs, we get a sequence of well ordered sets. Now we apply Lemma \ref{weak_aleph}, which gives us one of the directions of the equivalence, the other should be trivial.
 %\end{proof}
 
-\bibliographystyle{plain}
-\bibliography{bibliografia-hartogs}
-\printindex

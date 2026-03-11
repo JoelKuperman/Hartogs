@@ -105,33 +105,36 @@
 \DeclareMathOperator{\estf}{EST}
 \DeclareMathOperator{\esti}{\text{EST+WAI}}
 
+\newcommand{\axiomas}[1]{\mathit{#1}}
+\newcommand{\ZC}{\axiomas{ZC}}
+\newcommand{\AC}{\axiomas{AC}}
+\newcommand{\DC}{\axiomas{DC}}
+\newcommand{\MA}{\axiomas{MA}}
+\newcommand{\CH}{\axiomas{CH}}
+\newcommand{\ZFC}{\axiomas{ZFC}}
+\newcommand{\ZF}{\axiomas{ZF}}
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{problem}[theorem]{Problema}
+\newtheorem{problem}[theorem]{Problem}
 \newtheorem*{WeakInf}{Weak Axiom of Infinity}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Ejemplo}
-\newtheorem{exercise}[theorem]{Ejercicio}
-\newtheorem*{exercise*}{Ejercicio}
+\newtheorem{example}[theorem]{Example}
 \theoremstyle{remark}
 \newtheorem{claim}{Claim}
 \newtheorem*{claim*}{Claim}
+\newtheorem{remark}{Remark}
 \newtheorem*{remark*}{Remark}
-\newtheorem*{ayuditaaa*}{Ayuda}
-
 \newtheorem{question}{Question}
 \newtheorem{pendiente}{Pending}
-
-
 %Defino un entorno para notaciones, ver que no dé problemas
-
 \newtheorem*{notation}{Notation}
-\theoremstyle{remark*}
-\newtheorem{remark}{Observación}
+
+
 
 \newenvironment{hint*}{\pushQED{\qed}\begin{ayuditaaa*}}{\popQED\end{ayuditaaa*}}
 \newtheorem*{solveitnow*}{Solución} % \newtheorem establishes the object heading
@@ -170,49 +173,6 @@
 \newcommand{\fixref}[1]{\ref*{#1}\relax{}}
 \newcommand{\ayuda}[1]{\hyperlink{#1}{\modley}}
 \newcommand{\solucion}[1]{\hyperlink{#1}{$\circledS$}}
-%
-%%%%%%%%%%%%%%%%%%%%%%%  INDEXING     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage[nottoc]{tocbibind}  %% índice en TOC
-\usepackage{makeidx}
-%\usepackage{index}
-
-%%%%%%%
-%% Versión con links que apuntan al lugar (código de
-%% http://tex.stackexchange.com/a/77656/69595)
-\newcounter{indexanchor}
-
-%% This code is mine
-\makeatletter
-\long\def\raiseboxzero#1#2{%
-  \@begin@tempboxa\hbox{#2}%
-    \setlength\@tempdima{#1}%
-    \setlength\@tempdimb{0pt}%
-    \setbox\@tempboxa\hbox{\raise\@tempdima\box\@tempboxa}%
-    \ht\@tempboxa\@tempdimb%
-    \box\@tempboxa
-  \@end@tempboxa}
-\makeatother
-
-\newcommand*{\xindex}[1]{%
-  \stepcounter{indexanchor}% make anchor unique
-  \def\theindexterm{#1}%
-  \edef\doindexentry{\noexpand\index
-    {\expandonce\theindexterm|indexanchor{index-\theindexanchor}}}%
-  \raiseboxzero{\baselineskip}{\hypertarget{index-\theindexanchor}%
-    {\doindexentry}}%
-}
-
-\newcommand*{\indexanchor}[2]{\hyperlink{#1}{#2}}
-
-%% Me gustaba más \textsl abajo pero no está en newtx
-\makeatletter
-\newcommand{\ntrm}{\@dblarg\@mycommand}
-\def\@mycommand[#1]#2{\textit{\textbf{#2}}\xindex{#1}}
-\makeatother
-%%
-\makeindex
-%%%%%%%%%%%%%%%%%%%%%%%  END INDEXING  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Corrección de tikz por Babel
 \tikzset{
@@ -237,6 +197,6 @@ every picture/.append style={
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "trabajo_final_figueroa"
+%%% TeX-master: "hartogs.tex"
 %%% ispell-local-dictionary: "castellano8"
 %%% End:
