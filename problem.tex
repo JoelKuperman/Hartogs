@@ -22,7 +22,7 @@
 \end{theorem}
 
 \begin{proof}
-	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:\WO(X)\rightarrow \mathcal{P}^3(X)$ defined by $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\} \mid a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) \mid s\in S\}$. This shows that $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (\WO(X))$, we obtained what we wanted to show.
+	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:\WO(X)\rightarrow \mathcal{P}^3(X)$ be defined as $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\} \mid a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) \mid s\in S\}$. This shows that $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (\WO(X))$, we obtained what we wanted to show.
 \end{proof}
 
 \begin{theorem}\label{partes3}
@@ -30,7 +30,6 @@
 	%$\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
 
-This is the best bound we can obtain in ZF: it is consistent with ZF that the stronger inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails. ¿CITA DE ESTO? NO ME ACUERDO SI ERA MÁS O MENOS DIRECTO.
 % Cambio BST por ZF porque todavía no lo definimos
 
 % ¿Es consistente en BST que no valga con $\mathcal(P)^{2}$ para algun X?
@@ -45,9 +44,13 @@ This is the best bound we can obtain in ZF: it is consistent with ZF that the st
 %	Does ZF prove the strict inequality $\forall \ X \ \aleph(X) <_c \mathcal{P}^3(X)$?
 %\end{question}
 
-The full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, moreover, the statement $\forall X \ \aleph(X) =_c \mathcal{P}(X)$ (GCH) and its negation are both consistent with ZFC.
+While the full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, the above theorem is the best bound we can get in ZF: it is consistent with ZF that the stronger inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails. ¿CITA DE ESTO? NO ME ACUERDO SI ERA MÁS O MENOS DIRECTO.
 
-Matthew Foreman and W. Hugh Woodin proved in 1991 \cite{GCH_Fail} that, assuming there is a supercompact cardinal with infinitely many inaccessible cardinals above it, it is consistent with ZFC for the relation $\aleph(X) <_c \mathcal{P}(X)$ to hold for every $X$. 
+%This is the best bound we can obtain in ZF: it is consistent with ZF that the stronger inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails. ¿CITA DE ESTO? NO ME ACUERDO SI ERA MÁS O MENOS DIRECTO.
+
+%The full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, moreover, the statement $\forall X \ \aleph(X) =_c \mathcal{P}(X)$ (GCH) and its negation are both consistent with ZFC.
+
+%Matthew Foreman and W. Hugh Woodin proved in 1991 \cite{GCH_Fail} that, assuming there is a supercompact cardinal with infinitely many inaccessible cardinals above it, it is consistent with ZFC for the relation $\aleph(X) <_c \mathcal{P}(X)$ to hold for every $X$. 
 
 %This result by Foreman and Woodin motivates the question "is this large cardinal assumption necessary?", or equivalently:
 
@@ -55,15 +58,8 @@ Matthew Foreman and W. Hugh Woodin proved in 1991 \cite{GCH_Fail} that, assuming
 %	Does $\text{ZFC} + \forall X \ \aleph(X) <_c \mathcal{P}(X)$ 
 %	prove the existence of a supercompact cardinal?
 %\end{question}
-In our context we recall that it is an open problem whether the following $\ZFC$ theorem,
-\begin{quote}
-  \emph{Nondecreasing Sequence principle (NDS)}:
-  There is no sequence $\{X_n\}_{n\in\omega}$ such that for all $n\in\omega$ $X_{n+1} <_c X_n$.
-\end{quote}
-is equivalente to full $\AC$ over $\ZF$. Its absence it is consistent for it to fail in any way: given a partially ordered set $\langle P,< \rangle$ it is consistent with ZF for there to be a family of sets $\mathcal{F}$ such that $\langle \mathcal{F},<_c\rangle$ is isomorphic to $\langle P,< \rangle$ (Jech, Theorem 11.1 \cite{Jech_AC}).
 
-APARENTEMENTE ZFA$+$NDS$+\neg$AC ES CONSISTENTE (BUSCAR CITA), VER CÓMO ES EL MODELO QUE CONSTRUYEN DE ESO.
-PARECE QUE \cite{NDS} PRUEBA ESTO, LEER BIEN QUÉ PRUEBAN EXACTAMENTE.
+Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
 
 We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
 Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
@@ -105,22 +101,22 @@ Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exis
 To this end, we shall keep in mind the following definition.
 
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
-	A \emph{Peano System} is any structure $(\mathbb{N},0,S)$ which satisfies the following properties:
+	A \emph{Peano System} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
-		\item $\mathbb{N}$ is a set and $0\in\mathbb{N}$.
-		\item $S$ is a function on $\mathbb{N}$, $S: \mathbb{N}\rightarrow\mathbb{N}$.
+		\item $\mathcal{N}$ is a set and $z\in\mathcal{N}$.
+		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
-		\item For each $n\in\mathbb{N}$, $S(n) \neq 0$.
-		\item For each $X\subseteq\mathbb{N}$,
+		\item For each $n\in\mathcal{N}$, $S(n) \neq z$.
+		\item For each $X\subseteq\mathcal{N}$,
 		\[
-			(0\in X \land (\forall n\in \mathbb{N} \ (n\in X \implies S(n)\in X))) \implies X = \mathbb{N}.
+			(z\in X \land (\forall n\in \mathcal{N} \ (n\in X \implies S(n)\in X))) \implies X = \mathcal{N}.
 		\]
 	\end{enumerate}
 \end{definition}
 
 Note that the existence of a Peano system already implies the Weak Axiom of Infinity.
 
-Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there it is straightforward to define addition in a given Peano system as $n+0 = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
+Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there it is straightforward to define addition in a given Peano system as $n+z = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
 
 The following lemma highlights the relation between Peano systems and well orderings. 
 
@@ -129,7 +125,7 @@ The following lemma highlights the relation between Peano systems and well order
 	The following implications hold:
 	\begin{enumerate}[(1)]
 		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
-		\item Let $(\mathbb{N}, 0, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathbb{N}{\setminus} \{0\}$ such that $n+k = m$. Then $\langle \mathbb{N},< \rangle$ is a well ordering and it has type $\omega$.
+		\item Let $(\mathcal{N}, z, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$. Then $\langle \mathcal{N},< \rangle$ is a well ordering and it has type $\omega$.
 	\end{enumerate}
 \end{lemma}
 
@@ -143,23 +139,25 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 %	\end{enumerate}
 %\end{lemma}
 \begin{proof}
-	Let us start by proving \emph{(1)}. First we note that ``$y$ is an immediate successor of $x$'' can be written in first order logic (in the language of set theory if we need to) as $x<y \land \forall z\in A (z < y \implies (z=x \lor z < x))$, which we will abbreviate as $\text{Succ}(x,y)$. Having done this, we can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
+	Let us start by proving \emph{(1)}. First we note that ``$y$ is an immediate successor of $x$'' can be written in first order logic (in the language of set theory if we need to) as $x<y \land \forall a\in A (a < y \implies (a=x \lor a < x))$, which we will abbreviate as $\text{Succ}(x,y)$. Having done this, we can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
 	\[
 		a_0\in X \land (\forall n\in A \ (n\in X \implies S_A(n)\in X)).
 	\]
 	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using that $A$ has type $\omega$, we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts the assumption on $X$. So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, and the contradiction arose from assuming $A\setminus X$ was non-empty.
 	
-	To show \emph{(2)}, we first note that $\langle \mathbb{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
+	To show \emph{(2)}, we first note that $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
+
+A matter of notation for the following lemma: whenever $\langle A,< \rangle$ is a well order of type $\omega$ and $a\in A$, we shall denote its immediate successor as $S_A(a)$, and obviate the $A$ subscript when it is clear from the context.
 
 \begin{lemma}[$\esti$]
 	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
-	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(x+1)=f(x)+1$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
+	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(S(x))=S(f(x))$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
 	\begin{itemize}
-		\item $x<y \implies f(x)\sqsubset f(y)$. Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=x+1$ (since this would imply $f(y)=f(x)+1)$. Then, there must exist a $z\neq x$ such that $y=z+1)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset f(z)+1 = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
-		\item $f$ is surjective. Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=z+1$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(x+1)=z+1=y$, a contradiction.
+		\item $x<y \implies f(x)\sqsubset f(y)$. Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=S(x)$ (since this would imply $f(y)=S(f(x))$). Then, there must exist a $z\neq x$ such that $y=S(z)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset S(f(z)) = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
+		\item $f$ is surjective. Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=S(z)$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(S(x))=S(z)=y$, a contradiction.
 		\item The fact that the inverse of $f$ is order-preserving follows by the same argument used to show that $f$ itself is order-preserving.
 	\end{itemize} 
 \end{proof}
@@ -215,16 +213,19 @@ As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ 
 \begin{framed}
   Please introduce this as one of the main theorems.
 \end{framed}
+
+We are now able to state and prove in $\esti$ the theorem from the introduction regarding sequences of infinitely decreasing sets. In addition, we show that it works for sequences indexed by any Peano System, meaning that these sequences cannot exist as an object in the theory independently from the particular implementation of the natural numbers. To avoid cluttering the notation with the successor function, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
+
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
-	Let $(\mathbb{N},0,S)$ be a Peano System, then there is no sequence $\{X_n\}_{n\in \mathbb{N}}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
+	Let $(\mathcal{N},z,S)$ be a Peano System, then there is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
 \end{theorem}
 
 Before moving on to the proof, let us note that Definition \ref{aleph} does not rely on any axiom outside of $\estf$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
 
 \begin{proof}
 	Assume there is such a sequence, 
-	$\mathcal{S} := \{X_n\}_{n\in \mathbb{N}}$,
+	$\mathcal{S} := \{X_n\}_{n\in \mathcal{N}}$,
 	then $\estf$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
@@ -232,9 +233,9 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
-	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in \mathbb{N}}$, which would of course be trivial using Replacement.
+	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in \mathcal{N}}$, which would of course be trivial using Replacement.
 	
-	It is straightforward to show that for each $n\in \mathbb{N}$, 
+	It is straightforward to show that for each $n\in \mathcal{N}$, 
 	%$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
 	$\mathcal{P}^{4}(X_{n+4}) <_c X_n$, 
 	indeed, applying the hypothesis on $\mathcal{S}$ yields:
@@ -255,13 +256,13 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	$\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$,
 	where the first inequality comes from applying Theorem \ref{partes3}.
 	
-	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in \mathbb{N}$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
+	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in \mathcal{N}$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
-	Finally, $\{\aleph(X_n)\}_{n\in \mathbb{N}}$
+	Finally, $\{\aleph(X_n)\}_{n\in \mathcal{N}}$
 	%$\{\aleph(X_{3n})\}_{n\in\omega}$ 
-	is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot exist under $\estf$. Indeed, 
+	is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot exist under $\estf$ \cite[Corollary 7.33]{Moscho}. Indeed, 
 	it is non empty and it has no least element: for any $\aleph(X_n)$, we have $\aleph(X_{n+4}) <_c \aleph(X_n)$.
-	
+	\qedhere
 \end{proof}
 
 The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from %(¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?)
