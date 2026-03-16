@@ -267,7 +267,9 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 
 The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from %(¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?)
 Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
-In the following, we write “$n\in\omega$” for the formula defining finite ordinals: $\forall x, \, (x = n \lor x \in n \implies (x = \emptyset \lor \exists y \in n, \, x = y \cup \{y\})$.
+In the following, we write “$n\in\omega$” for the formula defining finite ordinals:
+$\forall x, \, (x = n \lor (x \in n \implies (x = \emptyset \lor \exists y \in n, \, x = y \cup \{y\})))$.
+Whenever $n\in \omega$ we denote $n \cup \{n\}$ as $n+1$.
 \begin{theorem}[$\estf$]
 	\label{hartogs_class}
 	Let $\Phi(\cdot,\cdot)$ be a formula with two free variables, then $\Phi$ cannot satisfy both of the following properties:
@@ -322,9 +324,8 @@ Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds
 	\]
 \end{theorem}
 
-\begin{notation}
-	We shall take WO($A,<$), or WO($A$) when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
-\end{notation}
+
+We shall take Well($A,<$), or Well($A$) when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
 
 A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_classes} would be to prove it is equivalent to the following lemma.
 
@@ -333,7 +334,7 @@ A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_class
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
 	\[
 		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle A,<\rangle) \land 
-		\emph{WO}(\langle X, < \rangle)
+		\emph{Well}(X, <)
 	\]
 	then there must be a $k \in \mathbb{N}$ such that 
 	\[
