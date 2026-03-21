@@ -72,6 +72,7 @@ Without Replacement nor Choice it is consistent for several common definitions o
 We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
 Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
 
+
 Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that more or less states that an object captures the essence of $\omega$ as a well ordering, without necessarily being an ordinal.
 
 \begin{definition}
@@ -103,7 +104,7 @@ To this end, we shall keep in mind the following definition.
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano System} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
-		\item $\mathcal{N}$ is a set and $z\in\mathcal{N}$.
+		\item $\mathcal{N}$ is a set, ¿ACLARO QUE ESTO which we will occasionally call the \emph{domain} of the Peano System LO AGREGUÉ YO Y QUE NO ESTÁ EN LA FUENTE?, and $z\in\mathcal{N}$.
 		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
 		\item For each $n\in\mathcal{N}$, $S(n) \neq z$.
@@ -210,6 +211,63 @@ We use the version of Hartog's Lemma without Replacement to show that, under $\e
 
 As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
 
+Let us note below some definitions for ease of reference.
+
+\begin{definition}
+	\ \begin{enumerate}[(1.)]
+		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
+		\item A set is \emph{infinite} iff it is not finite.
+		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal. 
+	\end{enumerate}
+\end{definition}
+
+We shall use the abbreviations $\fin(A)$, $\nofin(X)$ and $\nat(n)$ to mean first order formulas in the language of set theory stating ``$A$ is a finite set'', ``$X$ is an infinite set'' and ``$n$ is a natural number'', respectively.
+
+The following results are provable within $\estf$ (¿PRUEBO ESTOS TAMBIÉN?)
+
+\begin{prop}\cite[Corollary 7.33]{Moscho}\label{class_wo}
+	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
+\end{prop}
+
+\begin{lemma}
+	Let $\alpha$ and $\beta$ be ordinals. Then $(\alpha,\in) <_o (\beta, \in)$ iff $\alpha \in \beta$.
+\end{lemma}
+
+While induction on a Peano system is trivial in $\esti$ by definition, Peano systems require their domain to be a set. 
+We show that $\estf$ is enough to prove that induction on the naturals (defined as a class of ordinals) can be done, without assuming they form a set.
+DEBE PROBARLO PARA LOS ORDINALES EN GENERAL, VER SI VALE LA PENA ENUNCIAR ESO, IGUAL LOS ÚNICOS CUYA EXISTENCIA GARANTIZA $\esti$ SON LOS NATURALES.
+
+\begin{theorem}[$\estf$]
+	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Fix an instantiation of $\vec{x}$ (PREGUNTAR CÓMO SE PUEDE DECIR MÁS PROLIJO!) and assume that the following statements hold:
+	\begin{enumerate}[(i)]
+		\item $P(\emptyset,\vec{x})$.
+		\item\label{inductive} Let $n$ be a natural number, then $P(n,\vec{x}) \implies P(n\cup \{n\},\vec{x})$.
+	\end{enumerate}
+	Then $P(n,\vec{x})$ is true for every natural number.
+\end{theorem}
+\begin{proof}
+	Working towards a contradiction: assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
+\end{proof}
+
+A useful consequence of having the theorem of induction on the naturals is that the absence of instances of Replacement is no impediment to showing basic results about infinite sets. PLACEHOLDER TEXT 
+
+\begin{lemma}
+	Let $X$ be an infinite set and $n$ a natural number, then $n <_c X$.
+\end{lemma}
+\begin{proof}
+	Recall that $n <_c X$ iff $n \leq_c X \land \neg(n =_c X)$. Given that $\neg(n =_c X)$ is an immediate consequence of the definition of infinite set, all that remains is to show that for every natural number $n$, the relation $n \leq_c X$ holds.
+	We prove it by induction on $n$.
+	
+	The case $n=0$ is trivial, since $\emptyset$ is an injective function from $0$ to any other set. Assume $n \leq_c X$ and let $f$ be an injective function from $n$ onto $X$. Using that $\neg(n =_c X)$, there must be some $x\in X$ not in the range of $f$. Then the function $f \cup \{(n,x)\}$ is an injective function from $n\cup\{n\}$ onto $X$.
+\end{proof}
+
+\begin{corollary}[$\estf$]
+	Let $A$ be a finite set and $X$ an infinite set, then $A <_c X$.
+\end{corollary}
+\begin{proof}
+	Let $n$ be a natural number such that $A \leq_c n$. Using the previous lemma, we have $n <_c X$ and $A <_c X$ follows immediately.
+\end{proof}
+
 \begin{framed}
   Please introduce this as one of the main theorems.
 \end{framed}
@@ -282,11 +340,6 @@ Whenever $n\in \omega$ we denote $n \cup \{n\}$ as $n+1$.
 	\end{enumerate}
 \end{theorem}
 
-Before giving a proof for Theorem \ref{hartogs_class} we note the following result from \cite[Corollary 7.33]{Moscho}, which can be proven in $\estf$.
-
-\begin{prop}\label{class_wo}
-	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
-\end{prop}
 
 \begin{proof}[Proof of Theorem \ref{hartogs_class}]
 	Let $\Phi$ be a formula with two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
