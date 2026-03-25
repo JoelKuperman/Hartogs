@@ -378,7 +378,7 @@ Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds
 \end{theorem}
 
 
-We shall take Well($A,<$), or Well($A$) when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
+We shall take $\mathrm{Well}(A,<)$, or $\mathrm{Well}(A)$ when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
 
 A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_classes} would be to prove it is equivalent to the following lemma.
 
@@ -386,8 +386,8 @@ A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_class
 	\label{easier_hartogs_class}
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
 	\[
-		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle A,<\rangle) \land 
-		\emph{Well}(X, <)
+		\estf \vdash \exists! \langle A, < \rangle, \ \Phi_n ( \langle A,<\rangle) \land 
+		\mathrm{Well}(A, <)
 	\]
 	then there must be a $k \in \mathbb{N}$ such that 
 	\[
