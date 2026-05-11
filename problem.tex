@@ -377,6 +377,64 @@ Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds
 	\]
 \end{theorem}
 
+It turns out this theorem fails, we prove this by taking a pointwise-definable model as a counterexample.
+
+\begin{theorem}
+	There is a scheme of formulas $\Phi_n(\cdot)$ with one free variable such that for each $n\in\mathbb{N}$ (with $\mathbb{N}$ in the metatheory), $\estf \vdash \exists! X \ \Phi_n (X)$, such that for every $k \in \mathbb{N}$
+	\[
+	\estf \nvdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
+	\]
+\end{theorem}
+
+\begin{proof}
+	We start by taking a countable model of $\zfc$. 
+	We extend its signature by adding countably many names for constants $c_n$, and for each $n\in\mathbb{N}$ ¿ESTE $\mathbb{N}$ ERA EN LA METATEORÍA, NO? we take the sentence $P_n$ as ``$c_{n+1} \text{ is a natural number} \land 2^{c_{n+1}} \in c_n$''.
+	
+	Since $\zfc+\{P_1,...,P_k\}$ has a model for each $k\in\mathbb{N}$, $\zfc+\{P_n\}_{n\in\mathbb{N}}$ has a model $\mathcal{M}_c = (M,E)$ (we are omitting the interpretations of the constants) DEBE HABER UNA FORMA MEJOR DE DECIR ESTO :/ by compacity.
+	
+	We may take such a model to be countable, then it is a countable model $\mathcal{M}=(M,E)$ of $\zfc$ with no constant symbols. 
+	Using \cite[Theorem 3]{hamkins} we extend it to a pointwise-definable model $\mathcal{M}'=(M',E')$.
+	
+	For each $n\in\mathbb{N}$, let $x_n \in M$ be the set that $\mathcal{M}_c$ interprets as $c_n$, and let $\Phi_n$ be a definition of $x_n$ in $\mathcal{M}'$.	
+	Then 
+	\[
+		\Omega_n (X) \equiv (\exists! X \ \Phi_n(X)) \lor (\neg(\exists! X \ \Phi_n(X)) \land X=\emptyset)
+	\] 
+	satisfies that 
+	\[
+		\estf \vdash \exists! X \ \Omega_n (X).
+	\]
+	Using the assumption that every element of $M'$ is definable, for every $n\in\mathbb{N}$ and $X\in M'$, we have that $\Omega_n(X) \iff \Phi_n(X)$. By construction, for each $n\in \mathbb{N}$ the following sentence holds in $\mathcal{M}$
+	\[
+		\forall X \forall Y \ (\Phi_n(X) \land \Phi_{n+1}(Y)) \implies (\text{X and Y are natural numbers} \land 2^Y \in X).
+	\]
+	
+	Note that all natural numbers in $\mathcal{M}$ are natural numbers in $\mathcal{M}'$ ESTO HAY QUE PROBARLO PARA MODELOS NO TRANSITIVOS.
+	Since $\mathcal{M}'$ is an extension of $\mathcal{M}$, we have
+	\[
+		\mathcal{M}' \vDash \forall X \forall Y \ (\Omega_n(X) \land \Omega_{n+1}(Y)) \implies \mathcal{P}(Y) <_c X
+ 	\]
+	for each $n\in\mathbb{N}$, which implies that 
+	\[
+		\zfc \nvdash \exists X \exists Y \ \Omega_n(X) \land \Omega_{n+1}(Y) \land \neg(\mathcal{P}(Y) <_c X).
+	\]
+	In particular,
+	\[
+		\estf \nvdash \exists X \exists Y \ \Omega_n(X) \land \Omega_{n+1}(Y) \land \neg(\mathcal{P}(Y) <_c X).
+	\]	
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
 
 We shall take $\mathrm{Well}(A,<)$, or $\mathrm{Well}(A)$ when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
 
