@@ -151,7 +151,7 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 
 A matter of notation for the following lemma: whenever $\langle A,< \rangle$ is a well order of type $\omega$ and $a\in A$, we shall denote its immediate successor as $S_A(a)$, and obviate the $A$ subscript when it is clear from the context.
 
-\begin{lemma}[$\esti$]
+\begin{lemma}[$\esti$]\label{lem:type-omega-is-iso-type}
 	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
@@ -167,11 +167,11 @@ A matter of notation for the following lemma: whenever $\langle A,< \rangle$ is 
 %	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
 %\end{lemma}
 
-\begin{corollary}[$\estf+\text{AI}$]
+\begin{corollary}[$\estf+\text{AI}$]\label{cor:type-omega-iso-omega}
   The statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
 \end{corollary}
 
-\begin{lemma}
+\begin{lemma}\label{lem:omega-segment}
 	If $\langle X,< \rangle$ is an infinite well order that does not have type $\omega$, then there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
 \end{lemma}
 \begin{proof}
@@ -211,21 +211,21 @@ We use the version of Hartog's Lemma without Replacement to show that, under $\e
 
 As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
 
-Let us note below some definitions for ease of reference.
+Let us note below some definitions for ease of reference MOVE BEFORE.
 
 \begin{definition}
-	\ \begin{enumerate}[(1.)]
-		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
-		\item A set is \emph{infinite} iff it is not finite.
-		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal. 
-	\end{enumerate}
+  \begin{enumerate}
+  \item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
+  \item A set is \emph{infinite} iff it is not finite.
+  \item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal. 
+  \end{enumerate}
 \end{definition}
 
 We shall use the abbreviations $\fin(A)$, $\nofin(X)$ and $\nat(n)$ to mean first order formulas in the language of set theory stating ``$A$ is a finite set'', ``$X$ is an infinite set'' and ``$n$ is a natural number'', respectively.
 
 The following results are provable within $\estf$ (¿PRUEBO ESTOS TAMBIÉN?)
 
-\begin{prop}\cite[Corollary 7.33]{Moscho}\label{class_wo}
+\begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
 	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
 \end{prop}
 
@@ -520,7 +520,8 @@ Continuing this line of thought, we would also like to prove the following lemma
 	
 	We have thus derived a contradiction from assuming $\mathcal{P}^{4}(Y) <_c X$, hence
 	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{4}(Y) <_c X)
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y)
+                \land \neg(\mathcal{P}^{4}(Y) <_c X) \qedhere
 	\]
 \end{proof}
 
