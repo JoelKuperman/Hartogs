@@ -402,44 +402,45 @@ meta-sequence of formulas.
   (M,E,\{ x_n \}_{n\in \N})$ by Compactness (here, $x_n$ is the
   $\mathcal{M}_c$-interpretation of $c_n$). By
   Löwenhein-Skolem, we may assume that $\mathcal{M}_c$ is countable and
-  let $\mathcal{M}=(M,E)$ be its reduct to $\{ \in \}$ / THE LANGUAGE OF SET
-  THEORY. Finally, we extend it to a pointwise definable model $\mathcal{M}'=(M',E')$
+  let $\mathcal{M}=(M,E)$ be its reduct to the language of set
+  theory. Finally, we extend it to a pointwise definable model $\mathcal{M}'=(M',E')$
   by using Theorem~\ref{th:pointwise-extension}.
   
-  Let $\Phi_n$ be a definition of $x_n$ in $\mathcal{M}'$.	
+  Let $\Omega_n$ be a definition of $x_n$ in $\mathcal{M}'$.	
   Then 
   \[
-    \Omega_n (X) \defi \bigl((\exists! Y \ \Phi_n(Y))  \land \Phi_n(X)\bigr) \lor
-    \bigl(\neg(\exists! Y \ \Phi_n(Y)) \land X=\emptyset\bigr)
+    \Phi_n (X) \defi \bigl((\exists! Y \ \Omega_n(Y))  \land \Omega_n(X)\bigr) \lor
+    \bigl(\neg(\exists! Y \ \Omega_n(Y)) \land X=\emptyset\bigr)
   \] 
   satisfies that 
   \[
-    \estf \vdash \exists! X \ \Omega_n (X).
+    \estf \vdash \exists! X \ \Phi_n (X).
   \]
   By construction, we have that for all $x\in M'$,
-  \[
-    x = x_n  \quad\text{iff}\quad \mathcal{M}' \models \Omega_n[x]  \quad\text{iff}\quad \mathcal{M}'
-    \models \Phi_n[x].
-  \]
+  \begin{equation}
+    \label{eq:Phi-Omega}
+    x = x_n  \quad\text{iff}\quad \mathcal{M}' \models \Phi_n[x]  \quad\text{iff}\quad \mathcal{M}'
+    \models \Omega_n[x].
+  \end{equation}
   Since the formula
   \[
     \varphi(X,Y) \defi \text{$X$ and $Y$ are natural numbers} \land 2^Y \in X
   \]
   is $\Delta_1$, and $\mathcal{M}'$ is a forcing extension of $\mathcal{M}$,
   $\varphi$ is absolute between them. Hence, for each $n\in \N$ the
-  following sentence holds in $\mathcal{M}'$
+  following sentence holds in $\mathcal{M}'$:
   \[
-    \forall X \forall Y \ (\Phi_n(X) \land \Phi_{n+1}(Y)) \implies \varphi(X,Y).
+    \forall X \forall Y \ (\Omega_n(X) \land \Omega_{n+1}(Y)) \implies \varphi(X,Y).
   \]
 
   Since $\zfc$ proves that $2^Y \in X$ is equivalent to $\mathcal{P}(Y) <_c X$
-  for $X,Y$ natural numbers, we have
+  for $X,Y$ natural numbers, by (\ref{eq:Phi-Omega}) we have
   \[
-    \mathcal{M}' \vDash \forall X \forall Y \ (\Omega_n(X) \land \Omega_{n+1}(Y)) \implies \mathcal{P}(Y) <_c X
+    \mathcal{M}' \vDash \forall X \forall Y \ (\Phi_n(X) \land \Phi_{n+1}(Y)) \implies \mathcal{P}(Y) <_c X
   \]
   for each $n\in\N$, which implies that 
   \[
-    \zfc \nvdash \exists X \exists Y \ \Omega_n(X) \land \Omega_{n+1}(Y) \land
+    \zfc \nvdash \exists X \exists Y \ \Phi_n(X) \land \Phi_{n+1}(Y) \land
     \neg(\mathcal{P}(Y) <_c X).
     \qedhere
   \]
