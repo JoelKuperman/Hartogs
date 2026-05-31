@@ -1,4 +1,8 @@
-\section{Problem}
+\section{Preliminaries}
+LOS TÍTULOS DE LAS SECCIONES SON TEMPORALES, PERO CREO QUE ESTARÍA BIEN DIVIDIRLAS ASÍ
+
+We shall start by laying out a few well known definitions and propositions about the Hartogs function in ZF without Replacement. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of the statement in the introduction.
+
 \begin{definition}\label{aleph}
 	Let $X$ be any set,
 	\[
@@ -52,6 +56,7 @@ LA PRUEBA DE LA DESIGUALDAD ESTRICTA ME LA DIO EL POLLO
 While the full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, the above theorem is the best bound we can get in ZF: it is consistent with ZF that the inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails for some $X$. More specifically, for any ordinal $\alpha$ such that $\alpha < \aleph_{\alpha}$ it is consistent with ZF to have $\aleph(X) =_c \aleph_\alpha$ and for $\mathcal{P}^{2}(X)$ and $\aleph(X)$ to have incomparable cardinalities \cite[Theorems 10 and 11]{hickman}\cite{stack_powerset}.
 EL TÍTULO TIENE UN ERROR DE TIPEO, ¿LO DEJAMOS ASÍ? ¿ESTÁ BIEN SEPARAR EN TEOREMAS? EL 10 PRUEBA EL CASO $\alpha=0$ Y EL 11 EL RESTO DE LOS CASOS. LA SEGUNDA CITA ES DE LA RESPUESTA EN STACKEXCHANGE QUE NOS LLEVÓ AL ARTÍCULO DE LA PRIMERA CITA.
 
+
 %This is the best bound we can obtain in ZF: it is consistent with ZF that the stronger inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails. ¿CITA DE ESTO? NO ME ACUERDO SI ERA MÁS O MENOS DIRECTO.
 
 %The full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, moreover, the statement $\forall X \ \aleph(X) =_c \mathcal{P}(X)$ (GCH) and its negation are both consistent with ZFC.
@@ -66,9 +71,18 @@ EL TÍTULO TIENE UN ERROR DE TIPEO, ¿LO DEJAMOS ASÍ? ¿ESTÁ BIEN SEPARAR EN T
 %\end{question}
 
 Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
+We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset.
+Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the addition of a weaker version of the Axiom of Infinity.
+Before stating this axiom, let us recall the following definitions for ease of reference.
 
-We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset. 
-Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the following weaker version of the Axiom of Infinity:
+\begin{definition}
+	\begin{enumerate}[(1)]
+		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal. 
+		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
+		\item A set is \emph{infinite} iff it is not finite.
+	\end{enumerate}
+\end{definition}
+
 
 \begin{WeakInf}
 	There is an infinite set.
@@ -78,14 +92,100 @@ Without Replacement nor Choice it is consistent for several common definitions o
 We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
 Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
 
+The following proposition is provable in $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
+
+DEBE PROBARLO PARA LOS ORDINALES EN GENERAL, VER SI VALE LA PENA ENUNCIAR ESO, IGUAL LOS ÚNICOS CUYA EXISTENCIA GARANTIZA $\esti$ SON LOS NATURALES.
+
+\begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
+	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
+\end{prop}
+
+EL SIGUIENTE LEMA SERVÍA PARA ALGO?
+
+\begin{lemma}
+	Let $\alpha$ and $\beta$ be ordinals. Then $(\alpha,\in) <_o (\beta, \in)$ iff $\alpha \in \beta$.
+\end{lemma}
+
+\begin{theorem}[$\estf$]
+	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Fix an instantiation of $\vec{x}$ (PREGUNTAR CÓMO SE PUEDE DECIR MÁS PROLIJO!) and assume that the following statements hold:
+	\begin{enumerate}[(i)]
+		\item $P(\emptyset,\vec{x})$.
+		\item\label{inductive} Let $n$ be a natural number, then $P(n,\vec{x}) \implies P(n\cup \{n\},\vec{x})$.
+	\end{enumerate}
+	Then $P(n,\vec{x})$ is true for every natural number.
+\end{theorem}
+\begin{proof}
+	Working towards a contradiction: assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
+\end{proof}
+
+\begin{lemma}
+	Let $X$ be an infinite set and $n$ a natural number, then $n <_c X$.
+\end{lemma}
+\begin{proof}
+	Recall that $n <_c X$ iff $n \leq_c X \land \neg(n =_c X)$. Given that $\neg(n =_c X)$ is an immediate consequence of the definition of infinite set, all that remains is to show that for every natural number $n$, the relation $n \leq_c X$ holds.
+	We prove it by induction on $n$.
+	
+	The case $n=0$ is trivial, since $\emptyset$ is an injective function from $0$ to any other set. Assume $n \leq_c X$ and let $f$ be an injective function from $n$ onto $X$. Using that $\neg(n =_c X)$, there must be some $x\in X$ not in the range of $f$. Then the function $f \cup \{(n,x)\}$ is an injective function from $n\cup\{n\}$ onto $X$.
+\end{proof}
+
+\begin{corollary}[$\estf$]
+	Let $A$ be a finite set and $X$ an infinite set, then $A <_c X$.
+\end{corollary}
+\begin{proof}
+	Let $n$ be a natural number such that $A \leq_c n$. Using the previous lemma, we have $n <_c X$ and $A <_c X$ follows immediately.
+\end{proof}
 
 Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that more or less states that an object captures the essence of $\omega$ as a well ordering, without necessarily being an ordinal.
+
 
 \begin{definition}
   An order has \emph{type $\omega$} iff it has a first element, every element has an immediate successor, and every element (except the first one) is someone's immediate successor.
 \end{definition}
 
-Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exists.
+It is clear that the existence of an order of type $\omega$ implies the Weak Axiom of Infinity, we will use the following lemma to prove the reciprocal result.
+
+\begin{lemma}\label{lem:omega-segment}
+	If $\langle X,< \rangle$ is an infinite well order that does not have type $\omega$, then there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
+\end{lemma}
+\begin{proof}
+	Since $\langle X,< \rangle$ does not have type $\omega$, there must be some $x\in X$ that is not the first element of $X$ and satisfies
+	\[
+	\neg(\exists y\in X \ (\text{Succ}(y,x)) \lor \neg \exists z\in X \ (\text{Succ}(x,z)).
+	\]
+	We shall see that in both cases $x{\downarrow}$ is infinite. Let us assume 
+	\[
+	\neg(\exists y\in X \ (\text{Succ}(y,x)),
+	\]
+	then $x{\downarrow}$ must be infinite. It cannot be empty, because the first element of $X$ belongs to $x{\downarrow}$; and if it was finite with more than one element, it would have a maximum $y$, which would imply $\text{Succ}(y,x)$.
+	
+	On the other hand, if we assume
+	\[
+	\neg \exists z\in X \ (\text{Succ}(x,z)),
+	\]
+	then $X = x{\downarrow} \cup \{x\}$. Given that $X$ is infinite by assumption, it follows that $x{\downarrow}$ must be infinite.
+	
+	Finally, let us take $Y = \{x\in X : x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $y{\downarrow}$ has type $\omega$ with the restricted order.
+	Recall that we need to show:
+	\[
+	\forall a\in y{\downarrow} \ ((\forall b\in y{\downarrow} \ \neg (b<a) \ \lor \ \exists b\in y{\downarrow} \ (\text{Succ}(b,a))) \land \exists c\in y{\downarrow} \ (\text{Succ}(a,c)))
+	\]
+	Let $a\in y{\downarrow}$, since $y$ is the first element whose set of predecessors is infinite, $a{\downarrow}$ is necessarily finite. In particular it is either empty, in which case $a$ is the first element of $y{\downarrow}$, or it has a greatest element $b$ which satisfies $b\in y{\downarrow}$ and Succ$(b,a)$. All that remains to verify is the existence of some $c\in y{\downarrow}$ such that Succ$(a,c)$.
+	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} : a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
+\end{proof}
+
+We use the version of Hartog's Lemma without Replacement to show that, under $\estf$, the mere assumption of the existence of any infinite set already implies the existence of an infinite well ordering. In particular, for any infinite $X$ that is Dedekind-finite, $\aleph(X)$ is an infinite well order whose initial segments are all finite. In ZF this order would actually be isomorphic to $\omega$, but $\esti$ cannot prove the existence of the ordinal $\omega$.
+
+\begin{prop}[$\esti$]\label{pr:well-order-type-omega}
+	There is a well ordering $\langle A,< \rangle$ of type $\omega$.
+\end{prop}
+\begin{proof}
+	Let $X$ be any infinite set, and take $A = \aleph(X)$. By the previous lemma, it is enough to show that $A$ is not finite. But this is immediate by Lemma~\ref{aleph2}: If it were finite, then we would have $\aleph(X) <_c X$.
+\end{proof}
+
+%As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
+
+%Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exists.
+
 %\begin{definition}
 %	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
 	
@@ -105,12 +205,12 @@ Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exis
 %	\]
 %\end{definition}
 
-To this end, we shall keep in mind the following definition.
+Let us recall the definition of a Peano System, whose existence we shall prove is equivalent under $\estf$ to the Weak Axiom of Infinity.
 
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano System} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
-		\item $\mathcal{N}$ is a set, ¿ACLARO QUE ESTO which we will occasionally call the \emph{domain} of the Peano System LO AGREGUÉ YO Y QUE NO ESTÁ EN LA FUENTE?, and $z\in\mathcal{N}$.
+		\item $\mathcal{N}$ is a set, which we will occasionally call the \emph{domain} of the Peano System ¿ACLARO QUE LO DEL DOMINIO LO AGREGUÉ YO Y QUE NO ESTÁ EN LA FUENTE?, and $z\in\mathcal{N}$.
 		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
 		\item For each $n\in\mathcal{N}$, $S(n) \neq z$.
@@ -121,18 +221,21 @@ To this end, we shall keep in mind the following definition.
 	\end{enumerate}
 \end{definition}
 
-Note that the existence of a Peano system already implies the Weak Axiom of Infinity.
-
+Note that the existence of a Peano system immediately implies the Weak Axiom of Infinity.
 Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there it is straightforward to define addition in a given Peano system as $n+z = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
 
-The following lemma highlights the relation between Peano systems and well orderings. 
 
-\begin{lemma}[$\esti$]
+The following lemma highlights the relation between Peano systems, well orderings and the Weak Axiom of Infinity. 
+
+\begin{lemma}[$\estf$]
 	\label{peano_is_order}
-	The following implications hold:
+	The following statements are equivalent:
 	\begin{enumerate}[(1)]
-		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
-		\item Let $(\mathcal{N}, z, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$. Then $\langle \mathcal{N},< \rangle$ is a well ordering and it has type $\omega$.
+		\item There is an infinite set.
+		\item There is a well order of type $\omega$.
+		\item There is a Peano System.
+%		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
+%		\item Let $(\mathcal{N}, z, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$. Then $\langle \mathcal{N},< \rangle$ is a well ordering and it has type $\omega$.
 	\end{enumerate}
 \end{lemma}
 
@@ -146,13 +249,17 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 %	\end{enumerate}
 %\end{lemma}
 \begin{proof}
-	Let us start by proving \emph{(1)}. First we note that ``$y$ is an immediate successor of $x$'' can be written in first order logic (in the language of set theory if we need to) as $x<y \land \forall a\in A (a < y \implies (a=x \lor a < x))$, which we will abbreviate as $\text{Succ}(x,y)$. Having done this, we can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
+	Note that $(1){\iff}(2)$ is just Lemma \ref{pr:well-order-type-omega}.
+	Let us prove $(2) {\implies} (3)$. Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. We note that ``$y$ is an immediate successor of $x$'' can be written in first order logic (in the language of set theory if we need to) as 
+	\[x<y \land \forall a\in A (a < y \implies (a=x \lor a < x)),\] 
+	which we will abbreviate as $\text{Succ}(x,y)$. Having done this, we can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
 	\[
 		a_0\in X \land (\forall n\in A \ (n\in X \implies S_A(n)\in X)).
 	\]
 	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using that $A$ has type $\omega$, we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts the assumption on $X$. So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, and the contradiction arose from assuming $A\setminus X$ was non-empty.
 	
-	To show \emph{(2)}, we first note that $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
+	To show $(3){\implies}(2)$, let $(\mathcal{N}, z, S)$ be a Peano System and define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$.
+	 $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
 
 A matter of notation for the following lemma: whenever $\langle A,< \rangle$ is a well order of type $\omega$ and $a\in A$, we shall denote its immediate successor as $S_A(a)$, and obviate the $A$ subscript when it is clear from the context.
@@ -177,106 +284,17 @@ A matter of notation for the following lemma: whenever $\langle A,< \rangle$ is 
   The statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
 \end{corollary}
 
-\begin{lemma}\label{lem:omega-segment}
-	If $\langle X,< \rangle$ is an infinite well order that does not have type $\omega$, then there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
-\end{lemma}
-\begin{proof}
-	Since $\langle X,< \rangle$ does not have type $\omega$, there must be some $x\in X$ that is not the first element of $X$ and satisfies
-	\[
-		\neg(\exists y\in X \ (\text{Succ}(y,x)) \lor \neg \exists z\in X \ (\text{Succ}(x,z)).
-	\]
-	We shall see that in both cases $x{\downarrow}$ is infinite. Let us assume 
-	\[
-		\neg(\exists y\in X \ (\text{Succ}(y,x)),
-	\]
-	then $x{\downarrow}$ must be infinite. It cannot be empty, because the first element of $X$ belongs to $x{\downarrow}$; and if it was finite with more than one element, it would have a maximum $y$, which would imply $\text{Succ}(y,x)$.
-	
-	On the other hand, if we assume
-	\[
-		\neg \exists z\in X \ (\text{Succ}(x,z)),
-	\]
-	then $X = x{\downarrow} \cup \{x\}$. Given that $X$ is infinite by assumption, it follows that $x{\downarrow}$ must be infinite.
-	
-	Finally, let us take $Y = \{x\in X : x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $y{\downarrow}$ has type $\omega$ with the restricted order.
-	Recall that we need to show:
-	\[
-		\forall a\in y{\downarrow} \ ((\forall b\in y{\downarrow} \ \neg (b<a) \ \lor \ \exists b\in y{\downarrow} \ (\text{Succ}(b,a))) \land \exists c\in y{\downarrow} \ (\text{Succ}(a,c)))
-	\]
-	Let $a\in y{\downarrow}$, since $y$ is the first element whose set of predecessors is infinite, $a{\downarrow}$ is necessarily finite. In particular it is either empty, in which case $a$ is the first element of $y{\downarrow}$, or it has a greatest element $b$ which satisfies $b\in y{\downarrow}$ and Succ$(b,a)$. All that remains to verify is the existence of some $c\in y{\downarrow}$ such that Succ$(a,c)$.
-	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} : a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
-\end{proof}
-
-We use the version of Hartog's Lemma without Replacement to show that, under $\estf$, the mere assumption of the existence of any infinite set already implies the existence of an infinite well ordering. In particular, for any infinite $X$ that is Dedekind-finite, $\aleph(X)$ is a well order whose initial segments are all finite. In ZF this order would actually be isomorphic to $\omega$, but $\esti$ cannot prove the existence of the ordinal $\omega$.
-
-\begin{prop}[$\esti$]\label{pr:well-order-type-omega}
-	There is a well ordering $\langle A,< \rangle$ of type $\omega$.
-\end{prop}
-\begin{proof}
-	Let $X$ be any infinite set, and take $A = \aleph(X)$. By the previous lemma, it is enough to show that $A$ is not finite. But this is immediate by Lemma~\ref{aleph2}: If it were finite, then we would have $\aleph(X) <_c X$.
-\end{proof}
-
-As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
-
-Let us note below some definitions for ease of reference MOVE BEFORE.
-
-\begin{definition}
-  \begin{enumerate}
-  \item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
-  \item A set is \emph{infinite} iff it is not finite.
-  \item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal. 
-  \end{enumerate}
-\end{definition}
 
 We shall use the abbreviations $\fin(A)$, $\nofin(X)$ and $\nat(n)$ to mean first order formulas in the language of set theory stating ``$A$ is a finite set'', ``$X$ is an infinite set'' and ``$n$ is a natural number'', respectively.
 
 The following results are provable within $\estf$ (¿PRUEBO ESTOS TAMBIÉN?)
 
-\begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
-	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
-\end{prop}
-
-\begin{lemma}
-	Let $\alpha$ and $\beta$ be ordinals. Then $(\alpha,\in) <_o (\beta, \in)$ iff $\alpha \in \beta$.
-\end{lemma}
-
-While induction on a Peano system is trivial in $\esti$ by definition, Peano systems require their domain to be a set. 
-We show that $\estf$ is enough to prove that induction on the naturals (defined as a class of ordinals) can be done, without assuming they form a set.
-DEBE PROBARLO PARA LOS ORDINALES EN GENERAL, VER SI VALE LA PENA ENUNCIAR ESO, IGUAL LOS ÚNICOS CUYA EXISTENCIA GARANTIZA $\esti$ SON LOS NATURALES.
-
-\begin{theorem}[$\estf$]
-	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Fix an instantiation of $\vec{x}$ (PREGUNTAR CÓMO SE PUEDE DECIR MÁS PROLIJO!) and assume that the following statements hold:
-	\begin{enumerate}[(i)]
-		\item $P(\emptyset,\vec{x})$.
-		\item\label{inductive} Let $n$ be a natural number, then $P(n,\vec{x}) \implies P(n\cup \{n\},\vec{x})$.
-	\end{enumerate}
-	Then $P(n,\vec{x})$ is true for every natural number.
-\end{theorem}
-\begin{proof}
-	Working towards a contradiction: assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
-\end{proof}
-
-A useful consequence of having the theorem of induction on the naturals is that the absence of instances of Replacement is no impediment to showing basic results about infinite sets. PLACEHOLDER TEXT 
-
-\begin{lemma}
-	Let $X$ be an infinite set and $n$ a natural number, then $n <_c X$.
-\end{lemma}
-\begin{proof}
-	Recall that $n <_c X$ iff $n \leq_c X \land \neg(n =_c X)$. Given that $\neg(n =_c X)$ is an immediate consequence of the definition of infinite set, all that remains is to show that for every natural number $n$, the relation $n \leq_c X$ holds.
-	We prove it by induction on $n$.
-	
-	The case $n=0$ is trivial, since $\emptyset$ is an injective function from $0$ to any other set. Assume $n \leq_c X$ and let $f$ be an injective function from $n$ onto $X$. Using that $\neg(n =_c X)$, there must be some $x\in X$ not in the range of $f$. Then the function $f \cup \{(n,x)\}$ is an injective function from $n\cup\{n\}$ onto $X$.
-\end{proof}
-
-\begin{corollary}[$\estf$]
-	Let $A$ be a finite set and $X$ an infinite set, then $A <_c X$.
-\end{corollary}
-\begin{proof}
-	Let $n$ be a natural number such that $A \leq_c n$. Using the previous lemma, we have $n <_c X$ and $A <_c X$ follows immediately.
-\end{proof}
-
 \begin{framed}
   Please introduce this as one of the main theorems.
 \end{framed}
+
+\section{Exponentially decreasing sequences of powersets}
+LOS TÍTULOS DE LAS SECCIONES SON TEMPORALES, PERO CREO QUE ESTARÍA BIEN DIVIDIRLAS ASÍ
 
 We are now able to state and prove in $\esti$ the theorem from the introduction regarding sequences of infinitely decreasing sets. In addition, we show that it works for sequences indexed by any Peano System, meaning that these sequences cannot exist as an object in the theory independently from the particular implementation of the natural numbers. To avoid cluttering the notation with the successor function, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 
@@ -373,6 +391,8 @@ Whenever $n\in \omega$ we denote $n \cup \{n\}$ as $n+1$.
 	Recall from Theorem \ref{partes3} that $\aleph(Y_4) \leq_c \mathcal{P}^{3}(Y_4)$, and using the inequality above, we obtain $\aleph(Y_4) <_c Y_0$, which implies $\aleph(Y_4) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_4)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
 \end{proof}
 
+
+LO SIGUIENTE LO PONDRÍA EN OTRA SECCIÓN, PERO NOS QUEDA MUY POCA SECCIÓN ANTES :/
 Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds when there is no single formula defining the sets. What if there is a formula with one free variable $\Phi_n$ for each natural number $n$ in the metatheory, such that for each $n$, $\Phi_n$ defines a set? Specifically, is the following theorem true?
 
 \begin{theorem}
