@@ -13,6 +13,7 @@
 	\begin{enumerate}[(i)]
 		\item $\aleph(X)\nleq_c X$
 		\item $(\aleph(X),\leq_{\aleph(X)})$ is a well order and is not equinumerous with any of its initial segments.
+		\item If $W$ is a well ordered set and $W \nleq_c X$, then $\aleph(X) \leq_o W$.
 	\end{enumerate}
 \end{lemma}
 
@@ -26,7 +27,7 @@
 \end{proof}
 
 \begin{theorem}\label{partes3}
-	For any set $X$, $\aleph(X)\leq_c \mathcal{P}^3(X)$.
+	For any set $X$, $\aleph(X) <_c \mathcal{P}^3(X)$.
 	%$\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
 
@@ -35,9 +36,18 @@
 % ¿Es consistente en BST que no valga con $\mathcal(P)^{2}$ para algun X?
 
 \begin{proof}	
-	Let $f:\WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before yields what we wanted to show.
+	Let $f:\WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before suffices to show $\aleph(X) \leq_c \mathcal{P}^3(X)$. 
+	Let us prove that $\aleph(X) \neq_c \mathcal{P}^3(X)$. 
+	Proceding by contradiction, we assume they are equinumerous, then $\mathcal{P}^{3}(X)$ is well orderable. As an immediate consequence we have that $\mathcal{P}^{2}(X)$ is well orderable, by virtue of being bijective to a subset of $\mathcal{P}^{3}(X)$. But then $\mathcal{P}^{2}(X)$ is a well orderable set and it satisfies 	
+	$\mathcal{P}^{2}(X)\nleq_c X$.
+	So Lemma \ref{aleph2} implies that 	
+	$\aleph(X)\leq_c\mathcal{P}^{2}(X)$.
+	But 	
+	$\mathcal{P}^{3}(X) =_c \aleph(X)$	
+	by assumption, so we have shown $\mathcal{P}^{3}(X) \leq_c \mathcal{P}^{2}(X)$, which gives us our contradiction.
 \end{proof}
 
+LA PRUEBA DE LA DESIGUALDAD ESTRICTA ME LA DIO EL POLLO
 
 %Comento estas preguntas y la discusión porque no tengo idea de cómo encararlas todavía :/
 %\begin{question}
