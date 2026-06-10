@@ -1,5 +1,10 @@
 \section{Preliminaries}
-LOS TÍTULOS DE LAS SECCIONES SON TEMPORALES, PERO CREO QUE ESTARÍA BIEN DIVIDIRLAS ASÍ
+
+The following proposition is provable in $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
+
+\begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
+	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
+\end{prop}
 
 We shall start by laying out a few well known definitions and propositions about the Hartogs function in ZF without Replacement. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of the statement in the introduction.
 
@@ -8,18 +13,27 @@ We shall start by laying out a few well known definitions and propositions about
 	\[
 	\WO(X):=\{\langle A,R\rangle \mid A\subset X \ \text{is well-ordered by}\ R\}, 
 	\]
-	and $\aleph(X):= \WO(X)/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity (Moschovakis, def. 7.27 \cite{Moscho}).
+	and $\aleph(X):= \WO(X)/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity \cite[Def.~7.27]{Moscho}.
 	Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$ it holds that $U\leq_o V$, where this last relation means $U$ is isomorphic to an initial segment of $V$.
 \end{definition}
 
+From \cite[Thm.~7-34]{Moscho} we have
 \begin{lemma}\label{aleph2}
 	For all $X$, $\aleph(X)$ has the following properties:
-	\begin{enumerate}[(i)]
+	\begin{enumerate}
 		\item $\aleph(X)\nleq_c X$
 		\item $(\aleph(X),\leq_{\aleph(X)})$ is a well order and is not equinumerous with any of its initial segments.
-		\item If $W$ is a well ordered set and $W \nleq_c X$, then $\aleph(X) \leq_o W$.
+		\item If $W$ is a well ordered set and $W \nleq_c X$, then $\aleph(X) \leq_o W$.\qed
 	\end{enumerate}
 \end{lemma}
+
+\begin{corollary}\label{cor:ltc-iff-lto}
+  $\aleph(X) <_c \aleph(Y)$ if and only if $\aleph(X) <_o \aleph(Y)$.
+\end{corollary}
+\begin{proof}
+  It follows by Lemma~\ref{aleph2} and the fact that the relation $\leq_o$ is
+  total (Proposition~\ref{class_wo}, or more precisely \cite[Thm.~7.31]{Moscho}).
+\end{proof}
 
 \begin{theorem}
 	For any set $X$, $\aleph(X)\leq_c \mathcal{P}^{4}(X)$.
@@ -30,7 +44,7 @@ We shall start by laying out a few well known definitions and propositions about
 	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:\WO(X)\rightarrow \mathcal{P}^3(X)$ be defined as $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\} \mid a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) \mid s\in S\}$. This shows that $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (\WO(X))$, we obtained what we wanted to show.
 \end{proof}
 
-\begin{theorem}\label{partes3}
+\begin{theorem}\label{thm:partes-cubo}
 	For any set $X$, $\aleph(X) <_c \mathcal{P}^3(X)$.
 	%$\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
@@ -51,11 +65,8 @@ We shall start by laying out a few well known definitions and propositions about
 	by assumption, so we have shown $\mathcal{P}^{3}(X) \leq_c \mathcal{P}^{2}(X)$, which gives us our contradiction.
 \end{proof}
 
-LA PRUEBA DE LA DESIGUALDAD ESTRICTA ME LA DIO EL POLLO
-
-While the full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, the above theorem is the best bound we can get in ZF: it is consistent with ZF that the inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails for some $X$. More specifically, for any ordinal $\alpha$ such that $\alpha < \aleph_{\alpha}$ it is consistent with ZF to have $\aleph(X) =_c \aleph_\alpha$ and for $\mathcal{P}^{2}(X)$ and $\aleph(X)$ to have incomparable cardinalities \cite[Theorems 10 and 11]{hickman}\cite{stack_powerset}.
-EL TÍTULO TIENE UN ERROR DE TIPEO, ¿LO DEJAMOS ASÍ? ¿ESTÁ BIEN SEPARAR EN TEOREMAS? EL 10 PRUEBA EL CASO $\alpha=0$ Y EL 11 EL RESTO DE LOS CASOS. LA SEGUNDA CITA ES DE LA RESPUESTA EN STACKEXCHANGE QUE NOS LLEVÓ AL ARTÍCULO DE LA PRIMERA CITA.
-
+While the full strength of ZFC proves $\forall X \ \aleph(X) <_c \mathcal{P}^{2}(X)$, the above theorem is the best bound we can get in ZF: it is consistent with ZF that the inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails for some $X$. More specifically, for any ordinal $\alpha$ such that $\alpha < \aleph_{\alpha}$ it is consistent with ZF to have $\aleph(X) =_c \aleph_\alpha$ and for $\mathcal{P}^{2}(X)$ and $\aleph(X)$ to have incomparable cardinalities \cite[Theorems 10 and 11]{hickman};
+see also the discussion at \cite{stack_powerset}.
 
 %This is the best bound we can obtain in ZF: it is consistent with ZF that the stronger inequality $\aleph(X) <_c \mathcal{P}^2(X)$ fails. ¿CITA DE ESTO? NO ME ACUERDO SI ERA MÁS O MENOS DIRECTO.
 
@@ -76,13 +87,17 @@ Without Replacement nor Choice it is consistent for several common definitions o
 Before stating this axiom, let us recall the following definitions for ease of reference.
 
 \begin{definition}
-	\begin{enumerate}[(1)]
-		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal. 
+	\begin{enumerate}
+		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal.
 		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
 		\item A set is \emph{infinite} iff it is not finite.
 	\end{enumerate}
 \end{definition}
-
+In the following, we write “$n\in\omega$” for the formula defining natural numbers:
+\[
+  \forall x, \, x \in n \lor  x = n \implies x = \emptyset \lor (\exists y \in
+  n, \, x = y \cup \{y\}).
+\]
 
 \begin{WeakInf}
 	There is an infinite set.
@@ -92,22 +107,8 @@ Before stating this axiom, let us recall the following definitions for ease of r
 We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
 Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
 
-The following proposition is provable in $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
-
-DEBE PROBARLO PARA LOS ORDINALES EN GENERAL, VER SI VALE LA PENA ENUNCIAR ESO, IGUAL LOS ÚNICOS CUYA EXISTENCIA GARANTIZA $\esti$ SON LOS NATURALES.
-
-\begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
-	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
-\end{prop}
-
-EL SIGUIENTE LEMA SERVÍA PARA ALGO?
-
-\begin{lemma}
-	Let $\alpha$ and $\beta$ be ordinals. Then $(\alpha,\in) <_o (\beta, \in)$ iff $\alpha \in \beta$.
-\end{lemma}
-
 \begin{theorem}[$\estf$]
-	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Fix an instantiation of $\vec{x}$ (PREGUNTAR CÓMO SE PUEDE DECIR MÁS PROLIJO!) and assume that the following statements hold:
+	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Assume that the following statements hold:
 	\begin{enumerate}[(i)]
 		\item $P(\emptyset,\vec{x})$.
 		\item\label{inductive} Let $n$ be a natural number, then $P(n,\vec{x}) \implies P(n\cup \{n\},\vec{x})$.
@@ -115,7 +116,8 @@ EL SIGUIENTE LEMA SERVÍA PARA ALGO?
 	Then $P(n,\vec{x})$ is true for every natural number.
 \end{theorem}
 \begin{proof}
-	Working towards a contradiction: assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
+	By way of contradiction, assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$
+        and hence  $(m,\in) <_o (n, \in)$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
 \end{proof}
 
 \begin{lemma}
@@ -137,9 +139,10 @@ EL SIGUIENTE LEMA SERVÍA PARA ALGO?
 
 Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that more or less states that an object captures the essence of $\omega$ as a well ordering, without necessarily being an ordinal.
 
-
 \begin{definition}
-  An order has \emph{type $\omega$} iff it has a first element, every element has an immediate successor, and every element (except the first one) is someone's immediate successor.
+  A well order has \emph{type $\omega$} iff  every element
+  has an immediate successor, and every element (except the first one) has and
+  immediate predecessor.
 \end{definition}
 
 It is clear that the existence of an order of type $\omega$ implies the Weak Axiom of Infinity, we will use the following lemma to prove the reciprocal result.
@@ -164,13 +167,13 @@ It is clear that the existence of an order of type $\omega$ implies the Weak Axi
 	\]
 	then $X = x{\downarrow} \cup \{x\}$. Given that $X$ is infinite by assumption, it follows that $x{\downarrow}$ must be infinite.
 	
-	Finally, let us take $Y = \{x\in X : x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $y{\downarrow}$ has type $\omega$ with the restricted order.
+	Finally, let us take $Y = \{x\in X \mid x{\downarrow} \text{ is infinite}\}$. This set is non empty by the previous argument, so it has a least element $y$. We will prove that $y{\downarrow}$ has type $\omega$ with the restricted order.
 	Recall that we need to show:
 	\[
 	\forall a\in y{\downarrow} \ ((\forall b\in y{\downarrow} \ \neg (b<a) \ \lor \ \exists b\in y{\downarrow} \ (\text{Succ}(b,a))) \land \exists c\in y{\downarrow} \ (\text{Succ}(a,c)))
 	\]
 	Let $a\in y{\downarrow}$, since $y$ is the first element whose set of predecessors is infinite, $a{\downarrow}$ is necessarily finite. In particular it is either empty, in which case $a$ is the first element of $y{\downarrow}$, or it has a greatest element $b$ which satisfies $b\in y{\downarrow}$ and Succ$(b,a)$. All that remains to verify is the existence of some $c\in y{\downarrow}$ such that Succ$(a,c)$.
-	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} : a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
+	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} \mid a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
 \end{proof}
 
 We use the version of Hartog's Lemma without Replacement to show that, under $\estf$, the mere assumption of the existence of any infinite set already implies the existence of an infinite well ordering. In particular, for any infinite $X$ that is Dedekind-finite, $\aleph(X)$ is an infinite well order whose initial segments are all finite. In ZF this order would actually be isomorphic to $\omega$, but $\esti$ cannot prove the existence of the ordinal $\omega$.
@@ -210,7 +213,7 @@ Let us recall the definition of a Peano System, whose existence we shall prove i
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano System} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
-		\item $\mathcal{N}$ is a set, which we will occasionally call the \emph{domain} of the Peano System ¿ACLARO QUE LO DEL DOMINIO LO AGREGUÉ YO Y QUE NO ESTÁ EN LA FUENTE?, and $z\in\mathcal{N}$.
+		\item $\mathcal{N}$ is a set (the \emph{domain} of the Peano System), and $z\in\mathcal{N}$.
 		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
 		\item For each $n\in\mathcal{N}$, $S(n) \neq z$.
@@ -225,13 +228,13 @@ Note that the existence of a Peano system immediately implies the Weak Axiom of 
 Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there it is straightforward to define addition in a given Peano system as $n+z = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
 
 
-The following lemma highlights the relation between Peano systems, well orderings and the Weak Axiom of Infinity. 
+The following lemma highlights the relation between Peano systems, well orderings, and the Weak Axiom of Infinity. 
 
 \begin{lemma}[$\estf$]
 	\label{peano_is_order}
 	The following statements are equivalent:
 	\begin{enumerate}[(1)]
-		\item There is an infinite set.
+		\item There is an infinite set (WAI).
 		\item There is a well order of type $\omega$.
 		\item There is a Peano System.
 %		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
@@ -249,7 +252,8 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 %	\end{enumerate}
 %\end{lemma}
 \begin{proof}
-	Note that $(1){\iff}(2)$ is just Lemma \ref{pr:well-order-type-omega}.
+	Note that $(1){\implies}(2)$ is just
+        Proposition~\ref{pr:well-order-type-omega}, and the converse is immediate.
 	Let us prove $(2) {\implies} (3)$. Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. We note that ``$y$ is an immediate successor of $x$'' can be written in first order logic (in the language of set theory if we need to) as 
 	\[x<y \land \forall a\in A (a < y \implies (a=x \lor a < x)),\] 
 	which we will abbreviate as $\text{Succ}(x,y)$. Having done this, we can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are an immediate consequence of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
@@ -262,39 +266,28 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 	 $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
 
-A matter of notation for the following lemma: whenever $\langle A,< \rangle$ is a well order of type $\omega$ and $a\in A$, we shall denote its immediate successor as $S_A(a)$, and obviate the $A$ subscript when it is clear from the context.
-
+In the next lemma, $S$ denotes the immediate successor operation of an order of
+type $\omega$.
 \begin{lemma}[$\esti$]\label{lem:type-omega-is-iso-type}
 	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
 \end{lemma}
 \begin{proof}
 	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(S(x))=S(f(x))$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
 	\begin{itemize}
-		\item $x<y \implies f(x)\sqsubset f(y)$. Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=S(x)$ (since this would imply $f(y)=S(f(x))$). Then, there must exist a $z\neq x$ such that $y=S(z)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset S(f(z)) = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
-		\item $f$ is surjective. Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=S(z)$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(S(x))=S(z)=y$, a contradiction.
-		\item The fact that the inverse of $f$ is order-preserving follows by the same argument used to show that $f$ itself is order-preserving.
+		\item $x<y \implies f(x)\sqsubset f(y)$: Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=S(x)$ (since this would imply $f(y)=S(f(x))$). Then, there must exist a $z\neq x$ such that $y=S(z)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset S(f(z)) = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
+                \item The converse follows immediately since both $A$ and $B$ are total orders.
+		\item $f$ is surjective: Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=S(z)$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(S(x))=S(z)=y$, a contradiction.\qedhere
 	\end{itemize} 
 \end{proof}
 
 %\begin{lemma}[$\estf+\text{AI}$]
 %	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
 %\end{lemma}
-
-\begin{corollary}[$\estf+\text{AI}$]\label{cor:type-omega-iso-omega}
+\begin{corollary}[$\estf + \text{AI}$]\label{cor:type-omega-iso-omega}
   The statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
 \end{corollary}
 
-
-We shall use the abbreviations $\fin(A)$, $\nofin(X)$ and $\nat(n)$ to mean first order formulas in the language of set theory stating ``$A$ is a finite set'', ``$X$ is an infinite set'' and ``$n$ is a natural number'', respectively.
-
-The following results are provable within $\estf$ (¿PRUEBO ESTOS TAMBIÉN?)
-
-\begin{framed}
-  Please introduce this as one of the main theorems.
-\end{framed}
-
 \section{Exponentially decreasing sequences of powersets}
-LOS TÍTULOS DE LAS SECCIONES SON TEMPORALES, PERO CREO QUE ESTARÍA BIEN DIVIDIRLAS ASÍ
 
 We are now able to state and prove in $\esti$ the theorem from the introduction regarding sequences of infinitely decreasing sets. In addition, we show that it works for sequences indexed by any Peano System, meaning that these sequences cannot exist as an object in the theory independently from the particular implementation of the natural numbers. To avoid cluttering the notation with the successor function, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 
@@ -311,7 +304,7 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 	then $\estf$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
-	\aleph(X) \subset \mathcal{P}(\\WO(X)) \subseteq \mathcal{P}(\\WO(\union \ran(\mathcal{S}))),
+	\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \ran(\mathcal{S}))),
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
@@ -331,12 +324,12 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 		\\ \implies &\mathcal{P}^2(X_{n+4}) \leq_c %\hspace{4.5 pt}
 		 \mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
 		\\ \implies &\mathcal{P}^3(X_{n+4}) \leq_c \mathcal{P}^{2}(X_{n+3}) \leq_c \mathcal{P}(X_{n+2}) \hspace{4.5 pt} <_c X_{n+1}
-		\\ \implies &\mathcal{P}^4(X_{n+4}) \leq_c \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2}) \leq_c \mathcal{P}^1(X_{n+1}) <_c X_n.
+		\\ \implies &\mathcal{P}^4(X_{n+4}) \leq_c \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
 	\end{align*}
 	As a consequence,
 	%$\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$,
 	$\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$,
-	where the first inequality comes from applying Theorem \ref{partes3}.
+	where the first inequality comes from applying Theorem \ref{thm:partes-cubo}.
 	
 	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in \mathcal{N}$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
@@ -349,9 +342,7 @@ Before moving on to the proof, let us note that Definition \ref{aleph} does not 
 
 The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from %(¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?)
 Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
-In the following, we write “$n\in\omega$” for the formula defining finite ordinals:
-$\forall x, \, (x = n \lor (x \in n \implies (x = \emptyset \lor \exists y \in n, \, x = y \cup \{y\})))$.
-Whenever $n\in \omega$ we denote $n \cup \{n\}$ as $n+1$.
+In the next result, $n+1$ denotes $n \cup \{n\}$.
 \begin{theorem}[$\estf$]
 	\label{hartogs_class}
 	Let $\Phi(\cdot,\cdot)$ be a formula with two free variables, then $\Phi$ cannot satisfy both of the following properties:
@@ -388,7 +379,7 @@ Whenever $n\in \omega$ we denote $n \cup \{n\}$ as $n+1$.
 		\\ \implies &\mathcal{P}^4(Y_4) \leq_c \mathcal{P}^3(Y_3) \leq_c \mathcal{P}^2(Y_2) \leq_c \mathcal{P}^1(Y_1) <_c Y_0
 	\end{align*}
 	
-	Recall from Theorem \ref{partes3} that $\aleph(Y_4) \leq_c \mathcal{P}^{3}(Y_4)$, and using the inequality above, we obtain $\aleph(Y_4) <_c Y_0$, which implies $\aleph(Y_4) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_4)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
+	Recall from Theorem \ref{thm:partes-cubo} that $\aleph(Y_4) \leq_c \mathcal{P}^{3}(Y_4)$, and using the inequality above, we obtain $\aleph(Y_4) <_c Y_0$, which implies $\aleph(Y_4) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_4)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
 \end{proof}
 
 
@@ -534,7 +525,7 @@ Continuing this line of thought, we would also like to prove the following lemma
 	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
 	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
 
-	Assume $\mathcal{P}^{4}(Y) <_c X$, applying Theorem \ref{partes3} yields
+	Assume $\mathcal{P}^{4}(Y) <_c X$, applying Theorem \ref{thm:partes-cubo} yields
 	\begin{equation}
 		\label{eq_order}
 		\aleph(Y) <_c \mathcal{P}^{4} (Y) <_c X. 
