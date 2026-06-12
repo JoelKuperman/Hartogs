@@ -1,5 +1,34 @@
 \section{Preliminaries}
 
+\begin{definition}
+	We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset.
+\end{definition}
+
+Throughout this section we will be working within $\estf$ unless otherwise specified.
+Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the addition of a weaker version of the Axiom of Infinity.
+Before stating this axiom, let us recall the following definitions for ease of reference.
+
+\begin{definition}
+	\begin{enumerate}
+		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal.
+		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
+		\item A set is \emph{infinite} iff it is not finite.
+	\end{enumerate}
+\end{definition}
+In the following, we write “$n\in\omega$” for the formula defining natural numbers:
+\[
+\forall x, \, x \in n \lor  x = n \implies x = \emptyset \lor (\exists y \in
+n, \, x = y \cup \{y\}).
+\]
+
+\begin{WeakInf}
+	There is an infinite set.
+	%There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
+\end{WeakInf}
+
+We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
+Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
+
 The following proposition is provable in $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
 
 \begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
@@ -82,32 +111,9 @@ see also the discussion at \cite{stack_powerset}.
 %\end{question}
 
 Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
-We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset.
-Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the addition of a weaker version of the Axiom of Infinity.
-Before stating this axiom, let us recall the following definitions for ease of reference.
 
-\begin{definition}
-	\begin{enumerate}
-		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal.
-		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
-		\item A set is \emph{infinite} iff it is not finite.
-	\end{enumerate}
-\end{definition}
-In the following, we write “$n\in\omega$” for the formula defining natural numbers:
-\[
-  \forall x, \, x \in n \lor  x = n \implies x = \emptyset \lor (\exists y \in
-  n, \, x = y \cup \{y\}).
-\]
 
-\begin{WeakInf}
-	There is an infinite set.
-	%There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
-\end{WeakInf}
-
-We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
-Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
-
-\begin{theorem}[$\estf$]
+\begin{theorem}
 	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Assume that the following statements hold:
 	\begin{enumerate}[(i)]
 		\item $P(\emptyset,\vec{x})$.
@@ -130,7 +136,7 @@ Note that it is consistent with ZC$-$AI for an infinite well order to exist and 
 	The case $n=0$ is trivial, since $\emptyset$ is an injective function from $0$ to any other set. Assume $n \leq_c X$ and let $f$ be an injective function from $n$ onto $X$. Using that $\neg(n =_c X)$, there must be some $x\in X$ not in the range of $f$. Then the function $f \cup \{(n,x)\}$ is an injective function from $n\cup\{n\}$ onto $X$.
 \end{proof}
 
-\begin{corollary}[$\estf$]
+\begin{corollary}
 	Let $A$ be a finite set and $X$ an infinite set, then $A <_c X$.
 \end{corollary}
 \begin{proof}
@@ -230,7 +236,7 @@ Assuming there is a Peano system, $\estf$ proves that one can define functions r
 
 The following lemma highlights the relation between Peano systems, well orderings, and the Weak Axiom of Infinity.
 
-\begin{lemma}[$\estf$]
+\begin{lemma}
 	\label{peano_is_order}
 	The following statements are equivalent:
 	\begin{enumerate}[(1)]
