@@ -5,8 +5,24 @@
 \end{definition}
 
 Throughout this section we will be working within $\estf$ unless otherwise specified.
-Without Replacement nor Choice it is consistent for several common definitions of infinite set to not be equivalent between each other, (see Dedekind finite sets, amorphous sets, etc.) which motivates the addition of a weaker version of the Axiom of Infinity.
-Before stating this axiom, let us recall the following definitions for ease of reference.
+Without Replacement nor Choice it is consistent for several common definitions
+of infinite set to not be equivalent to each other, (see Dedekind finite sets,
+amorphous sets, etc.) which motivates the addition of a weaker version of the
+Axiom of Infinity.
+
+\begin{framed}
+  One other axiom that might be considered affected/involved with uses of
+  Replacement is the Axiom of Infinity. As our intent is to work as naïvely
+  (i.e. as the working mathematician's intuitive idea of set) as possible, we
+  prefer to consider a version of this axiom that does not involve ordinals in
+  any implicit sense. Thus, we are not stating Infinity as the existence of
+  $\omega$. For instance, it is a well known fact that Zermelo's
+  \textit{Unendlichen} axiom does not imply Von Neumann's (\textbf{check!}) one
+  without Replacement, and the lack of $\AC$ brings even more elements to the
+  picture (infinite Dedekind finite sets, amorphous sets, etc.).
+\end{framed}
+
+\fbox{To fix notation\dots} Before stating this axiom, let us recall the following definitions for ease of reference.
 
 \begin{definition}
 	\begin{enumerate}
@@ -26,32 +42,50 @@ n, \, x = y \cup \{y\}).
 	%There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
 \end{WeakInf}
 
-We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity and AI to mean the Axiom of Infinity in its usual formulation.
-Note that it is consistent with ZC$-$AI for an infinite well order to exist and for the Axiom of Infinity to fail (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a model), in particular $\esti+\neg \text{AI}$ is consistent relative to ZFC.
+We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity.
+Note that it is consistent with $\ZC$ minus the standard Axiom of Infinity that
+an infinite well order  exists and for the Axiom of Infinity to fail
+(\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a
+model), in particular $\esti$ is consistent with the negation of Infinity relative to ZFC.
+
+\begin{definition}
+  For sets $X,Y$ and  linear orders $V$ and $U$,
+  \begin{enumerate}
+  \item $X\leq_c Y$ ...
+  \item
+    we write $V\leq_o U$ iff  $V$ is
+    isomorphic to an initial segment of $U$;
+  \item we use $V<_o U$ when  $V\leq_o U$ and  $V$ is not order isomorphic
+    to $U$.
+  \end{enumerate}
+\end{definition}
 
 The following proposition is provable in $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
 
 \begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
-	Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member, i.e., for some $U_0 \in \mathcal{C}$ and all $U\in\mathcal{C}$, $U_0$ is isomorphic to an initial segment of $U$.
+  Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member.
 \end{prop}
 
-We shall start by laying out a few well known definitions and propositions about the Hartogs function in ZF without Replacement. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of the statement in the introduction.
+We shall start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of \fbox{the statement in the introduction}.
 
 \begin{definition}\label{aleph}
 	Let $X$ be any set,
 	\[
 	\WO(X):=\{\langle A,R\rangle \mid A\subset X \ \text{is well-ordered by}\ R\}, 
 	\]
-	and $\aleph(X):= \WO(X)/{\sim_X}$ where $\langle A,R\rangle \sim_X \langle B, R'\rangle \Longleftrightarrow \langle A, R\rangle =_o \langle B, R'\rangle$ and $=_o$ denotes initial similarity \cite[Def.~7.27]{Moscho}.
-	Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$ it holds that $U\leq_o V$, where this last relation means $U$ is isomorphic to an initial segment of $V$.
+	and $\aleph(X):= \WO(X)/{\cong}$ where $\cong$ denotes order isomorphism.
+        %% $\langle A, R\rangle =_o \langle B,  R'\rangle$ iff there exists an  \emph{initial similarity}
+        %% \cite[Def.~7.27]{Moscho} between those two well orders.
+	Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$ it holds that $U\leq_o V$.
 \end{definition}
 
-From \cite[Thm.~7.34]{Moscho} we have
+From Moschovakis \cite[Thm.~7.34]{Moscho} we conclude
 \begin{lemma}\label{aleph2}
 	For all $X$, $\aleph(X)$ has the following properties:
 	\begin{enumerate}
-		\item $\aleph(X)\nleq_c X$
-		\item $(\aleph(X),\leq_{\aleph(X)})$ is a well order and is not equinumerous with any of its initial segments.
+		\item $\aleph(X)\nleq_c X$.
+		\item $(\aleph(X),\leq_{\aleph(X)})$ is a well order and is not
+                  equinumerous with any of its proper initial segments.
 		\item If $W$ is a well ordered set and $W \nleq_c X$, then $\aleph(X) \leq_o W$.\qed
 	\end{enumerate}
 \end{lemma}
@@ -64,26 +98,29 @@ From \cite[Thm.~7.34]{Moscho} we have
   total (Proposition~\ref{class_wo}, or more precisely \cite[Thm.~7.31]{Moscho}).
 \end{proof}
 
-\begin{theorem}
-	For any set $X$, $\aleph(X)\leq_c \mathcal{P}^{4}(X)$.
-	%$\aleph(X)<_c \mathcal{P}^4(X)$.
-\end{theorem}
-
-\begin{proof}
-	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:\WO(X)\rightarrow \mathcal{P}^3(X)$ be defined as $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\} \mid a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) \mid s\in S\}$. This shows that $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (\WO(X))$, we obtained what we wanted to show.
-\end{proof}
+%% \begin{theorem}
+%% 	For any set $X$, $\aleph(X)\leq_c \mathcal{P}^{4}(X)$.
+%% 	%$\aleph(X)<_c \mathcal{P}^4(X)$.
+%% \end{theorem}
+%% 
+%% \begin{proof}
+%% 	We will show that there's an injective function from $\aleph(X)$ into $\mathcal{P}^4(X)$. Let $f:\WO(X)\rightarrow \mathcal{P}^3(X)$ be defined as $f(\langle A,R\rangle) = \{\{\{a\},\{a,b\}\} \mid a\leq_R b\}$. Note that $f$ is injective. Now, we can define an injective function $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^4(X)$ given by $\Tilde{f}(S) = \{f(s) \mid s\in S\}$. This shows that $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^4(X)$. Hence, since $\aleph (X) \subset \mathcal{P} (\WO(X))$, we obtained what we wanted to show.
+%% \end{proof}
 
 \begin{theorem}\label{thm:partes-cubo}
 	For any set $X$, $\aleph(X) <_c \mathcal{P}^3(X)$.
 	%$\aleph(X)<_c \mathcal{P}^3(X)$.
 \end{theorem}
-
-% Cambio BST por ZF porque todavía no lo definimos
-
-% ¿Es consistente en BST que no valga con $\mathcal(P)^{2}$ para algun X?
-
 \begin{proof}	
-	Let $f:\WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle A,\mathrel{R}\rangle) = \{\{b\mid b \mathrel{R} a\} \mid a\in A\}$. $f$ is clearly injective and an argument similar as before suffices to show $\aleph(X) \leq_c \mathcal{P}^3(X)$. 
+  Let $f:\WO(X)\rightarrow \mathcal{P}^2(X)$ defined by $f(\langle
+  A,\mathrel{R}\rangle) = \{ \{ b\mid b \mathrel{R} a \} \mid a\in A \}$. $f$
+  is clearly injective. Hence, the injective function
+  $\Tilde{f}: \mathcal{P} (\WO(X)) \rightarrow \mathcal{P}^3(X)$ given
+  by $\Tilde{f}(S) = \{ f(s) \mid s\in S \}$ witnesses
+  $\mathcal{P} (\WO(X)) \leq_c \mathcal{P}^3(X)$. Since
+  $\aleph (X) \subset    \mathcal{P} (\WO(X))$ we conclude
+  $\aleph(X) \leq_c \mathcal{P}^3(X)$.
+            
 	Let us prove that $\aleph(X) \neq_c \mathcal{P}^3(X)$. 
 	Proceding by contradiction, we assume they are equinumerous, then $\mathcal{P}^{3}(X)$ is well orderable. As an immediate consequence we have that $\mathcal{P}^{2}(X)$ is well orderable. But then $\mathcal{P}^{2}(X)$ is a well orderable set and it satisfies 	
 	$\mathcal{P}^{2}(X)\nleq_c X$.
@@ -110,9 +147,8 @@ see also the discussion at \cite{stack_powerset}.
 %	prove the existence of a supercompact cardinal?
 %\end{question}
 
-Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
-
-
+Using the wellfoundedness of  $\leq_o$, we verify that Induction works on
+$\estf$. This will be later needed for ...
 \begin{theorem}
 	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Assume that the following statements hold:
 	\begin{enumerate}[(i)]
@@ -143,16 +179,21 @@ Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\
 	Let $n$ be a natural number such that $A \leq_c n$. Using the previous lemma, we have $n <_c X$ and $A <_c X$ follows immediately.
 \end{proof}
 
-Given that we shall be working in an axiomatic system too weak to prove the existence of the ordinal $\omega$, we would like to have a first order sentence that more or less states that an object captures the essence of $\omega$ as a well ordering, without necessarily being an ordinal.
-
+Though we are working in an axiomatic system too weak to prove the existence of
+the ordinal $\omega$, nevertheless it is handy to have a first order definition
+of a similar well order.
 \begin{definition}
   A well order has \emph{type $\omega$} iff  every element
   has an immediate successor, and every element (except the first one) has and
   immediate predecessor.
 \end{definition}
+It can be seen in $\estf$ that this actually defines an order type (i.e.,
+having type $\omega$ is an order isomorphism class) and coincides with being
+isomorphic to $\omega$ in case it exists.
 
-It is clear that the existence of an order of type $\omega$ implies the Weak Axiom of Infinity, we will use the following lemma to prove the reciprocal result.
-
+The existence of an order of type $\omega$ is apparently stronger than the Weak
+Axiom of Infinity. We will actually show under $\estf$ that they are equivalent
+by using Hartogs' Lemma. We start with the following lemma.
 \begin{lemma}\label{lem:omega-segment}
 	If $\langle X,< \rangle$ is an infinite well order that does not have type $\omega$, then there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
 \end{lemma}
@@ -182,40 +223,16 @@ It is clear that the existence of an order of type $\omega$ implies the Weak Axi
 	First let us note that $a<y$ and $\neg\text{Succ}(a,y)$, so the set $\{z\in y{\downarrow} \mid a<z\}$ is non empty. Taking its first element we obtain a $c$ with the desired property.
 \end{proof}
 
-We use the version of Hartog's Lemma without Replacement to show that, under $\estf$, the mere assumption of the existence of any infinite set already implies the existence of an infinite well ordering. In particular, for any infinite $X$ that is Dedekind-finite, $\aleph(X)$ is an infinite well order whose initial segments are all finite. In ZF this order would actually be isomorphic to $\omega$, but $\esti$ cannot prove the existence of the ordinal $\omega$.
-
 \begin{prop}[$\esti$]\label{pr:well-order-type-omega}
 	There is a well ordering $\langle A,< \rangle$ of type $\omega$.
 \end{prop}
 \begin{proof}
 	Let $X$ be any infinite set, and take $A = \aleph(X)$. By the previous lemma, it is enough to show that $A$ is not finite. But this is immediate by Lemma~\ref{aleph2}: If it were finite, then we would have $\aleph(X) <_c X$.
 \end{proof}
+%% For example, for any infinite, Dedekind-finite $X$, $\aleph(X)$ has type
+%% $\omega$ (exactly).
 
-%As a corollary of the above proposition and Lemma \ref{peano_is_order}, $\esti$ proves the existence of a Peano system.
-
-%Note that $\langle \omega,\in \rangle$ has type $\omega$ in models where it exists.
-
-%\begin{definition}
-%	Whenever $\langle A,< \rangle$ is a linear ordering, we will use the following abbrevations:
-	
-%	\begin{enumerate}[(i)]
-%		\item $\text{First}(x) \equiv \forall y \in A \neg(y < x)$
-%		\item $\text{Succ}(y,x) \equiv y<x \land \forall z\in A (z < x \implies (z=y \lor z < y))$
-%	\end{enumerate}
-
-%	Whenever $x$ and $y$ satisfy $\text{Succ}(y,x)$, we shall denote $x = y+1$. For good measure: $y+2 := (y+1)+1$, $y+3 := (y+2)+1$ and $y+4 := (y+3)+1$.
-%\end{definition}
-
-%\begin{definition}
-%	\label{omega_type}
-%	Let $\langle A,< \rangle$ be a non-empty well ordering, we will denote $\type(A,<) = \omega$ iff $\langle A,< \rangle$ satisfies the following sentence:
-%	\[
-%		\forall x\in A \ ((\text{First}(x) \lor \exists y\in A \ (\text{Succ}(y,x))) \land \exists z\in A \ (\text{Succ}(x,z)))
-%	\]
-%\end{definition}
-
-Let us recall the definition of a Peano System, whose existence we shall prove is equivalent under $\estf$ to the Weak Axiom of Infinity.
-
+In order to state our main first theorem, we use Peano systems as a substitute for $\omega$.
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano System} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
@@ -231,7 +248,7 @@ Let us recall the definition of a Peano System, whose existence we shall prove i
 \end{definition}
 
 Note that the existence of a Peano system immediately implies the Weak Axiom of Infinity.
-Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there it is straightforward to define addition in a given Peano system as $n+z = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
+Assuming there is a Peano system, $\estf$ proves that one can define functions recursively (\cite[Theorem 5.6]{Moscho}). From there, it is straightforward to define addition in a given Peano system as $n+z = n$ and $n+S(m) = S(n+m)$ for each $n,m$.
 
 
 The following lemma highlights the relation between Peano systems, well orderings, and the Weak Axiom of Infinity.
@@ -272,26 +289,26 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 	 $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
 
-In the next lemma, $S$ denotes the immediate successor operation of an order of
-type $\omega$.
-\begin{lemma}[$\esti$]\label{lem:type-omega-is-iso-type}
-	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
-\end{lemma}
-\begin{proof}
-	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(S(x))=S(f(x))$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
-	\begin{itemize}
-		\item $x<y \implies f(x)\sqsubset f(y)$: Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=S(x)$ (since this would imply $f(y)=S(f(x))$). Then, there must exist a $z\neq x$ such that $y=S(z)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset S(f(z)) = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
-                \item The converse follows immediately since both $A$ and $B$ are total orders.
-		\item $f$ is surjective: Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=S(z)$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(S(x))=S(z)=y$, a contradiction.\qedhere
-	\end{itemize} 
-\end{proof}
-
-%\begin{lemma}[$\estf+\text{AI}$]
-%	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
-%\end{lemma}
-\begin{corollary}[$\estf + \text{AI}$]\label{cor:type-omega-iso-omega}
-  The statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
-\end{corollary}
+%% In the next lemma, $S$ denotes the immediate successor operation of an order of
+%% type $\omega$.
+%% \begin{lemma}[$\esti$]\label{lem:type-omega-is-iso-type}
+%% 	Let $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ be two well orders of type $\omega$, then $\langle A,< \rangle$ and $\langle B,\sqsubset \rangle$ are order isomorphic.
+%% \end{lemma}
+%% \begin{proof}
+%% 	Let's denote by $a_0$ and $b_0$ the $<$-minimal element of $\langle A, <\rangle$ and the $\sqsubset$-minimal element of $\langle B, \sqsubset \rangle$ respectively. Now, we define $f$ recursively by $f(a_0)=b_0$, $f(S(x))=S(f(x))$. By the previous lemma and the Recursion Theorem \cite[Theorem 5.6]{Moscho}, there is exactly one function that satisfies the previous equalities. We claim that $f$ is an order isomorphism: 
+%% 	\begin{itemize}
+%% 		\item $x<y \implies f(x)\sqsubset f(y)$: Let $x\in A$ and suppose there exists $y>x$ such that $f(y)\sqsubset f(x)$. Take $y$ as the $<$-minimal element with this property. It cannot be the case that $y=a_0$ nor that $y=S(x)$ (since this would imply $f(y)=S(f(x))$). Then, there must exist a $z\neq x$ such that $y=S(z)$ and since $x<y$, this implies $x<z$. By hypothesis about $y$, this yields $f(x)\sqsubset f(z)$, but then $f(x)\sqsubset S(f(z)) = f(y)$, which is a contradiction. Note that this condition also proves that $f$ is injective.
+%%                 \item The converse follows immediately since both $A$ and $B$ are total orders.
+%% 		\item $f$ is surjective: Indeed, supose there's an $y\in B$ such that $y\notin f(A)$. Take $y$ as the $\sqsubset$-minimal element with this property. Of course, $y\neq b_0$, so there must exist a $z\in B$ such that $y=S(z)$. By hypothesis, we get that there exists an $x$ such that $f(x)=z$. But then, $f(S(x))=S(z)=y$, a contradiction.\qedhere
+%% 	\end{itemize} 
+%% \end{proof}
+%% 
+%% %\begin{lemma}[$\estf+\text{AI}$]
+%% %	$\langle \omega,\in \rangle$ satisfies the sentences from Definition \ref{omega_type}. \qed
+%% %\end{lemma}
+%% \begin{corollary}\label{cor:type-omega-iso-omega}
+%%   Assuming the standard Axiom of Infinity, the statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
+%% \end{corollary}
 
 \section{Exponentially decreasing sequences of powersets}
 
