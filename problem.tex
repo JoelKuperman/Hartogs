@@ -48,10 +48,11 @@ an infinite well order  exists and for the Axiom of Infinity to fail
 (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a
 model), in particular $\esti$ is consistent with the negation of Infinity relative to ZFC.
 
+ESTAS DEFINICIONES LAS USAMOS EN LA INTRODUCCIÓN, ¿ES MUY IMPORTANTE QUE LAS DEFINAMOS ALLÁ? (ESTABAN ANTES DE QUE LA CAMBIARA A LA INTRODUCCIÓN TAMBIÉN)
 \begin{definition}
   For sets $X,Y$ and  linear orders $V$ and $U$,
   \begin{enumerate}
-  \item $X\leq_c Y$ ...
+  \item $X\leq_c Y$ iff there is an injective function $f:X\mapsto Y$, and $X =_c Y$ iff there is a bijective function $f:X\mapsto Y$.
   \item
     we write $V\leq_o U$ iff  $V$ is
     isomorphic to an initial segment of $U$;
@@ -66,7 +67,7 @@ The following proposition is provable in $\estf$ and is necessary to prove some 
   Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member.
 \end{prop}
 
-We shall start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of \fbox{the statement in the introduction}.
+We shall start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of Theorem \ref{informal_hartogs_set} \fbox{the statement in the introduction}.
 
 \begin{definition}\label{aleph}
 	Let $X$ be any set,
@@ -183,8 +184,8 @@ Though we are working in an axiomatic system too weak to prove the existence of
 the ordinal $\omega$, nevertheless it is handy to have a first order definition
 of a similar well order.
 \begin{definition}
-  A well order has \emph{type $\omega$} iff  every element
-  has an immediate successor, and every element (except the first one) has and
+  A nonempty well order has \emph{type $\omega$} iff  every element
+  has an immediate successor, and every element (except the first one) has an
   immediate predecessor.
 \end{definition}
 It can be seen in $\estf$ that this actually defines an order type (i.e.,
