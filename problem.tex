@@ -234,9 +234,9 @@ by using Hartogs' Lemma. We start with the following lemma.
 
 In order to state our main first theorem, we use Peano systems as a substitute for $\omega$.
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
-	A \emph{Peano System} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
+	A \emph{Peano system} is any structure $(\mathcal{N},z,S)$ which satisfies the following properties:
 	\begin{enumerate}[(1)]
-		\item $\mathcal{N}$ is a set (the \emph{domain} of the Peano System), and $z\in\mathcal{N}$.
+		\item $\mathcal{N}$ is a set (the \emph{domain} of the Peano system), and $z\in\mathcal{N}$.
 		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
 		\item For each $n\in\mathcal{N}$, $S(n) \neq z$.
@@ -259,9 +259,9 @@ The following lemma highlights the relation between Peano systems, well ordering
 	\begin{enumerate}[(1)]
 		\item There is an infinite set (WAI).
 		\item There is a well order of type $\omega$.
-		\item There is a Peano System.
+		\item There is a Peano system.
 %		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
-%		\item Let $(\mathcal{N}, z, S)$ be a Peano System. Define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$. Then $\langle \mathcal{N},< \rangle$ is a well ordering and it has type $\omega$.
+%		\item Let $(\mathcal{N}, z, S)$ be a Peano system. Define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$. Then $\langle \mathcal{N},< \rangle$ is a well ordering and it has type $\omega$.
 	\end{enumerate}
 \end{lemma}
 
@@ -285,7 +285,7 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 	\]
 	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using that $A$ has type $\omega$, we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts the assumption on $X$. So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, and the contradiction arose from assuming $A\setminus X$ was non-empty.
 	
-	To show $(3){\implies}(2)$, let $(\mathcal{N}, z, S)$ be a Peano System and define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$.
+	To show $(3){\implies}(2)$, let $(\mathcal{N}, z, S)$ be a Peano system and define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{z\}$ such that $n+k = m$.
 	 $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
 
@@ -312,63 +312,56 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 
 \section{Exponentially decreasing sequences of powersets}
 
-We are now able to state and prove in $\esti$ the theorem from the introduction regarding sequences of infinitely decreasing sets. In addition, we show that it works for sequences indexed by any Peano System, meaning that these sequences cannot exist as an object in the theory independently from the particular implementation of the natural numbers. To avoid cluttering the notation with the successor function, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
+In this section we state and prove in $\esti$ a version of
+Theorem~\ref{informal_hartogs_set} for sequences indexed by any Peano
+system. In this way, we morally avoid the Replacement instances needed to construct
+$\omega$. To avoid cluttering the notation with the successor function $S$ of a
+Peano system, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
-	Let $(\mathcal{N},z,S)$ be a Peano System, then there is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in A$ ($\mathcal{P}(X_{n+1}) <_c X_n$).
+	Let $(\mathcal{N},z,S)$ be a Peano system, then there is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in A$, $\mathcal{P}(X_{n+1}) <_c X_n$.
 \end{theorem}
-
-Before moving on to the proof, let us note that Definition \ref{aleph} does not rely on any axiom outside of $\estf$, with the caveat that without Replacement, $\aleph(X)$ cannot be proven to be isomorphic to an ordinal.
-
 \begin{proof}
 	Assume there is such a sequence, 
 	$\mathcal{S} := \{X_n\}_{n\in \mathcal{N}}$,
-	then $\estf$ proves that $\ran(\mathcal{S})$ exists (\cite[Def. I.6.6]{Kunen}).
+	then $\estf$ proves that its range $\{X_n \mid n\in \mathcal{N}\}$ exists.
 	Moreover, for all $X\in\ran(\mathcal{S})$: 
 	\[
-	\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \ran(\mathcal{S}))),
+	\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \{X_n \mid n\in \mathcal{N}\})),
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
-	\noindent Thus, for all $X\in\ran(\mathcal{S})$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \ran(\mathcal{S}))))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in \mathcal{N}}$, which would of course be trivial using Replacement.
+	\noindent Thus, for all $X\in \{X_n \mid n\in \mathcal{N}\}$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \{X_n \mid n\in \mathcal{N}\})))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in \mathcal{N}}$.
 	
-	It is straightforward to show that for each $n\in \mathcal{N}$, 
-	%$\mathcal{P}^{3}(X_{n+3}) <_c X_n$, 
-	$\mathcal{P}^{4}(X_{n+4}) <_c X_n$, 
-	indeed, applying the hypothesis on $\mathcal{S}$ yields:
-%	\begin{align*}
-%		&\mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
-%		\\ \implies &\mathcal{P}^2(X_{n+3}) \leq_c \hspace{4.5 pt} \mathcal{P}(X_{n+2}) <_c X_{n+1}
-%		\\ \implies &\mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^{2}(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
-%	\end{align*}	
-	\begin{align*}
-		&\mathcal{P}(X_{n+4}) \hspace{4.5 pt} <_c X_{n+3}
-		\\ \implies &\mathcal{P}^2(X_{n+4}) \leq_c %\hspace{4.5 pt}
-		 \mathcal{P}(X_{n+3}) \hspace{4.5 pt} <_c X_{n+2}
-		\\ \implies &\mathcal{P}^3(X_{n+4}) \leq_c \mathcal{P}^{2}(X_{n+3}) \leq_c \mathcal{P}(X_{n+2}) \hspace{4.5 pt} <_c X_{n+1}
-		\\ \implies &\mathcal{P}^4(X_{n+4}) \leq_c \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2}) \leq_c \mathcal{P}(X_{n+1}) <_c X_n.
-	\end{align*}
-	As a consequence,
-	%$\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$,
-	$\aleph(X_{n+4}) <_c \mathcal{P}^{4}(X_{n+4}) <_c X_n$,
-	where the first inequality comes from applying Theorem \ref{thm:partes-cubo}.
+	%% It is straightforward to show that for each $n\in \mathcal{N}$,
+        %% $\mathcal{P}^{3}(X_{n+3}) <_c X_n$.
+        Since applying powersets preserves lax cardinal inequalities, we have
+        \[
+          \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2})\leq_c \mathcal{P}(X_{n+1}) <_c X_{n}.
+        \]
+        By applying Theorem \ref{thm:partes-cubo}, we conclude
+        $\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$.
 	
-	\noindent Let us now show that $\aleph(X_{n+4}) <_c \aleph(X_n)$ for all $n\in \mathcal{N}$. Well ordered sets are pairwise comparable with the relation $\leq_c$, in particular: $\aleph(X_{n+4}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c \aleph(X_{n+4})$. The latter statement cannot hold, since it would imply $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
+	Let us now show that $\aleph(X_{n+3}) <_c \aleph(X_n)$ for all $n\in
+        \mathcal{N}$. Since both terms are $\leq_o$-comparable by Proposition~\ref{class_wo}, we have that either
+        $\aleph(X_{n+3}) <_c \aleph(X_n)$ or $\aleph(X_n) \leq_c
+        \aleph(X_{n+3})$ holds. But the latter statement implies $\aleph(X_n) <_c X_n$, which contradicts Lemma \ref{aleph2}.
 	
-	Finally, $\{\aleph(X_n)\}_{n\in \mathcal{N}}$
+	Finally, $\{\aleph(X_n) \mid n\in \mathcal{N}\}$
 	%$\{\aleph(X_{3n})\}_{n\in\omega}$ 
-	is a set of well ordered sets that is not well founded with the $<_c$ relation, which cannot exist under $\estf$ \cite[Corollary 7.33]{Moscho}. Indeed, 
-	it is non empty and it has no least element: for any $\aleph(X_n)$, we have $\aleph(X_{n+4}) <_c \aleph(X_n)$.
-	\qedhere
+	is a family of well ordered sets that is not well founded with the $<_c$
+        relation and hence not $\leq_o$-well founded, contradicting Proposition~\ref{class_wo}.
 \end{proof}
 
-The following theorem is equivalent to the previous one when using Replacement but strictly stronger when working within $\estf$, it essentially shows that any formula defining a sequence like the one from %(¿LE PONEMOS NOMBRE A ESTA PROPIEDAD?)
-Theorem \ref{hartogs_set} as a proper class of ordered pairs must be inconsistent with $\estf$.
-In the next result, $n+1$ denotes $n \cup \{n\}$.
+The following theorem is similar to Theorem~\ref{hartogs_set}, but has a
+somewhat different flavor, in that it works with the (possibly proper) class of
+natural numbers and with a definable sequence of sets. In its statement and
+proof,  $n+1$ denotes $n \cup \{n\}$.
 \begin{theorem}[$\estf$]
 	\label{hartogs_class}
-	Let $\Phi(\cdot,\cdot)$ be a formula with two free variables, then $\Phi$ cannot satisfy both of the following properties:
+	There is no formula $\Phi(\cdot,\cdot)$  with at least two free
+        variables that satisfy both of the following properties:
 	\begin{enumerate}[(i)]
 		\item \label{nat_define} For each $n\in\omega$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
@@ -380,29 +373,25 @@ In the next result, $n+1$ denotes $n \cup \{n\}$.
 
 
 \begin{proof}[Proof of Theorem \ref{hartogs_class}]
-	Let $\Phi$ be a formula with two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
+	By way of contradiction, let $\Phi(\cdot,\cdot)$ be a formula with at
+        least two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
 	\[
-		 \mathcal{C} := \{X: \exists Y ((\exists n\in\omega \ \Phi(n,Y)) \land X = \aleph(Y))\}.
+		 \mathcal{C} := \{X \mid \exists Y,\, \exists n\in\omega, \ \Phi(n,Y) \land X = \aleph(Y)\}.
 	\]
 	Using (\ref{nat_define}), Definition \ref{aleph} and Lemma \ref{aleph2}, $\mathcal{C}$ is a non-empty class of well ordered sets. By Proposition \ref{class_wo}, there must be a $\leq_o$-least member of $\mathcal{C}$.
 	Let $X_0$ be such a member of $\mathcal{C}$, then there must be some $Y_0$ and $n_0 \in\omega$ such that $X_0 = \aleph(Y_0) \land \Phi(n_0,Y_0)$.
-	The assumption (\ref{nat_define}) implies there are $Y_1 , Y_2, Y_3, Y_4$ such that $\Phi(n_0 + i , Y_i)$ for $i\in\{1,2,3,4\}$.
-	Applying (\ref{dec_seq}), we get:	
-
-%	\begin{align*}
-%		&\mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
-%		\\ \implies &\mathcal{P}^2(Y_3) \leq_c \hspace{4.5 pt} \mathcal{P}(Y_2) <_c Y_1
-%		\\ \implies &\mathcal{P}^3(Y_3) \leq_c \mathcal{P}^{2}(Y_2) \leq_c \mathcal{P}(Y_1) <_c Y_0.
-%	\end{align*}
-	
-	\begin{align*}
-		&\mathcal{P}(Y_4) \hspace{4.5 pt} <_c Y_3
-		\\ \implies &\mathcal{P}^2(Y_4) \leq_c \mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
-		\\ \implies &\mathcal{P}^3(Y_4) \leq_c \mathcal{P}^{2}(Y_3) \leq_c \mathcal{P}(Y_2) \hspace{4.5 pt} <_c Y_1
-		\\ \implies &\mathcal{P}^4(Y_4) \leq_c \mathcal{P}^3(Y_3) \leq_c \mathcal{P}^2(Y_2) \leq_c \mathcal{P}^1(Y_1) <_c Y_0
-	\end{align*}
-	
-	Recall from Theorem \ref{thm:partes-cubo} that $\aleph(Y_4) \leq_c \mathcal{P}^{3}(Y_4)$, and using the inequality above, we obtain $\aleph(Y_4) <_c Y_0$, which implies $\aleph(Y_4) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_4)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
+	The assumption (\ref{nat_define}) implies there are $Y_1 , Y_2, Y_3$ such that $\Phi(n_0 + i , Y_i)$ for $i\in\{1,2,3\}$.
+	The proof can be finished analogously to that of
+        Theorem~\ref{hartogs_set} by applying (\ref{dec_seq}) for $Y_i$.
+        %% we get:	
+        %% 
+	%% \begin{align*}
+	%% 	&\mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
+	%% 	\\ \implies &\mathcal{P}^2(Y_3) \leq_c \hspace{4.5 pt} \mathcal{P}(Y_2) <_c Y_1
+	%% 	\\ \implies &\mathcal{P}^3(Y_3) \leq_c \mathcal{P}^{2}(Y_2) \leq_c \mathcal{P}(Y_1) <_c Y_0.
+	%% \end{align*}
+	%% 
+	%% Recall from Theorem \ref{thm:partes-cubo} that $\aleph(Y_3) \leq_c \mathcal{P}^{3}(Y_3)$, and using the inequality above, we obtain $\aleph(Y_3) <_c Y_0$, which implies $\aleph(Y_3) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_3)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
 \end{proof}
 
 
