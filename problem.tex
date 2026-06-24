@@ -18,7 +18,7 @@ Axiom of Infinity.
   any implicit sense. Thus, we are not stating Infinity as the existence of
   $\omega$. For instance, it is a well known fact that Zermelo's
   \textit{Unendlichen} axiom does not imply Von Neumann's one
-  without Replacement \cite[Exercise II.4.21]{Kunen} (\textbf{check!}) SI EL CHECK ERA PARA LA PRUEBA DE ESE HECHO, ES LA REFERENCIA DE AHÍ; SI ERA SOBRE QUIÉN FORMULÓ PRIMERO EL AXIOMA ACTUAL DE INFINITO, NO ENCUENTRO NADA QUE DIGA QUE FUE VON NEUMANN. BUSCANDO EN INTERNET SE LE ATRIBUYE A ZERMELO LA VERSIÓN ACTUAL, NO SÉ SI KUNEN SE EQUIVOCARÍA EN ESTO, and the lack of $\AC$ brings even more elements to the
+  without Replacement (e.g., \cite[Exercise II.4.21]{Kunen}), and the lack of $\AC$ brings even more elements to the
   picture (infinite Dedekind finite sets, amorphous sets, etc.).
 \end{framed}
 
@@ -48,11 +48,10 @@ an infinite well order  exists and for the Axiom of Infinity to fail
 (\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a
 model), in particular $\esti$ is consistent with the negation of Infinity relative to ZFC.
 
-ESTAS DEFINICIONES LAS USAMOS EN LA INTRODUCCIÓN, ¿ES MUY IMPORTANTE QUE LAS DEFINAMOS ALLÁ? (ESTABAN ANTES DE QUE LA CAMBIARA A LA INTRODUCCIÓN TAMBIÉN)
 \begin{definition}
   For sets $X,Y$ and  linear orders $V$ and $U$,
   \begin{enumerate}
-  \item $X\leq_c Y$ iff there is an injective function $f:X\mapsto Y$, and $X =_c Y$ iff there is a bijective function $f:X\mapsto Y$.
+  \item $X\leq_c Y$ iff there is an injective function $f:X\to Y$, and $X =_c Y$ iff there is a bijective function $f:X\to Y$.
   \item
     we write $V\leq_o U$ iff  $V$ is
     isomorphic to an initial segment of $U$;
@@ -67,7 +66,7 @@ The following proposition is provable in $\estf$ and is necessary to prove some 
   Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member.
 \end{prop}
 
-We shall start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of Theorem \ref{informal_hartogs_set} \fbox{the statement in the introduction}.
+We shall start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of Theorem \ref{informal_hartogs_set}.
 
 \begin{definition}\label{aleph}
 	Let $X$ be any set,
@@ -421,7 +420,7 @@ Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds
 It turns out this theorem fails. To show this, we take advantage of
 pointwise definable extensions to obtain an appropriate
 meta-sequence of formulas.
-\begin{theorem}[{\cite[Theorem~3(3)]{Hamkins}}]\label{th:pointwise-extension}
+\begin{theorem}[{\cite[Theorem~3(3)]{hamkins}}]\label{th:pointwise-extension}
   Every countable model of $\zfc$ has a class forcing extension that is
   pointwise definable.
 \end{theorem}

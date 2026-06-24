@@ -4,13 +4,12 @@ Within the real numbers, there exist multiple infinitely decreasing sequences. C
 % this is not the case.
 % Me sonaba rara la frase anterior :/
 
-This motivates the following result about decreasing sequences of cardinals: 
+This motivates the following result about decreasing sequences of cardinalities: 
 
 \begin{theorem}\label{informal_hartogs_set}
-	There is no sequence $\{X_n\}_{n\in\omega}$ such that $X_n \geq_c \mathcal{P}(X_{n+1})$ for all $n$.
+  There is no sequence $\{X_n\}_{n\in\omega}$ such that  for all $n$, there is an injection
+    from $\mathcal{P}(X_{n+1})$ to $X_n$.
 \end{theorem}
-
-ACÁ HABLAMOS DE IGUAL EN CARDINAL, NOSOTROS PROBAMOS CON EL > ESTRICTO, PERO SE SIGUE PARA $\geq$. ME IMAGINO QUE DEBERÍAMOS ACLARAR LA DISCREPANCIA EN ALGÚN LADO, NO SE ME OCURRE SI LA INTRODUCCIÓN ES MEJOR PARA ESO O SI DEBERÍA SER DESPUÉS DE CADA VERSIÓN DEL TEOREMA DESPUÉS DE LA PRUEBA.
 %in ZF, it is possible to construct infinitely decreasing sequences of sets, when compared with the cardinality relation, but it is not possible to do so in such a way that
 %\[
 %	X_n =_c \mathcal{P}(X_{n+1}),
@@ -18,19 +17,19 @@ ACÁ HABLAMOS DE IGUAL EN CARDINAL, NOSOTROS PROBAMOS CON EL > ESTRICTO, PERO SE
 %for every natural number $n$, where $=_c$ denotes that the sets are bijective.
 %However, the well-foundedness of the class of cardinals itself is not provable in ZF. In fact, as shown by Jech (\emph{The Axiom of Choice}, Theorem~11.1 \cite{Jech_AC}), it is consistent with ZF that the cardinals form a non-well-founded structure, and moreover, that this failure of well-foundedness may happen in any way.
 
-In this article we present a proof of the above fact about decreasing sequences of cardinals without using the Replacement axiom (or Choice), motivated by the discussion in \cite{PedroStack}.
+In this article we present a proof of the above fact without using the Replacement axiom (or Choice), motivated by the discussion in \cite{PedroStack}.
 
 %Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
 
 Moreover we will show that not only can this sequence not exist within the theory, it cannot even be defined in the metatheory.
-More precisely, it is inconsistent with Z ¿ESTO ERA ZF SIN REEMPLAZO? to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there is are unique $X$ and $Y$ with 
+More precisely, it is inconsistent with Zermelo set theory to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there is are unique $X$ and $Y$ with 
 \[
-	\Phi(n,X) \land \Phi(n+1,Y) \land X \geq_c \mathcal{P}(Y).
+	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X.
 \]
 
 Finally, we shall prove that relaxing the requirements of the previous theorem to allow infinitely many definitions, one for each term of the sequence in the metatheory, is enough to make the theorem fail. That is, for each $n\in\mathbb{N}$ we can take a $\Phi_n$ that defines a set in such a way that it is consistent with $\zfc$ that for every $n\in\mathbb{N}$
 \[
-	\Phi_n (X) \land \Phi_{n+1} (Y) \land X \geq_c \mathcal{P}(Y).
+	\Phi_n (X) \land \Phi_{n+1} (Y) \land \mathcal{P}(Y) \leq_c X.
 \]
 
 The key argument in the proof of the last theorem required us to extend a countable model of $\zfc$ to a pointwise definable one, which \cite{hamkins} shows can always be done.
