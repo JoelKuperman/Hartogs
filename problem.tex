@@ -395,18 +395,14 @@ proof,  $n+1$ denotes $n \cup \{n\}$.
 \end{proof}
 
 
-LO SIGUIENTE LO PONDRÍA EN OTRA SECCIÓN, PERO NOS QUEDA MUY POCA SECCIÓN ANTES :/
-Having proved Theorem \ref{hartogs_class}, we would like to see whether it holds when there is no single formula defining the sets. What if there is a formula with one free variable $\Phi_n$ for each natural number $n$ in the metatheory, such that for each $n$, $\Phi_n$ defines a set? Specifically, is the following theorem true?
+The previous theorem handles the case of a uniformly
+definable sequence of sets. One possible next step in generality is that of a
+(meta-)sequence of definable sets, each one given by a separate formula $\Phi_n$
+with exactly one free variable, for each natural number $n$ in the
+metatheory.
 
-\begin{theorem}
-	\label{hartogs_inf_classes}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
-	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
-	\]
-\end{theorem}
-
-It turns out this theorem fails. To show this, we take advantage of
+It turns out that a result analogous to Theorem~\ref{hartogs_class} in this
+setting fails. To show this, we take advantage of
 pointwise definable extensions to obtain an appropriate
 meta-sequence of formulas.
 \begin{theorem}[{\cite[Theorem~3(3)]{hamkins}}]\label{th:pointwise-extension}
@@ -414,13 +410,16 @@ meta-sequence of formulas.
   pointwise definable.
 \end{theorem}
 
+Then our refutation takes this shape:
 \begin{theorem}
-	There is a scheme of formulas $\Phi_n(\cdot)$ with one free variable such that for each $n\in\mathbb{N}$ (with $\mathbb{N}$ in the metatheory), $\estf \vdash \exists! X \ \Phi_n (X)$, such that for every $k \in \mathbb{N}$
+	Assume $\zfc$ is consistent. There is a scheme of formulas $\Phi_n(\cdot)$ with one free variable
+        such that for each $n\in\mathbb{N}$ (with $\mathbb{N}$ in the
+        metatheory), $\estf \vdash \exists! X \ \Phi_n (X)$, such that for every
+        $k \in \mathbb{N}$,
 	\[
 	\zfc \nvdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
 	\]
 \end{theorem}
-
 \begin{proof}
   We start by taking a countable model of $\zfc$. 
   We extend its signature by adding countably many names for constants
@@ -475,19 +474,15 @@ meta-sequence of formulas.
   \]
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
 We shall take $\mathrm{Well}(A,<)$, or $\mathrm{Well}(A)$ when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
+
+\begin{theorem}[\textbf{False}]
+	\label{hartogs_inf_classes}
+	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
+	\[
+		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
+	\]
+\end{theorem}
 
 A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_classes} would be to prove it is equivalent to the following lemma.
 
