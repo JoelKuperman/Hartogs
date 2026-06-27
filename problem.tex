@@ -412,19 +412,27 @@ meta-sequence of formulas.
 
 Then our refutation takes this shape:
 \begin{theorem}
-	Assume $\zfc$ is consistent. There is a scheme of formulas $\Phi_n(\cdot)$ with one free variable
-        such that for each $n\in\mathbb{N}$ (with $\mathbb{N}$ in the
-        metatheory), $\estf \vdash \exists! X \ \Phi_n (X)$, such that for every
-        $k \in \mathbb{N}$,
-	\[
-	\zfc \nvdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
-	\]
+	Assume $\zfc$ is consistent. There is a scheme of formulas
+        $\Phi_n(\cdot)$ $(n\in\mathbb{N})$ with one free variable
+        such that for every $n$,
+        \begin{itemize}
+        \item
+          $\estf \vdash \exists! X, \, \Phi_n (X)$; and
+        \item
+          $\zfc \nvdash \exists X\,\exists Y,\, \Phi_n (X) \land \Phi_{n+1} (Y)
+          \land \neg\bigl(\mathcal{P}(Y) <_c X\bigl)$.
+        \end{itemize}
 \end{theorem}
 \begin{proof}
   We start by taking a countable model of $\zfc$. 
   We extend its signature by adding countably many names for constants
-  $c_n$, and for each $n\in\N$ we take the sentence $P_n$ as ``$c_{n+1} \text{ is a natural number} \land 2^{c_{n+1}} \in c_n$''.
-  
+  $c_n$, and for each $n\in\N$ we take the sentence $P_n$ to be
+  \[
+    c_{n+1} \text{ is a natural number} \land 2^{c_{n+1}} < c_n,
+  \]
+  where exponentiation of natural numbers is construed by its recursive
+  definition and hence it is $\Delta^{\ZF}_1$.
+  %
   Since $\zfc+\{P_n\}_{n\in\N}$ is finitely satisfiable,
   it has a model $\mathcal{M}_c =
   (M,E,\{ x_n \}_{n\in \N})$ by Compactness (here, $x_n$ is the
@@ -452,24 +460,24 @@ Then our refutation takes this shape:
   \end{equation}
   Since the formula
   \[
-    \varphi(X,Y) \defi \text{$X$ and $Y$ are natural numbers} \land 2^Y \in X
+    \varphi(X,Y) \defi \text{$X$ and $Y$ are natural numbers} \land 2^Y < X
   \]
-  is $\Delta_1$, and $\mathcal{M}'$ is a forcing extension of $\mathcal{M}$,
+  is $\Delta^{\ZF}_1$, and $\mathcal{M}'$ is a forcing extension of $\mathcal{M}$,
   $\varphi$ is absolute between them. Hence, for each $n\in \N$ the
   following sentence holds in $\mathcal{M}'$:
   \[
-    \forall X \forall Y \ (\Omega_n(X) \land \Omega_{n+1}(Y)) \implies \varphi(X,Y).
+    \forall X\, \forall Y,\,  \Omega_n(X) \land \Omega_{n+1}(Y) \implies \varphi(X,Y).
   \]
 
-  Since $\zfc$ proves that $2^Y \in X$ is equivalent to $\mathcal{P}(Y) <_c X$
+  Since $\zfc$ proves that $2^Y < X$ is equivalent to $\mathcal{P}(Y) <_c X$
   for $X,Y$ natural numbers, by (\ref{eq:Phi-Omega}) we have
   \[
-    \mathcal{M}' \vDash \forall X \forall Y \ (\Phi_n(X) \land \Phi_{n+1}(Y)) \implies \mathcal{P}(Y) <_c X
+    \mathcal{M}' \vDash \forall X\, \forall Y,\,  \Phi_n(X) \land \Phi_{n+1}(Y) \implies \mathcal{P}(Y) <_c X
   \]
   for each $n\in\N$, which implies that 
   \[
-    \zfc \nvdash \exists X \exists Y \ \Phi_n(X) \land \Phi_{n+1}(Y) \land
-    \neg(\mathcal{P}(Y) <_c X).
+    \zfc \nvdash \exists X \exists Y, \, \Phi_n(X) \land \Phi_{n+1}(Y) \land
+    \neg\bigl(\mathcal{P}(Y) <_c X\bigr).
     \qedhere
   \]
 \end{proof}
