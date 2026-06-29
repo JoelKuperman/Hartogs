@@ -371,8 +371,7 @@ proof,  $n+1$ denotes $n \cup \{n\}$.
 	\end{enumerate}
 \end{theorem}
 
-
-\begin{proof}[Proof of Theorem \ref{hartogs_class}]
+\begin{proof}
 	By way of contradiction, let $\Phi(\cdot,\cdot)$ be a formula with at
         least two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
 	\[
@@ -462,7 +461,7 @@ Then our refutation takes this shape:
   \[
     \varphi(X,Y) \defi \text{$X$ and $Y$ are natural numbers} \land 2^Y < X
   \]
-  is $\Delta^{\ZF}_1$, and $\mathcal{M}'$ is a forcing extension of $\mathcal{M}$,
+  is $\Delta^{\ZF}_1$ and $\mathcal{M}'$ is a forcing extension of $\mathcal{M}$,
   $\varphi$ is absolute between them. Hence, for each $n\in \N$ the
   following sentence holds in $\mathcal{M}'$:
   \[
@@ -482,125 +481,84 @@ Then our refutation takes this shape:
   \]
 \end{proof}
 
-We shall take $\mathrm{Well}(A,<)$, or $\mathrm{Well}(A)$ when $<$ is clear from context, to be an abbreviation of a first order logic formula stating ``$\langle A,<\rangle$ is a well-order''.
-
-\begin{theorem}[\textbf{False}]
-	\label{hartogs_inf_classes}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
-	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}(Y) <_c X)
-	\]
-\end{theorem}
-
-A possible avenue to ascertain the truth value of Theorem \ref{hartogs_inf_classes} would be to prove it is equivalent to the following lemma.
-
-\begin{lemma}
+Although a non-uniform version of Theorem~\ref{hartogs_class} fails, we can
+nevertheless isolate the ideas involved in its proof; namely, passing from an
+exponentially decreasing sequence of sets to one of well orders. So, essentially
+the same proof shows that if the following statement holds (where
+$\mathrm{Well}(A)$ is a formula stating ``$A$ is a well-order''),
+\begin{statement}
 	\label{easier_hartogs_class}
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
 	\[
-		\estf \vdash \exists! \langle A, < \rangle, \ \Phi_n ( \langle A,<\rangle) \land 
-		\mathrm{Well}(A, <)
+		\estf \vdash \exists!  A, \, \Phi_n ( A) \land 
+		\mathrm{Well}(A)
 	\]
 	then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\estf \vdash \exists A,B, \, \Phi_k (A) \land \Phi_{k+1} (B) \land A \leq_o B
+	  \estf \vdash \exists A,B, \, \Phi_k (A) \land \Phi_{k+1} (B) \land A \leq_o B,
 	\]
-\end{lemma}
-
-Continuing this line of thought, we would also like to prove the following lemma to be equivalent to Lemma \ref{easier_hartogs_class}.
-
-\begin{lemma}
+\end{statement}
+\noindent then we have
+\begin{statement}
 	\label{easier_inf_classes}
 	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
 	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^{4}(Y) <_c X)
+	  \estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^3(Y) <_c X).
 	\]
-\end{lemma}
+\end{statement}
+%%%%%
+%%%%% Perhaps to an appendix? Mostly repetition.
+%%%%%
+%% \begin{proposition}
+%%   Statement~\ref{easier_hartogs_class} implies Statement~\ref{easier_inf_classes}.
+%% \end{proposition}
+%% \begin{proof}
+%% 	Assume Statement~\ref{easier_hartogs_class} and let $\Phi_n$ be a scheme of formulas with one free variable such that for each $n\in\mathbb{N}$
+%% 	\[
+%% 		\estf \vdash \exists! X \ \Phi_n (X)
+%% 	\]
+%% 	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
+%% 	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have 
+%% 	\begin{equation}
+%% 		\label{psi_unique}
+%% 		\estf \vdash \exists! A \ \Psi_n (A)	
+%% 	\end{equation}
+%% 	So we can apply Statement~\ref{easier_hartogs_class} with the formulas $\Psi_n$. Let $k$ be a natural number such that 
+%% 	\begin{equation}
+%% 		\label{eq_wo}
+%% 		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
+%% 	\end{equation}
+%% 	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
+%% 	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
+%% 
+%% 	Assume $\mathcal{P}^{3}(Y) <_c X$, applying Theorem~\ref{thm:partes-cubo} yields
+%% 	\begin{equation}
+%% 		\label{eq_order}
+%% 		\aleph(Y) <_c \mathcal{P}^{3} (Y) <_c X. 
+%% 	\end{equation}
+%% 	Given that all well orders are pairwise comparable with the $\leq_c$ relation, it must be the case that $\aleph(Y) <_c \aleph(X)$ or $\aleph(X) \leq_c \aleph(Y)$.
+%% 	But $\aleph(X) \leq_c \aleph(Y)$, together with (\ref{eq_order}), would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
+%% 	
+%% 	So the inequality $\aleph(Y) <_c \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_c A$, which contradicts (\ref{eq_wo}).
+%% 	
+%% 	We have thus derived a contradiction from assuming $\mathcal{P}^{3}(Y) <_c X$, hence
+%% 	\[
+%% 		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y)
+%%                 \land \neg(\mathcal{P}^{3}(Y) <_c X) \qedhere
+%% 	\]
+%% \end{proof}
 
-\begin{theorem}
-	Lemma \ref{easier_hartogs_class} implies Lemma \ref{easier_inf_classes}.
-\end{theorem}
+The converse implication (\ref{easier_inf_classes} $\implies$
+\ref{easier_hartogs_class}), however, seems more delicate and that will require
+finer methods than those explored in this work.
 
-\begin{proof}
-	Assume Lemma \ref{easier_hartogs_class} and let $\Phi_n$ be a scheme of formulas with one free variable such that for each $n\in\mathbb{N}$
-	\[
-		\estf \vdash \exists! X \ \Phi_n (X)
-	\]
-	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
-	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have 
-	\begin{equation}
-		\label{psi_unique}
-		\estf \vdash \exists! A \ \Psi_n (A)	
-	\end{equation}
-	So we can apply Lemma \ref{easier_hartogs_class} with the formulas $\Psi_n$. Let $k$ be a natural number such that 
-	\begin{equation}
-		\label{eq_wo}
-		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
-	\end{equation}
-	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
-	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
-
-	Assume $\mathcal{P}^{4}(Y) <_c X$, applying Theorem \ref{thm:partes-cubo} yields
-	\begin{equation}
-		\label{eq_order}
-		\aleph(Y) <_c \mathcal{P}^{4} (Y) <_c X. 
-	\end{equation}
-	Given that all well orders are pairwise comparable with the $\leq_c$ relation, it must be the case that $\aleph(Y) <_c \aleph(X)$ or $\aleph(X) \leq_c \aleph(Y)$.
-	But $\aleph(X) \leq_c \aleph(Y)$, together with (\ref{eq_order}), would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
-	
-	So the inequality $\aleph(Y) <_c \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_c A$, which contradicts (\ref{eq_wo}).
-	
-	We have thus derived a contradiction from assuming $\mathcal{P}^{4}(Y) <_c X$, hence
-	\[
-		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y)
-                \land \neg(\mathcal{P}^{4}(Y) <_c X) \qedhere
-	\]
-\end{proof}
-
-Finally, we are left with the question ``Does Lemma \ref{easier_inf_classes} imply Lemma \ref{easier_hartogs_class}?''
-
-We suspect that once we have a proof in ZF of this implication, we could use Hartog's lemma without Replacement (\ref{aleph2}) to translate it into a proof in $\esti$. If the implication does not hold in ZF, then it trivially does not hold in $\esti$ either.
-
-%\begin{proof}
-%	IGNORAR ESTA PRUEBA POR AHORA!!!
-%	By contradiction, let us assume Lemma \ref{easier_hartogs_class} does not hold. Then there is a scheme of formulae indexed by $n\in\mathbb{N}$, $\Phi_n$ with one free variable such that for every $n\in\mathbb{N}$
-%	\[
-%		\estf \vdash \exists! \langle X, < \rangle \ \Phi_n ( \langle X,<\rangle) \land 
-%		\emph{WO}(\langle X, < \rangle)
-%	\]
-%	And for every $k\in\mathbb{N}$ the following must hold
-%	\[			
-%		\estf \nvdash \exists X,Y, \, \Phi_k (X) \land \Phi_{k+1} (Y) \land X \leq_o Y
-%	\]	
-%	Using Completeness and Soundness as in the previous proof, there must be for each $k\in\mathbb{N}$ a model $\mathcal{A}_k$ of $\estf$ such that
-%	\[
-%		\mathcal{A}_k \vDash \forall X,Y, \, (\Phi_k (X) \land \Phi_{k+1} (Y)) \implies X >_o Y
-%	\]	
-	%Let $\Psi_n (X) = \exists R (R \subseteq {X\times X} \land \Phi_k(\langle X, R\rangle) \land \text{WO}(\langle X, R\rangle))$.
-	%Applying Lemma \ref{easier_inf_classes}, there must be a $k\in\mathbb{N}$ such that 
-	%\[
-	%	\estf \vdash \exists X,Y ,\, \Psi_k (X) \land \Psi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
-	%\]
-	%Using Soundness again:
-	%\[
-	%	\mathcal{A}_k \vDash \exists X,Y ,\, \Psi_k (X) \land \Psi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
-	%\]
-	%Let $X$ and $Y$ be the only sets in $\mathcal{A}_k$ such that 
-	%\[
-	%	\Psi_k (X) \land \Psi_{k+1} (Y) \land \neg(\mathcal{P}^{3}(Y) <_c X)
-	%\]
-	%By definition of $\Psi_k$, there are relations $R$ and $S$ that well order $X$ and $Y$.
-	%Moreover, $\langle X,R \rangle >_o \langle Y,S\rangle$. This implies $Y <_c X$
-%\end{proof}
-
-
-%Dejo comentada esta prueba por si había algo rescatable acá
-
-%\begin{proof}
-%	\emph{Sketch of a proof of the equivalence between \ref{hartogs_inf_classes} and \ref{easier_hartogs_class}.}
-	
-%	Given $\Phi_n (\cdot)$, we can take $\Psi_n (X) \equiv \exists Y \ (\Phi_n (Y) \land X = \aleph(Y))$. Using our usual trick of taking the sequence of the alephs, we get a sequence of well ordered sets. Now we apply Lemma \ref{weak_aleph}, which gives us one of the directions of the equivalence, the other should be trivial.
-%\end{proof}
+\begin{framed}
+  \fbox{Let's discuss this!}
+  We suspect that once we have a proof in ZF of this implication, we could use
+  Hartog's lemma without Replacement (\ref{aleph2}) to translate it into a proof
+  in $\esti$. If the implication does not hold in ZF, then it trivially does not
+  hold in $\esti$ either.
+\end{framed}
 
 %%% Local Variables:
 %%% mode: latex
