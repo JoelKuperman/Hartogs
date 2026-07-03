@@ -95,7 +95,7 @@ From Moschovakis \cite[Thm.~7.34]{Moscho} we conclude
 \end{corollary}
 \begin{proof}
   It follows by Lemma~\ref{aleph2} and the fact that the relation $\leq_o$ is
-  total (Proposition~\ref{class_wo}, or more precisely \cite[Thm.~7.31]{Moscho}).
+  total (Proposition~\ref{class_wo}, or more precisely by \cite[Thm.~7.31]{Moscho}).
 \end{proof}
 
 %% \begin{theorem}
@@ -310,7 +310,7 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 %%   Assuming the standard Axiom of Infinity, the statement “$\type(A,<) = \omega$” is equivalent to the fact that $\langle A,< \rangle$ is order isomorphic to $\langle \omega, \in \rangle$. \qed
 %% \end{corollary}
 
-\section{Exponentially decreasing sequences of powersets}
+\section{Exponentially decreasing sequences of sets}
 
 In this section we state and prove in $\esti$ a version of
 Theorem~\ref{informal_hartogs_set} for sequences indexed by any Peano
@@ -488,14 +488,14 @@ the same proof shows that if the following statement holds (where
 $\mathrm{Well}(A)$ is a formula stating ``$A$ is a well-order''),
 \begin{statement}
 	\label{easier_hartogs_class}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
+	For every $n\in\mathbb{N}$, let $\Psi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
 	\[
-		\estf \vdash \exists!  A, \, \Phi_n ( A) \land 
+		\estf \vdash \exists!  A, \, \Psi_n ( A) \land 
 		\mathrm{Well}(A)
 	\]
 	then there must be a $k \in \mathbb{N}$ such that 
 	\[
-	  \estf \vdash \exists A,B, \, \Phi_k (A) \land \Phi_{k+1} (B) \land A \leq_o B,
+	  \estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B,
 	\]
 \end{statement}
 \noindent then we have
@@ -515,18 +515,18 @@ $\mathrm{Well}(A)$ is a formula stating ``$A$ is a well-order''),
 %% \begin{proof}
 %% 	Assume Statement~\ref{easier_hartogs_class} and let $\Phi_n$ be a scheme of formulas with one free variable such that for each $n\in\mathbb{N}$
 %% 	\[
-%% 		\estf \vdash \exists! X \ \Phi_n (X)
+%% 		\estf \vdash \exists! X \ \Phi_n (X).
 %% 	\]
 %% 	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
-%% 	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, we also have 
+%% 	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n(X)$, we also have 
 %% 	\begin{equation}
 %% 		\label{psi_unique}
-%% 		\estf \vdash \exists! A \ \Psi_n (A)	
+%% 		\estf \vdash \exists! A \ \Psi_n (A) \land \mathrm{Well}(A).
 %% 	\end{equation}
 %% 	So we can apply Statement~\ref{easier_hartogs_class} with the formulas $\Psi_n$. Let $k$ be a natural number such that 
 %% 	\begin{equation}
 %% 		\label{eq_wo}
-%% 		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B
+%% 		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B.
 %% 	\end{equation}
 %% 	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
 %% 	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
