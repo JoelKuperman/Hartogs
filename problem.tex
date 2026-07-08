@@ -410,7 +410,7 @@ meta-sequence of formulas.
 \end{theorem}
 
 Then our refutation takes this shape:
-\begin{theorem}
+\begin{theorem}\label{th:nonuniform-exp-decreasing}
 	Assume $\zfc$ is consistent. There is a scheme of formulas
         $\Phi_n(\cdot)$ $(n\in\mathbb{N})$ with one free variable
         such that for every $n$,
@@ -481,83 +481,24 @@ Then our refutation takes this shape:
   \]
 \end{proof}
 
-Although a non-uniform version of Theorem~\ref{hartogs_class} fails, we can
-nevertheless isolate the ideas involved in its proof; namely, passing from an
-exponentially decreasing sequence of sets to one of well orders. So, essentially
-the same proof shows that if the following statement holds (where
-$\mathrm{Well}(A)$ is a formula stating ``$A$ is a well-order''),
-\begin{statement}
-	\label{easier_hartogs_class}
-	For every $n\in\mathbb{N}$, let $\Psi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, 
-	\[
-		\estf \vdash \exists!  A, \, \Psi_n ( A) \land 
-		\mathrm{Well}(A)
-	\]
-	then there must be a $k \in \mathbb{N}$ such that 
-	\[
-	  \estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B,
-	\]
-\end{statement}
-\noindent then we have
-\begin{statement}
-	\label{easier_inf_classes}
-	For every $n\in\mathbb{N}$, let $\Phi_n(\cdot)$ be a formula with one free variable such that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n (X)$, then there must be a $k \in \mathbb{N}$ such that 
-	\[
-	  \estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y) \land \neg(\mathcal{P}^3(Y) <_c X).
-	\]
-\end{statement}
-%%%%%
-%%%%% Perhaps to an appendix? Mostly repetition.
-%%%%%
-%% \begin{proposition}
-%%   Statement~\ref{easier_hartogs_class} implies Statement~\ref{easier_inf_classes}.
-%% \end{proposition}
-%% \begin{proof}
-%% 	Assume Statement~\ref{easier_hartogs_class} and let $\Phi_n$ be a scheme of formulas with one free variable such that for each $n\in\mathbb{N}$
-%% 	\[
-%% 		\estf \vdash \exists! X \ \Phi_n (X).
-%% 	\]
-%% 	Let $\Psi_n (A)$ be the formula $\exists X (\Phi_n (X) \land A = \aleph(X))$.
-%% 	Given that for each $n\in\mathbb{N}$, $\estf \vdash \exists! X \ \Phi_n(X)$, we also have 
-%% 	\begin{equation}
-%% 		\label{psi_unique}
-%% 		\estf \vdash \exists! A \ \Psi_n (A) \land \mathrm{Well}(A).
-%% 	\end{equation}
-%% 	So we can apply Statement~\ref{easier_hartogs_class} with the formulas $\Psi_n$. Let $k$ be a natural number such that 
-%% 	\begin{equation}
-%% 		\label{eq_wo}
-%% 		\estf \vdash \exists A,B, \, \Psi_k (A) \land \Psi_{k+1} (B) \land A \leq_o B.
-%% 	\end{equation}
-%% 	We give a proof by contradiction within $\estf$. Let $X$ and $Y$ be the unique sets such that $\Phi_k (X)$ and $\Phi_{k+1} (Y)$. Let $A = \aleph(X)$ and $B = \aleph(Y)$.
-%% 	Note that $\Psi_k (A)$ and $\Psi_{k+1} (B)$. By (\ref{psi_unique}) and (\ref{eq_wo}), we have $A \leq_o B$.
-%% 
-%% 	Assume $\mathcal{P}^{3}(Y) <_c X$, applying Theorem~\ref{thm:partes-cubo} yields
-%% 	\begin{equation}
-%% 		\label{eq_order}
-%% 		\aleph(Y) <_c \mathcal{P}^{3} (Y) <_c X. 
-%% 	\end{equation}
-%% 	Given that all well orders are pairwise comparable with the $\leq_c$ relation, it must be the case that $\aleph(Y) <_c \aleph(X)$ or $\aleph(X) \leq_c \aleph(Y)$.
-%% 	But $\aleph(X) \leq_c \aleph(Y)$, together with (\ref{eq_order}), would imply $\aleph(X) <_c X$, which contradicts Lemma \ref{aleph2}.
-%% 	
-%% 	So the inequality $\aleph(Y) <_c \aleph(X)$  must hold. Recall that $\aleph(Y) = B$ and $\aleph(X) = A$, so the previous inequality means $B <_c A$, which contradicts (\ref{eq_wo}).
-%% 	
-%% 	We have thus derived a contradiction from assuming $\mathcal{P}^{3}(Y) <_c X$, hence
-%% 	\[
-%% 		\estf \vdash \exists X,Y ,\, \Phi_k (X) \land \Phi_{k+1} (Y)
-%%                 \land \neg(\mathcal{P}^{3}(Y) <_c X) \qedhere
-%% 	\]
-%% \end{proof}
+We have just seen that a non-uniform version of Theorem~\ref{hartogs_class}
+fails. We recall that its proof proceeds by obtaining a decreasing sequence of
+well ordered sets from an exponentially decreasing sequence one. Note that
+Theorem~\ref{th:nonuniform-exp-decreasing} directly constructs a sequence
+of the latter kind.
 
-The converse implication (\ref{easier_inf_classes} $\implies$
-\ref{easier_hartogs_class}), however, seems more delicate and that will require
-finer methods than those explored in this work.
+Apparently, this does not preclude the possibility of a model of
+$\estf$ containing decreasing sequences of well orders but no exponentially
+decreasing sequence of sets. Nevertheless, the counterexample constructed above
+cannot distinguish between these two situations, since in any model having
+an infinite decreasing sequence of natural numbers (and hence nonstandard
+$\omega$), there exists an exponentially decreasing sequence of numbers
+(given a nonstandard $c\in\omega$, take $d-1$ where $d\in\omega$ is the least
+such that $c\leq 2^d$).  
 
 \begin{framed}
-  \fbox{Let's discuss this!}
-  We suspect that once we have a proof in ZF of this implication, we could use
-  Hartog's lemma without Replacement (\ref{aleph2}) to translate it into a proof
-  in $\esti$. If the implication does not hold in ZF, then it trivially does not
-  hold in $\esti$ either.
+  Explore the idea of repeating this last argument in the general case (given
+  $C$ a well order, take the least well order $D$ such that $C \leq_c \Pow(D)$).
 \end{framed}
 
 %%% Local Variables:
