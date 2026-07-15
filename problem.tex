@@ -345,14 +345,15 @@ Peano system, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 
 The following theorem is similar to Theorem~\ref{hartogs_set}, but has a
 somewhat different flavor, in that it works with the (possibly proper) class of
-natural numbers and with a definable sequence of sets. In its statement and
+natural numbers and with a definable sequence of sets; actually, we allow
+multiple options for each natural argument. In its statement and
 proof,  $n+1$ denotes $n \cup \{n\}$.
 \begin{theorem}[$\estf$]
 	\label{hartogs_class}
 	There is no formula $\Phi(\cdot,\cdot)$  with at least two free
         variables that satisfy both of the following properties:
 	\begin{enumerate}[(i)]
-		\item \label{nat_define} For each $n\in\omega$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
+		\item \label{nat_define} For each $n\in\omega$ there is a set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
 			\Phi(n,X_0) \land \Phi(n+1,X) \implies \mathcal{P}(X_0) <_c X.
