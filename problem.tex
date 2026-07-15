@@ -366,31 +366,37 @@ proof,  $n+1$ denotes $n \cup \{n\}$.
 		\item \label{nat_define} For each $n\in\omega$ there is exactly one set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
-			\Phi(n,X) \land \Phi(n+1,Y) \implies \mathcal{P}(Y) <_c X.
+			\Phi(n,X_0) \land \Phi(n+1,X) \implies \mathcal{P}(X_0) <_c X.
 		\] 
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
 	By way of contradiction, let $\Phi(\cdot,\cdot)$ be a formula with at
-        least two free variables and assume it satisfies (\ref{nat_define}) and (\ref{dec_seq}), we shall take the following class:
+        least two free variables and assume it satisfies (\ref{nat_define}) and
+        (\ref{dec_seq}), we shall take the following class (the range of the
+        composition “$\aleph\circ \Phi$”):
 	\[
-		 \mathcal{C} := \{X \mid \exists Y,\, \exists n\in\omega, \ \Phi(n,Y) \land X = \aleph(Y)\}.
+		 \mathcal{C} := \{Y \mid  \exists n\in\omega,\, \exists X,\, \Phi(n,X) \land Y = \aleph(X)\}.
 	\]
-	Using (\ref{nat_define}), Definition \ref{aleph} and Lemma \ref{aleph2}, $\mathcal{C}$ is a non-empty class of well ordered sets. By Proposition \ref{class_wo}, there must be a $\leq_o$-least member of $\mathcal{C}$.
-	Let $X_0$ be such a member of $\mathcal{C}$, then there must be some $Y_0$ and $n_0 \in\omega$ such that $X_0 = \aleph(Y_0) \land \Phi(n_0,Y_0)$.
-	The assumption (\ref{nat_define}) implies there are $Y_1 , Y_2, Y_3$ such that $\Phi(n_0 + i , Y_i)$ for $i\in\{1,2,3\}$.
+	Using (\ref{nat_define}), Definition \ref{aleph}, and Lemma \ref{aleph2}, $\mathcal{C}$ is a non-empty class of well ordered sets. By Proposition \ref{class_wo}, there must be a $\leq_o$-least member of $\mathcal{C}$.
+	Let $Y_0$ be such a member of $\mathcal{C}$, then there must be some $X_0$ and $n_0 \in\omega$ such that $Y_0 = \aleph(X_0) \land \Phi(n_0,X_0)$.
+	The assumption (\ref{nat_define}) implies there are $X_1 , X_2, X_3$ such that $\Phi(n_0 + i , X_i)$ for $i\in\{1,2,3\}$.
 	The proof can be finished analogously to that of
-        Theorem~\ref{hartogs_set} by applying (\ref{dec_seq}) for $Y_i$.
+        Theorem~\ref{hartogs_set} by applying (\ref{dec_seq}) for $X_i$.
         %% we get:	
         %% 
 	%% \begin{align*}
-	%% 	&\mathcal{P}(Y_3) \hspace{4.5 pt} <_c Y_2
-	%% 	\\ \implies &\mathcal{P}^2(Y_3) \leq_c \hspace{4.5 pt} \mathcal{P}(Y_2) <_c Y_1
-	%% 	\\ \implies &\mathcal{P}^3(Y_3) \leq_c \mathcal{P}^{2}(Y_2) \leq_c \mathcal{P}(Y_1) <_c Y_0.
+	%% 	&\mathcal{P}(X_3) \hspace{4.5 pt} <_c X_2
+	%% 	\\ \implies &\mathcal{P}^2(X_3) \leq_c \hspace{4.5 pt} \mathcal{P}(X_2) <_c X_1
+	%% 	\\ \implies &\mathcal{P}^3(X_3) \leq_c \mathcal{P}^{2}(X_2) \leq_c \mathcal{P}(X_1) <_c X_0.
 	%% \end{align*}
 	%% 
-	%% Recall from Theorem \ref{thm:partes-cubo} that $\aleph(Y_3) \leq_c \mathcal{P}^{3}(Y_3)$, and using the inequality above, we obtain $\aleph(Y_3) <_c Y_0$, which implies $\aleph(Y_3) <_c \aleph(Y_0) = X_0$. But $\aleph(Y_3)\in\mathcal{C}$, which contradicts $X_0$ being $\leq_o$ minimal. 
+	%% Recall from Theorem \ref{thm:partes-cubo} that $\aleph(X_3) <_c
+        %% \mathcal{P}^{3}(X_3)$, and using the inequality above, we obtain
+        %% $\aleph(X_3) <_c X_0$, which implies $\aleph(X_3) <_c \aleph(X_0) =
+        %% Y_0$. But $\aleph(X_3)\in\mathcal{C}$, which contradicts $Y_0$ being
+        %% $\leq_o$ minimal.
 \end{proof}
 
 
