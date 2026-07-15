@@ -3,27 +3,18 @@
 \begin{definition}
 	We shall use $\estf$ (Elementary Set Theory) to mean the axioms of Extensionality, Comprehension, Pairing, Union and Powerset.
 \end{definition}
+Our intent in choosing this set of axioms is to work as naïvely (i.e. with the
+working mathematician's intuitive idea of set) as possible. Since we are leaving
+Replacement aside, one other axiom that might be considered affected is the
+Axiom of Infinity. For instance, it is a well known fact that Zermelo's
+\textit{Unendlichen} axiom does not imply Von Neumann's one without Replacement
+(e.g., \cite[Exercise II.4.21]{Kunen}), and the lack of $\AC$ brings even more
+elements to the picture (infinite Dedekind finite sets, amorphous sets, etc.).
 
-Throughout this section we will be working within $\estf$ unless otherwise specified.
-Without Replacement nor Choice it is consistent for several common definitions
-of infinite set to not be equivalent to each other, (see Dedekind finite sets,
-amorphous sets, etc.) which motivates the addition of a weaker version of the
-Axiom of Infinity.
-
-\begin{framed}
-  One other axiom that might be considered affected/involved with uses of
-  Replacement is the Axiom of Infinity. As our intent is to work as naïvely
-  (i.e. as the working mathematician's intuitive idea of set) as possible, we
-  prefer to consider a version of this axiom that does not involve ordinals in
-  any implicit sense. Thus, we are not stating Infinity as the existence of
-  $\omega$. For instance, it is a well known fact that Zermelo's
-  \textit{Unendlichen} axiom does not imply Von Neumann's one
-  without Replacement (e.g., \cite[Exercise II.4.21]{Kunen}), and the lack of $\AC$ brings even more elements to the
-  picture (infinite Dedekind finite sets, amorphous sets, etc.).
-\end{framed}
-
-\fbox{To fix notation\dots} Before stating this axiom, let us recall the following definitions for ease of reference.
-
+We hence prefer to consider a version of this axiom that does not involve
+ordinals in any implicit sense. Thus, we state a version of Infinity weaker than the
+existence of $\omega$. Before stating this axiom, let us recall the following
+definitions which we also use to fix some notations.
 \begin{definition}
 	\begin{enumerate}
 		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal.
@@ -38,15 +29,10 @@ n, \, x = y \cup \{y\}).
 \]
 
 \begin{WeakInf}
-	There is an infinite set.
-	%There is a well ordering $\langle A , < \rangle$ such that for all $x\in A$, $x$ has an immediate successor.
+  \textup{(WAI)} There is an infinite set.
 \end{WeakInf}
-
-We shall use $\esti$ to denote $\estf$ with the Weak Axiom of Infinity.
-Note that it is consistent with $\ZC$ minus the standard Axiom of Infinity that
-an infinite well order  exists and for the Axiom of Infinity to fail
-(\cite[Exercise II.4.21]{Kunen} gives instructions on how to build such a
-model), in particular $\esti$ is consistent with the negation of Infinity relative to ZFC.
+By using \cite[Exercise II.4.21]{Kunen}, we know that $\esti$ is consistent with
+the negation of the standard Axiom of Infinity relative to ZFC.
 
 \begin{definition}
   For sets $X,Y$ and  linear orders $V$ and $U$,
@@ -60,7 +46,7 @@ model), in particular $\esti$ is consistent with the negation of Infinity relati
   \end{enumerate}
 \end{definition}
 
-The following proposition is provable in $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
+The following proposition follows from $\estf$ and is necessary to prove some elementary facts about finite sets using induction over $\omega$, which may be a proper class even in $\esti$.
 
 \begin{prop}[{\cite[Corollary 7.33]{Moscho}}]\label{class_wo}
   Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member.
@@ -147,8 +133,8 @@ see also the discussion at \cite{stack_powerset}.
 %	prove the existence of a supercompact cardinal?
 %\end{question}
 
-Using the wellfoundedness of  $\leq_o$, we verify that Induction works on
-$\estf$. This will be later needed for ...
+Using the wellfoundedness of $\leq_o$, we can verify that the principle of
+ordinary Induction can be proved under $\estf$:
 \begin{theorem}
 	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Assume that the following statements hold:
 	\begin{enumerate}[(i)]
@@ -157,27 +143,27 @@ $\estf$. This will be later needed for ...
 	\end{enumerate}
 	Then $P(n,\vec{x})$ is true for every natural number.
 \end{theorem}
-\begin{proof}
-	By way of contradiction, assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$
-        and hence  $(m,\in) <_o (n, \in)$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
-\end{proof}
-
+%% \begin{proof}
+%% 	By way of contradiction, assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$
+%%         and hence  $(m,\in) <_o (n, \in)$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
+%% \end{proof}
+Having Induction, we can prove the following elementary results.  
 \begin{lemma}
 	Let $X$ be an infinite set and $n$ a natural number, then $n <_c X$.
 \end{lemma}
-\begin{proof}
-	Recall that $n <_c X$ iff $n \leq_c X \land \neg(n =_c X)$. Given that $\neg(n =_c X)$ is an immediate consequence of the definition of infinite set, all that remains is to show that for every natural number $n$, the relation $n \leq_c X$ holds.
-	We prove it by induction on $n$.
-	
-	The case $n=0$ is trivial, since $\emptyset$ is an injective function from $0$ to any other set. Assume $n \leq_c X$ and let $f$ be an injective function from $n$ onto $X$. Using that $\neg(n =_c X)$, there must be some $x\in X$ not in the range of $f$. Then the function $f \cup \{(n,x)\}$ is an injective function from $n\cup\{n\}$ onto $X$.
-\end{proof}
+%% \begin{proof}
+%% 	Recall that $n <_c X$ iff $n \leq_c X \land \neg(n =_c X)$. Given that $\neg(n =_c X)$ is an immediate consequence of the definition of infinite set, all that remains is to show that for every natural number $n$, the relation $n \leq_c X$ holds.
+%% 	We prove it by induction on $n$.
+%% 	
+%% 	The case $n=0$ is trivial, since $\emptyset$ is an injective function from $0$ to any other set. Assume $n \leq_c X$ and let $f$ be an injective function from $n$ onto $X$. Using that $\neg(n =_c X)$, there must be some $x\in X$ not in the range of $f$. Then the function $f \cup \{(n,x)\}$ is an injective function from $n\cup\{n\}$ onto $X$.
+%% \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:finite-smaller-infinite}
 	Let $A$ be a finite set and $X$ an infinite set, then $A <_c X$.
 \end{corollary}
-\begin{proof}
-	Let $n$ be a natural number such that $A \leq_c n$. Using the previous lemma, we have $n <_c X$ and $A <_c X$ follows immediately.
-\end{proof}
+%% \begin{proof}
+%% 	Let $n$ be a natural number such that $A \leq_c n$. Using the previous lemma, we have $n <_c X$ and $A <_c X$ follows immediately.
+%% \end{proof}
 
 Though we are working in an axiomatic system too weak to prove the existence of
 the ordinal $\omega$, nevertheless it is handy to have a first order definition
@@ -224,10 +210,13 @@ by using Hartogs' Lemma. We start with the following lemma.
 \end{proof}
 
 \begin{prop}[$\esti$]\label{pr:well-order-type-omega}
-	There is a well ordering $\langle A,< \rangle$ of type $\omega$.
+	There is a well ordering of type $\omega$.
 \end{prop}
 \begin{proof}
-	Let $X$ be any infinite set, and take $A = \aleph(X)$. By the previous lemma, it is enough to show that $A$ is not finite. But this is immediate by Lemma~\ref{aleph2}: If it were finite, then we would have $\aleph(X) <_c X$.
+	Let $X$ be any infinite set. By the previous
+        lemma, it is enough to show that $\aleph(X)$ is not finite. If $\aleph(X)$ were finite, then we would
+        have $\aleph(X) <_c X$ by Corollary~\ref{cor:finite-smaller-infinite},
+        which contradicts Lemma~\ref{aleph2}.
 \end{proof}
 %% For example, for any infinite, Dedekind-finite $X$, $\aleph(X)$ has type
 %% $\omega$ (exactly).
