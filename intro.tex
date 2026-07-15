@@ -21,15 +21,19 @@ In this article we present a proof of the above fact without using the Replaceme
 
 %Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
 
-Moreover we will show that not only can this sequence not exist within the theory, it cannot even be defined in the metatheory.
-More precisely, it is inconsistent with Zermelo set theory to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there is are unique $X$ and $Y$ with 
+Moreover we will show that not only can this sequence not exist as a set, it cannot even be defined in the metatheory.
+More precisely, it is inconsistent with Zermelo set theory to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and $Y$ with
 \[
-	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X.
+	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X,
 \]
+where $A \leq_c B$ means that there is an injection from $A$ to $B$.
 
-Finally, we shall prove that relaxing the requirements of the previous theorem to allow infinitely many definitions, one for each term of the sequence in the metatheory, is enough to make the theorem fail. That is, for each $n\in\mathbb{N}$ we can take a $\Phi_n$ that defines a set in such a way that it is consistent with $\zfc$ that for every $n\in\mathbb{N}$
+Finally, we shall prove that the theorem fails if we allow infinitely many
+definitions, one for each term of the sequence. That is, for
+each $n$ there is a formula $\Phi_n$ that defines a set and it is
+consistent with $\zfc$ that for every $n$,
 \[
 	\Phi_n (X) \land \Phi_{n+1} (Y) \land \mathcal{P}(Y) \leq_c X.
 \]
 
-The key argument in the proof of the last theorem required us to extend a countable model of $\zfc$ to a pointwise definable one, which \cite{hamkins} shows can always be done.
+The proof of the last theorem required us to extend a countable model of $\zfc$ to a pointwise definable one, which \cite{hamkins} shows can always be done.
