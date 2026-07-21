@@ -1,34 +1,42 @@
 \section{Introduction}
+Well foundedness undoubtedly plays a decisive role in all of Set Theory. This
+paper intends to be a contribution to the question of how this notion persists
+when considering restricted sets of axioms that conform to the “working
+mathematician's” intuition. At the same time, we are interested in examples of
+elementary (or easy-to-state) problems, solvable by the use of set-theoretic
+axioms that do not defy any conservative intuition, but require notions beyond
+naïve concepts.
 
-Within the real numbers, there exist multiple infinitely decreasing sequences. Consider the following question: for which functions \(f\) is there an initial point \(x_0\) such that the sequence defined by \(x_{n+1} = f(x_n)\) is decreasing? Clearly, for some functions (such as logarithms) there is no $x_0$ with this property.
-% this is not the case.
-% Me sonaba rara la frase anterior :/
+Take, for example, the notion of cardinality. It is equivalent to $\AC$ over
+$\ZF$ that cardinalities are well \emph{ordered}; notably, it is an open
+question whether the fact that the universe of sets is well founded under the
+relation
+\begin{quote}
+  $A \leq_c B$ if and only if there is an injection from $A$ to $B$,
+\end{quote}
+implies $\AC$.
 
-This motivates the following result about decreasing sequences of cardinalities: 
-
+Nevertheless, we consider the Axiom of Choice to lie beyond our list of
+“intuitive” axioms, which will also exclude Foundation. In this restricted
+setting, it is clear that we cannot expect well foundedness of cardinalities but
+we still have that cardinalities cannot decrease at an iterated-exponential rate
+(much in the same way that it is impossible to iterate $\log_2$ on the real
+numbers indefinitely). Namely, $\ZF$ proves \cite[Exr.~I(12)]{kunen1980} that
 \begin{theorem}\label{informal_hartogs_set}
   There is no sequence $\{X_n\}_{n\in\omega}$ such that  for all $n$, there is an injection
     from $\mathcal{P}(X_{n+1})$ to $X_n$.
 \end{theorem}
-%in ZF, it is possible to construct infinitely decreasing sequences of sets, when compared with the cardinality relation, but it is not possible to do so in such a way that
-%\[
-%	X_n =_c \mathcal{P}(X_{n+1}),
-%\]
-%for every natural number $n$, where $=_c$ denotes that the sets are bijective.
-%However, the well-foundedness of the class of cardinals itself is not provable in ZF. In fact, as shown by Jech (\emph{The Axiom of Choice}, Theorem~11.1 \cite{Jech_AC}), it is consistent with ZF that the cardinals form a non-well-founded structure, and moreover, that this failure of well-foundedness may happen in any way.
 
-In this article we present a proof of the above fact without using the Replacement axiom (or Choice), motivated by the discussion in \cite{PedroStack}.
+In this article we restrict ourselves a little more and prove the above fact without using the Replacement axiom, motivated by the discussion in \cite{PedroStack}.
 
 %Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
 
-Moreover we will show that not only can this sequence not exist as a set, it cannot even be defined in the metatheory.
+Moreover, we show that not only can this sequence not exist as a set, it cannot even be defined in the metatheory.
 More precisely, it is inconsistent with Zermelo set theory to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and $Y$ with
 \[
-	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X,
+	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X.
 \]
-where $A \leq_c B$ means that there is an injection from $A$ to $B$.
-
-Finally, we shall prove that the theorem fails if we allow infinitely many
+Finally, we prove that the theorem fails if we allow infinitely many
 definitions, one for each term of the sequence. That is, for
 each $n$ there is a formula $\Phi_n$ that defines a set and it is
 consistent with $\zfc$ that for every $n$,

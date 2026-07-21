@@ -23,7 +23,18 @@
 \maketitle
 
 \begin{abstract}
-  
+  We prove that there is no sequence $\{ X_n \}_{n\in\omega}$ such that for all
+  $n$, there is an injection from $\mathcal{P}(X_{n+1})$ to $X_n$ under a
+  restricted set of axioms that conforms to the “working mathematician's”
+  intuition (excluding Choice, Replacement, and Foundation).
+
+  We also show such a sequence cannot be defined in the metatheory either. More precisely, it is inconsistent with Zermelo set theory to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and $Y$ with
+  \[
+    \Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X.
+  \]
+  We finally show that the theorem fails if we allow infinitely many
+  definitions, one for each term of the sequence, by using Hamkins, Linetsky,
+  and Reitz's pointwise definable extensions of countable models of $\ZFC$.
 \end{abstract}
 
 \input{intro}
