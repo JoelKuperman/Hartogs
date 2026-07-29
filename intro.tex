@@ -1,6 +1,6 @@
 \section{Introduction}
-Well foundedness undoubtedly plays a decisive role in all of Set Theory. This
-paper intends to be a contribution to the question of how this notion persists
+Well foundedness undoubtedly plays a decisive role throughout Set Theory. This
+paper intends to be a contribution to the question of how much of this notion persists
 when considering restricted sets of axioms that conform to the “working
 mathematician's” intuition. At the same time, we are interested in examples of
 elementary (or easy-to-state) problems, solvable by the use of set-theoretic
@@ -10,7 +10,7 @@ naïve concepts.
 Take, for example, the notion of cardinality. It is equivalent to $\AC$ over
 $\ZF$ that cardinalities are well \emph{ordered}; notably, it is an open
 question whether the fact that the universe of sets is well founded under the
-relation
+relation defined by
 \begin{quote}
   $A \leq_c B$ if and only if there is an injection from $A$ to $B$,
 \end{quote}
@@ -27,21 +27,31 @@ numbers indefinitely). Namely, $\ZF$ proves \cite[Exr.~I(12)]{kunen1980} that
     from $\mathcal{P}(X_{n+1})$ to $X_n$.
 \end{theorem}
 
-In this article we restrict ourselves a little more and prove the above fact without using the Replacement axiom, motivated by the discussion in \cite{PedroStack}.
+In this article we restrict ourselves a little more and prove the above fact
+(Theorem~\ref{hartogs_set}) without using the Replacement axiom, motivated by the discussion in \cite{PedroStack}.
 
-%Taking into consideration that ZF proves there cannot be a sequence $\{X_n\}_{n\in\omega}$ such that for each $n\in\omega$ the inequality $\mathcal{P}(X_{n+1}) <_c X_n$ holds, we will show a proof of this result in a weaker subtheory of ZF.
-
-Moreover, we show that not only can this sequence not exist as a set, it cannot even be defined in the metatheory.
-More precisely, it is inconsistent with Zermelo set theory to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and $Y$ with
+Moreover, we show (Theorem~\ref{hartogs_class}) that not only can this sequence not exist as a set, it cannot even be defined in the metatheory.
+More precisely, it is inconsistent with Zermelo set theory minus Infinity to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and $Y$ with
 \[
-	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) \leq_c X.
+	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) <_c X.
 \]
-Finally, we prove that the theorem fails if we allow infinitely many
+
+Finally, we prove (Theorem~\ref{th:nonuniform-exp-decreasing}) that the theorem fails if we allow infinitely many
 definitions, one for each term of the sequence. That is, for
-each $n$ there is a formula $\Phi_n$ that defines a set and it is
-consistent with $\zfc$ that for every $n$,
+each $n$ there is a formula $\Phi_n$ that defines a set and that the set of
+formulas given by
 \[
-	\Phi_n (X) \land \Phi_{n+1} (Y) \land \mathcal{P}(Y) \leq_c X.
+  % \exists X\,\exists Y,\, \Phi_n (X) \land \Phi_{n+1} (Y) \land \mathcal{P}(Y) \leq_c X.
+  \forall X\, \forall Y,\,  \Phi_n(X) \land \Phi_{n+1}(Y) \implies
+  \mathcal{P}(Y) <_c X
 \]
+for each $n$, is consistent with $\zfc$.
 
-The proof of the last theorem required us to extend a countable model of $\zfc$ to a pointwise definable one, which \cite{hamkins} shows can always be done.
+The proof of the last theorem required us to extend a countable model of $\zfc$
+to a pointwise definable one, which \cite{hamkins} shows it can always be done.
+
+%%% Local Variables:
+%%% mode: latex
+%%% ispell-local-dictionary: "american"
+%%% TeX-master: "hartogs"
+%%% End:

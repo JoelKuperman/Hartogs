@@ -11,7 +11,7 @@ Replacement aside, one other axiom that might be considered affected is the
 Axiom of Infinity. For instance, it is a well known fact that Zermelo's
 \textit{Unendlichen} axiom does not imply Von Neumann's one without Replacement
 (e.g., \cite[Exercise II.4.21]{Kunen}), and the lack of $\AC$ brings even more
-elements to the picture (infinite Dedekind finite sets, amorphous sets, etc.).
+elements to the picture (infinite Dedekind-finite sets, amorphous sets, etc.).
 
 We hence prefer to consider a version of this axiom that does not involve
 ordinals in any implicit sense. Thus, we state a version of Infinity weaker than the
@@ -41,9 +41,10 @@ the negation of the standard Axiom of Infinity relative to ZFC.
   \begin{enumerate}
   \item $X\leq_c Y$ iff there is an injective function $f:X\to Y$, and $X =_c Y$ iff there is a bijective function $f:X\to Y$.
   \item
-    we write $V\leq_o U$ iff  $V$ is
+    $V\leq_o U$ iff  $V$ is
     isomorphic to an initial segment of $U$;
-  \item we use $V<_o U$ when  $V\leq_o U$ and  $V$ is not order isomorphic
+  \item
+    $V<_o U$ when  $V\leq_o U$ and  $V$ is not order isomorphic
     to $U$.
   \end{enumerate}
 \end{definition}
@@ -54,7 +55,7 @@ The following proposition follows from $\estf$ and is necessary to prove some el
   Every non-empty class $\mathcal{C}$ of well ordered sets has a $\leq_o$-least member.
 \end{prop}
 
-We shall start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of Theorem \ref{informal_hartogs_set}.
+We start by laying out a few well known definitions and propositions about the Hartogs function. Of particular note is the bound $\aleph(X) <_c \mathcal{P}^{3}(X)$, which is the key idea for our proof of Theorem \ref{informal_hartogs_set}.
 
 \begin{definition}\label{aleph}
 	Let $X$ be any set,
@@ -64,7 +65,9 @@ We shall start by laying out a few well known definitions and propositions about
 	and $\aleph(X):= \WO(X)/{\cong}$ where $\cong$ denotes order isomorphism.
         %% $\langle A, R\rangle =_o \langle B,  R'\rangle$ iff there exists an  \emph{initial similarity}
         %% \cite[Def.~7.27]{Moscho} between those two well orders.
-	Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$ it holds that $U\leq_o V$.
+	Given $\aleph(X)$, and $A,B \in\aleph(X)$ we shall say $A
+        \leq_{\aleph(X)} B$ iff for any (all) $U\in A$ and $V\in B$, $U\leq_o V$
+        holds.
 \end{definition}
 
 From Moschovakis \cite[Thm.~7.34]{Moscho} we conclude
@@ -149,7 +152,7 @@ ordinary Induction can be proved under $\estf$:
 %% 	By way of contradiction, assume there is some natural number $n$ such that $\neg P(n,\vec{x})$. Then the class given by the formula ``$k$ is a natural number and $\neg P(k,\vec{x})$'' is non-empty and does not have the empty set in it. By Proposition \ref{class_wo}, there is a $\leq_o$-minimal element of this class. Let $n$ be this minimal element, then there is a natural number $m$ such that $n = m\cup\{m\}$
 %%         and hence  $(m,\in) <_o (n, \in)$. By minimality of $n$, we have $P(m,\vec{x})$. Using (\ref{inductive}), the formula $P(n,\vec{x})$ is true, which contradicts our assumption.
 %% \end{proof}
-Having Induction, we can prove the following elementary results.  
+Having Induction, the following elementary results become available.
 \begin{lemma}
 	Let $X$ be an infinite set and $n$ a natural number, then $n <_c X$.
 \end{lemma}
@@ -179,8 +182,8 @@ It can be seen in $\estf$ that this actually defines an order type (i.e.,
 having type $\omega$ is an order isomorphism class) and coincides with being
 isomorphic to $\omega$ in case it exists.
 
-The existence of an order of type $\omega$ is apparently stronger than the Weak
-Axiom of Infinity. We will actually show under $\estf$ that they are equivalent
+The existence of an order of type $\omega$ might look stronger than the Weak
+Axiom of Infinity. It can actually be seen under $\estf$ that they are equivalent
 by using Hartogs' Lemma. We start with the following lemma.
 \begin{lemma}\label{lem:omega-segment}
 	If $\langle X,< \rangle$ is an infinite well order that does not have type $\omega$, then there is some $x\in X$ such that the restriction of $<$ to $x{\downarrow} \times x{\downarrow}$ has type $\omega$.
@@ -305,13 +308,13 @@ The above lemma is trivial to prove in ZF, the only obstacle is showing that we 
 
 In this section we state and prove in $\esti$ a version of
 Theorem~\ref{informal_hartogs_set} for sequences indexed by any Peano
-system. In this way, we morally avoid the Replacement instances needed to construct
+system. In this way, we morally dispense with the Replacement instances needed to construct
 $\omega$. To avoid cluttering the notation with the successor function $S$ of a
 Peano system, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
-	Let $(\mathcal{N},z,S)$ be a Peano system, then there is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in A$, $\mathcal{P}(X_{n+1}) <_c X_n$.
+	Let $(\mathcal{N},z,S)$ be a Peano system. There is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in\mathcal{N}$, $\mathcal{P}(X_{n+1}) <_c X_n$.
 \end{theorem}
 \begin{proof}
 	Assume there is such a sequence, 
@@ -341,7 +344,7 @@ Peano system, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 	
 	Finally, $\{\aleph(X_n) \mid n\in \mathcal{N}\}$
 	%$\{\aleph(X_{3n})\}_{n\in\omega}$ 
-	is a family of well ordered sets that is not well founded with the $<_c$
+	is a class of well ordered sets that is not well founded with the $<_c$
         relation and hence not $\leq_o$-well founded, contradicting Proposition~\ref{class_wo}.
 \end{proof}
 
@@ -400,7 +403,7 @@ metatheory.
 
 It turns out that a result analogous to Theorem~\ref{hartogs_class} in this
 setting fails. To show this, we take advantage of
-pointwise definable extensions to obtain an appropriate
+Hamkins, Linetsky, and Reitz's pointwise definable extensions to obtain an appropriate
 meta-sequence of formulas.
 \begin{theorem}[{\cite[Theorem~3(3)]{hamkins}}]\label{th:pointwise-extension}
   Every countable model of $\zfc$ has a class forcing extension that is
@@ -409,16 +412,17 @@ meta-sequence of formulas.
 
 Then our refutation takes this shape:
 \begin{theorem}\label{th:nonuniform-exp-decreasing}
-	Assume $\zfc$ is consistent. There is a scheme of formulas
-        $\Phi_n(\cdot)$ $(n\in\mathbb{N})$ with one free variable
-        such that for every $n$,
-        \begin{itemize}
-        \item
-          $\estf \vdash \exists! X, \, \Phi_n (X)$; and
-        \item
-          $\zfc \nvdash \exists X\,\exists Y,\, \Phi_n (X) \land \Phi_{n+1} (Y)
-          \land \neg\bigl(\mathcal{P}(Y) <_c X\bigl)$.
-        \end{itemize}
+  Assume $\zfc$ is consistent. There is a scheme of formulas
+  $\Phi_n(\cdot)$ $(n\in\mathbb{N})$ with one free variable
+  such that
+  \begin{itemize}
+  \item  for every $n$,
+    $\estf \vdash \exists! X, \, \Phi_n (X)$; and
+  \item The collection of all formulas $\forall X\, \forall Y,\,  \Phi_n(X) \land \Phi_{n+1}(Y) \implies
+    \mathcal{P}(Y) <_c X$ with $n\in\mathbb{N}$ is consistent with $\zfc$.
+  \end{itemize}
+  In particular,  $\zfc \nvdash \exists X\,\exists Y,\, \Phi_n (X) \land \Phi_{n+1} (Y)
+  \land \neg\bigl(\mathcal{P}(Y) <_c X\bigl)$ for each $n$.
 \end{theorem}
 \begin{proof}
   We start by taking a countable model of $\zfc$. 
@@ -466,22 +470,17 @@ Then our refutation takes this shape:
     \forall X\, \forall Y,\,  \Omega_n(X) \land \Omega_{n+1}(Y) \implies \varphi(X,Y).
   \]
 
-  Since $\zfc$ proves that $2^Y < X$ is equivalent to $\mathcal{P}(Y) <_c X$
+  Finally, since $\zfc$ proves that $2^Y < X$ is equivalent to $\mathcal{P}(Y) <_c X$
   for $X,Y$ natural numbers, by (\ref{eq:Phi-Omega}) we have
   \[
     \mathcal{M}' \vDash \forall X\, \forall Y,\,  \Phi_n(X) \land \Phi_{n+1}(Y) \implies \mathcal{P}(Y) <_c X
   \]
-  for each $n\in\N$, which implies that 
-  \[
-    \zfc \nvdash \exists X \exists Y, \, \Phi_n(X) \land \Phi_{n+1}(Y) \land
-    \neg\bigl(\mathcal{P}(Y) <_c X\bigr).
-    \qedhere
-  \]
+  for each $n\in\N$, which shows the second bullet point.
 \end{proof}
 
 We have just seen that a non-uniform version of Theorem~\ref{hartogs_class}
-fails. We recall that its proof proceeds by obtaining a decreasing sequence of
-well ordered sets from an exponentially decreasing sequence one. Note that
+fails. We recall that the proof of that theorem proceeded by obtaining a decreasing sequence of
+well ordered sets from an exponentially decreasing one. Note that
 Theorem~\ref{th:nonuniform-exp-decreasing} directly constructs a sequence
 of the latter kind.
 
