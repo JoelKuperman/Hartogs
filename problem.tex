@@ -39,7 +39,7 @@ the negation of the standard Axiom of Infinity relative to ZFC.
 \begin{definition}
   For sets $X,Y$ and  linear orders $V$ and $U$,
   \begin{enumerate}
-  \item $X\leq_c Y$ iff there is an injective function $f:X\to Y$, and $X =_c Y$ iff there is a bijective function $f:X\to Y$.
+  \item $X\leq_c Y$ iff there is an injective function $f:X\to Y$, $X =_c Y$ iff there is a bijective function $f:X\to Y$, and $X <_c Y$ iff $X\leq_c Y$ and $X\neq_c Y$.
   \item
     $V\leq_o U$ iff  $V$ is
     isomorphic to an initial segment of $U$;
@@ -361,7 +361,7 @@ proof,  $n+1$ denotes $n \cup \{n\}$.
 		\item \label{nat_define} For each $n\in\omega$ there is a set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
-			\Phi(n,X_0) \land \Phi(n+1,X) \implies \mathcal{P}(X_0) <_c X.
+			\Phi(n,X_0) \land \Phi(n+1,X) \implies \mathcal{P}(X) <_c X_0.
 		\] 
 	\end{enumerate}
 \end{theorem}
