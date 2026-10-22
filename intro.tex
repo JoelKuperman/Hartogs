@@ -1,5 +1,5 @@
 \section{Introduction}
-Well foundedness undoubtedly plays a decisive role throughout Set Theory. This
+Well-foundedness undoubtedly plays a decisive role throughout Set Theory. This
 paper intends to be a contribution to the question of how much of this notion persists
 when considering restricted sets of axioms that conform to the “working
 mathematician's” intuition. At the same time, we are interested in examples of
@@ -8,8 +8,8 @@ axioms that do not defy any conservative intuition, but require notions beyond
 naïve concepts.
 
 Take, for example, the notion of cardinality. It is equivalent to $\AC$ over
-$\ZF$ that cardinalities are well \emph{ordered}; notably, it is an open
-question \cite[p.~312]{zbMATH07977883} whether the fact that the universe of sets is well founded under the
+$\ZF$ that cardinalities are well-\emph{ordered}; notably, it is an open
+question \cite[p.~312]{zbMATH07977883} whether the fact that the universe of sets is well-founded under the
 relation defined by
 \begin{quote}
   $A \leq_c B$ if and only if there is an injection from $A$ to $B$,
@@ -18,7 +18,7 @@ implies $\AC$.
 
 Nevertheless, we consider the Axiom of Choice to lie beyond our list of
 “intuitive” axioms, which will also exclude Foundation. In this restricted
-setting, it is clear that we cannot expect well foundedness of cardinalities but
+setting, it is clear that we cannot expect well-foundedness of cardinalities but
 we still have that cardinalities cannot decrease at an iterated-exponential rate
 (much in the same way that it is impossible to iterate $\log_2$ on the real
 numbers indefinitely). Namely, $\ZF$ proves \cite[Exr.~I(12)]{kunen1980} that
@@ -30,7 +30,9 @@ numbers indefinitely). Namely, $\ZF$ proves \cite[Exr.~I(12)]{kunen1980} that
 In this article we restrict ourselves a little more and prove the above fact
 (Theorem~\ref{hartogs_set}) without using the Replacement axiom, motivated by the discussion in \cite{PedroStack}.
 
-Moreover, we show (Theorem~\ref{hartogs_class}) that not only can this sequence not exist as a set, it cannot even be defined in the metatheory.
+Moreover, we show (Theorem~\ref{hartogs_class}) that not only this sequence
+cannot exist as a set, it cannot even be defined by a formula (this is relevant
+due to the absence of Replacement).
 More precisely, it is inconsistent with Zermelo set theory minus Infinity to have a formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and $Y$ with
 \[
 	\Phi(n,X) \land \Phi(n+1,Y) \land \mathcal{P}(Y) <_c X.
@@ -38,7 +40,7 @@ More precisely, it is inconsistent with Zermelo set theory minus Infinity to hav
 
 Finally, we prove (Theorem~\ref{th:nonuniform-exp-decreasing}) that the theorem fails if we allow infinitely many
 definitions, one for each term of the sequence. That is, for
-each $n$ there is a formula $\Phi_n$ that defines a set and that the set of
+each $n$ there is a formula $\Phi_n$ that defines a set and such that the set of
 formulas given by
 \[
   % \exists X\,\exists Y,\, \Phi_n (X) \land \Phi_{n+1} (Y) \land \mathcal{P}(Y) \leq_c X.
