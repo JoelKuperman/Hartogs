@@ -327,28 +327,32 @@ Peano system, we shall refer to $S(n)$ as $n+1$, $S(S(n))$ as $n+2$ and so on.
 
 \begin{theorem}[$\esti$]
 	\label{hartogs_set}
-	Let $(\mathcal{N},o,S)$ be a Peano system. There is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in\mathcal{N}$, $\mathcal{P}(X_{n+1}) <_c X_n$.
+	Let $(\mathcal{N},o,S)$ be a Peano system. There is no sequence $\{X_n\}_{n\in \mathcal{N}}$ such that for all $n\in\mathcal{N}$, $\mathcal{P}(X_{n+1}) \leq_c X_n$.
 \end{theorem}
 \begin{proof}
 	Assume there is such a sequence, 
 	$\mathcal{S} := \{X_n\}_{n\in \mathcal{N}}$,
 	then $\estf$ proves that its range $\{X_n \mid n\in \mathcal{N}\}$ exists.
-	Moreover, for all $X\in\ran(\mathcal{S})$: 
+        Let $\mathit{PWO} \defi \mathcal{P}(\WO(\union \{X_n \mid n\in \mathcal{N}\}))$.
+	For all $X\in\ran(\mathcal{S})$, we have 
 	\[
-	\aleph(X) \subset \mathcal{P}(\WO(X)) \subseteq \mathcal{P}(\WO(\union \{X_n \mid n\in \mathcal{N}\})),
+	\aleph(X) \subseteq \mathcal{P}(\WO(X)) \subseteq \mathit{PWO},
 	\]
 	where both inclusions follow from Definition \ref{aleph}.
 	
-	\noindent Thus, for all $X\in \{X_n \mid n\in \mathcal{N}\}$, we have $\aleph(X)\in\mathcal{P}(\mathcal{P}(\WO(\union \{X_n \mid n\in \mathcal{N}\})))$. Hence, $\esti$ proves the existence of the sequence $\{\aleph(X_n)\}_{n\in \mathcal{N}}$.
+	\noindent Thus, for all $X\in \{X_n \mid n\in \mathcal{N}\}$, we have
+        $\aleph(X)\in\mathcal{P}(\mathit{PWO})$. Hence, $\esti$ proves the
+        existence of the sequence $\{\aleph(X_n)\}_{n\in \mathcal{N}}$ by
+        separating on $ \mathcal{N}\times\mathcal{P}(\mathit{PWO})$.
 	
 	%% It is straightforward to show that for each $n\in \mathcal{N}$,
         %% $\mathcal{P}^{3}(X_{n+3}) <_c X_n$.
         Since applying powersets preserves lax cardinal inequalities, we have
         \[
-          \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2})\leq_c \mathcal{P}(X_{n+1}) <_c X_{n}.
+          \mathcal{P}^3(X_{n+3}) \leq_c \mathcal{P}^2(X_{n+2})\leq_c \mathcal{P}(X_{n+1}) \leq_c X_{n}.
         \]
         By applying Theorem \ref{thm:partes-cubo}, we conclude
-        $\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) <_c X_n$.
+        $\aleph(X_{n+3}) <_c \mathcal{P}^{3}(X_{n+3}) \leq_c X_n$.
 	
 	Let us now show that $\aleph(X_{n+3}) <_c \aleph(X_n)$ for all $n\in
         \mathcal{N}$. Since both terms are $\leq_o$-comparable by Proposition~\ref{class_wo}, we have that either
@@ -374,7 +378,7 @@ proof,  $n+1$ denotes $n \cup \{n\}$.
 		\item \label{nat_define} For each $n\in\omega$ there is a set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
-			\Phi(n,X_0) \land \Phi(n+1,X) \implies \mathcal{P}(X) <_c X_0.
+			\Phi(n,X_0) \land \Phi(n+1,X) \implies \mathcal{P}(X) \leq_c X_0.
 		\] 
 	\end{enumerate}
 \end{theorem}
@@ -425,7 +429,7 @@ meta-sequence of formulas.
 
 Then our refutation takes this shape:
 \begin{theorem}\label{th:nonuniform-exp-decreasing}
-  Assume $\zfc$ is consistent. There is a scheme of formulas
+  Assume $\zfc$ is consistent. There is a collection of formulas
   $\Phi_n(\cdot)$ $(n\in\mathbb{N})$ with one free variable
   such that
   \begin{itemize}
