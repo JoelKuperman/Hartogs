@@ -19,6 +19,7 @@ existence of $\omega$. Before stating this axiom, let us recall the following
 definitions which we also use to fix some notations.
 \begin{definition}
 	\begin{enumerate}
+		  \item For sets  $X$ and $Y$, $X\leq_c Y$ iff there is an injective function $f:X\to Y$, $X =_c Y$ iff there is a bijective function $f:X\to Y$, and $X <_c Y$ iff $X\leq_c Y$ and $X\neq_c Y$.
 		\item A set $n$ is a \emph{natural number} iff it is the empty set or a successor ordinal and for each $m\in n$, $m$ is the empty set or a successor ordinal.
 		\item A set $A$ is \emph{finite} iff $A\leq_c n$ for some natural number $n$.
 		\item A set is \emph{infinite} iff it is not finite.
@@ -37,9 +38,9 @@ By using \cite[Exercise II.4.21]{Kunen}, we know that $\esti$ is consistent with
 the negation of the standard Axiom of Infinity relative to $\zfc$.
 
 \begin{definition}
-  For sets $X,Y$ and  linear orders $V$ and $U$,
+  For linear orders $V$ and $U$,
   \begin{enumerate}
-  \item $X\leq_c Y$ iff there is an injective function $f:X\to Y$, $X =_c Y$ iff there is a bijective function $f:X\to Y$, and $X <_c Y$ iff $X\leq_c Y$ and $X\neq_c Y$.
+
   \item
     $V\leq_o U$ iff  $V$ is
     isomorphic to an initial segment of $U$;
