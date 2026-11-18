@@ -1,49 +1,115 @@
-\documentclass{article}
+%%% Template for the submission to  %%%
+%%%     Notre Dame Journal of Formal Logic  (ndjfl)
+%%%
+%%% Usage summary %%%
+%%%     Mostly, the information
+%%%     required is obvious, but some explanations are given.
+%%%     All other lines should be ignored.  
+
+\documentclass{ndjflart}
+%%% HIGHLY RECOMMENDED PACKAGES AND SETTINGS
+%\usepackage{pdfsync}  %% if you know what this is use it or not. 
+\usepackage[T1]{fontenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If your tex system is less than 2 years old (in 2012) the following
+%% font options are available. If not comment them out.
+\usepackage{tgtermes}
+%       otherwise use alternative journal fonts
+%\renewcommand{\rmdefault}{ptm} % system default Times font
+\usepackage{mathptmx}  
+%%%     additional fonts
+\usepackage[scaled=.92]{helvet}
+
+\artstatus{am} %%% leave this alone!!  That means you, too!!
+
+%%%DATE enter the date of your submission here- best%%%
+%%%If \date{} is not used, the current date will be used%%%
+%%%Warning:This will be lost if your paper is recompiled on another day though%%%
+%%%\date{May 30, 2012}%%%%
+\date{November 23, 2026}
+
+%%%PUT YOUR DEFINITIONS HERE%%%
+%NDJFL uses \varphi by default; redefine only if you want \phi%%%
+
 \usepackage{graphicx} % Required for inserting images
 
 \input{header-trabajo-eng}
 
-\title{Iterating logarithms and well-foundedness}
-\author{
-  Gervasio Figueroa\thanks{
-    Universidad Nacional de Córdoba. 
-    Facultad de Matemática, Astronomía,  Física y
-    Computación. \\
-    \indent \phantom{*} Centro de Investigación y Estudios de Matemática (CIEM-FaMAF).
-    Córdoba. Argentina.\\
-    Supported by Secyt-UNC project 33620230100751CB.
-  }
-  \and
-  Joel Kuperman\footnotemark[1]
-  \and
-  Pedro Sánchez Terraf\footnotemark[1]
-}
+\startlocaldefs
+%%% our macros for this article only %%%%
+\newcommand{\NDJFL}{\emph{NDJFL}}
+\newcommand{\Jo}{\emph{Journal}}
+\newcommand{\EM}{Editorial Manager}
+\newcommand{\origphi}{\phi}
+\newcommand{\CMS}{\emph{CMS}}
+\newcommand{\mn}{\medskip\noindent}
+\newcommand{\tietilde}{\char126\relax}
+
+\endlocaldefs
 
 \begin{document}
-\maketitle
+\begin{frontmatter}
+
+  \title{Iterating Logarithms and Well-Foundedness}
+  \runtitle{Iterating Logarithms and Well-Foundedness}
+
+  \author{\fnms{Gervasio}
+    \snm{Figueroa}
+    \ead[label=e1]{EMAIL1}}
+  \address{Centro de Investigación y Estudios de Matemática (CIEM-FaMAF)\\
+    Facultad de Matemática Astronomía Física y Computación\\
+    Universidad Nacional de Córdoba\\
+    STREET ADDRESS\\
+    Córdoba\\
+    ARGENTINA\\
+    \printead{e1} }
+  \and
+  \author{\fnms{Joel}
+    \snm{Kuperman}
+    \ead[label=e2]{EMAIL2}}
+  \address{Centro de Investigación y Estudios de Matemática (CIEM-FaMAF)\\
+    Facultad de Matemática Astronomía Física y Computación\\
+    Universidad Nacional de Córdoba\\
+    STREET ADDRESS\\
+    Córdoba\\
+    ARGENTINA\\
+    \printead{e2} }
+  \and
+  \author{\fnms{Pedro}
+    \snm{Sánchez Terraf}
+    \ead[label=e3]{EMAIL3}}
+  \address{Centro de Investigación y Estudios de Matemática (CIEM-FaMAF)\\
+    Facultad de Matemática Astronomía Física y Computación\\
+    Universidad Nacional de Córdoba\\
+    STREET ADDRESS\\
+    Córdoba\\
+    ARGENTINA\\
+    \printead{e3} }
+
+  \runauthor{G.~Figueroa, J.~Kuperman, and P.~Sánchez Terraf}
 
 \begin{abstract}
   We prove that there is no sequence $\{ X_n \}_{n\in\omega}$ such that for all
   $n$, there is an injection from $\mathcal{P}(X_{n+1})$ to $X_n$ under a
-  restricted set of axioms that conforms to the “working mathematician's”
+  restricted set of axioms that conforms to the ``working mathematician's''
   intuition (excluding Choice, Replacement, and Foundation).
-
   We also show such a sequence cannot be defined using a formula either. More
   precisely, it is inconsistent with Zermelo set theory minus Infinity to have a
   formula $\Phi(\cdot,\cdot)$ such that for each $n\in\omega$ there are $X$ and
-  $Y$ with $\Phi(n,X)$, $\Phi(n+1,Y)$, and  $\mathcal{P}(Y)$ being injectable
+  $Y$ with $\Phi(n,X)$, $\Phi(n+1,Y)$, and $\mathcal{P}(Y)$ being injectable
   into $X$.
-
   We finally show that the theorem fails if we allow infinitely many
   definitions, one for each term of the sequence, by using Hamkins, Linetsky,
-  and Reitz's pointwise definable extensions of countable models of $\ZFC$.
+  and Reitz's pointwise definable extensions of countable models of ZFC.
 \end{abstract}
+
+\end{frontmatter}
 
 \input{intro}
 \input{problem}
 \input{conclusion}
 
-\bibliographystyle{plain}
+\bibliographystyle{jflnat}
 \bibliography{bibliografia-hartogs}
 
 %% \newpage

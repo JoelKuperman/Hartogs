@@ -143,7 +143,7 @@ Using the well-foundedness of $\leq_o$, we can verify that the principle of
 ordinary Induction can be proved under $\estf$:
 \begin{theorem}
 	Let $P(n,\vec{x})$ be a first order formula in the language of set theory whose free variables are either $n$ or contained in $\vec{x}$. Assume that the following statements hold:
-	\begin{enumerate}[(i)]
+	\begin{enumerate}
 		\item $P(\emptyset,\vec{x})$.
 		\item\label{inductive} Let $n$ be a natural number, then $P(n,\vec{x}) \implies P(n\cup \{n\},\vec{x})$.
 	\end{enumerate}
@@ -242,7 +242,7 @@ successor of $x$ under $<$:
 In order to state our main first theorem, we use Peano systems as a substitute for $\omega$.
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano system} is any structure $(\mathcal{N},o,S)$ which satisfies the following properties:
-	\begin{enumerate}[(1)]
+	\begin{enumerate}
 		\item $\mathcal{N}$ is a set (the \emph{domain} of the Peano system), and $o\in\mathcal{N}$.
 		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
@@ -263,7 +263,7 @@ The following lemma highlights the relation between Peano systems, well ordering
 \begin{lemma}
 	\label{peano_is_order}
 	The following statements are equivalent:
-	\begin{enumerate}[(1)]
+	\begin{enumerate}
 		\item There is an infinite set (WAI).
 		\item There is a well order of type $\omega$.
 		\item There is a Peano system.
@@ -374,7 +374,7 @@ proof,  $n+1$ denotes $n \cup \{n\}$.
 	\label{hartogs_class}
 	There is no formula $\Phi(\cdot,\cdot)$  with at least two free
         variables that satisfy both of the following properties:
-	\begin{enumerate}[(i)]
+	\begin{enumerate}
 		\item \label{nat_define} For each $n\in\omega$ there is a set $X$ that satisfies $\Phi(n,X)$.
 		\item \label{dec_seq} For each $n\in\omega$ the following holds: 
 		\[
