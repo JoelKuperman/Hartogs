@@ -243,10 +243,10 @@ In order to state our main first theorem, we use Peano systems as a substitute f
 \begin{definition}[{\cite[Definition 5.1]{Moscho}}]\label{peano}
 	A \emph{Peano system} is any structure $(\mathcal{N},o,S)$ which satisfies the following properties:
 	\begin{enumerate}
-		\item $\mathcal{N}$ is a set (the \emph{domain} of the Peano system), and $o\in\mathcal{N}$.
+		\item\label{item:1} $\mathcal{N}$ is a set (the \emph{domain} of the Peano system), and $o\in\mathcal{N}$.
 		\item $S$ is a function on $\mathcal{N}$, $S: \mathcal{N}\rightarrow\mathcal{N}$.
 		\item $S$ is an injection.
-		\item For each $n\in\mathcal{N}$, $S(n) \neq o$.
+		\item \label{item:4} For each $n\in\mathcal{N}$, $S(n) \neq o$.
 		\item For each $X\subseteq\mathcal{N}$,
 		\[
 		  o\in X \land (\forall n\in \mathcal{N}, \, n\in X \implies S(n)\in X) \implies X = \mathcal{N}.
@@ -264,9 +264,9 @@ The following lemma highlights the relation between Peano systems, well ordering
 	\label{peano_is_order}
 	The following statements are equivalent:
 	\begin{enumerate}
-		\item There is an infinite set (WAI).
-		\item There is a well order of type $\omega$.
-		\item There is a Peano system.
+		\item \label{item:WAI} There is an infinite set (WAI).
+		\item \label{item:omega} There is a well order of type $\omega$.
+		\item \label{item:peano} There is a Peano system.
 %		\item Assume $\langle A,< \rangle$ is a well order with type $\omega$ and let $a_0$ be its first element. Then the function that assigns the immediate successor to each element induces a Peano System on $A$.
 %		\item Let $(\mathcal{N}, o, S)$ be a Peano system. Define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{o\}$ such that $n+k = m$. Then $\langle \mathcal{N},< \rangle$ is a well ordering and it has type $\omega$.
 	\end{enumerate}
@@ -280,19 +280,19 @@ The following lemma highlights the relation between Peano systems, well ordering
 %	\end{enumerate}
 %\end{lemma}
 \begin{proof}
-	Note that $(1){\implies}(2)$ is just
+	Note that $(\ref{item:WAI}){\implies}(\ref{item:omega})$ is just
         Proposition~\ref{pr:well-order-type-omega}, and the converse is immediate.
-	Let us prove $(2) {\implies} (3)$.
+	Let us prove $(\ref{item:omega}) {\implies} (\ref{item:peano})$.
 
         Assume $\langle A,< \rangle$ is a
         well order of type $\omega$ and let $a_0$ be its first element.
-        We can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (1) through (4) of Definition \ref{peano} are immediate consequences of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
+        We can use Comprehension on the set $A\times A$: we simply take $S_A$ as $\{(x,y)\in A\times A: \text{Succ}(x,y)\}$. Let us now show that $(A,a_0,S_A)$ is indeed a Peano system. Properties (\ref{item:1}) through (\ref{item:4}) of Definition \ref{peano} are immediate consequences of the hypothesis on $\langle A,< \rangle$. Let $X\subseteq A$ be a set such that 
         \begin{equation}\label{eq:X-inductive}
           a_0\in X \land (\forall n\in A, \, n\in X \implies S_A(n)\in X).
 	\end{equation}
 	Assume $X\neq A$ and let $a'$ be the first element of $A\setminus X$. Using that $A$ has type $\omega$, we have that $a'$ is the first element of $A$ or there is some $b\in A$ such that $a' = S_A (b)$. In the first case we would have $a' = a_0$, which contradicts (\ref{eq:X-inductive}). So there must be some $b\in A$ such that $S_A (b) = a'$. But $a'$ is the first element of $A\setminus X$ and $b<a'$, which implies $b\in X$. Finally $S_A(b) \in X$, a contradiction which arose from assuming $A\setminus X$ was non-empty.
 	
-	To show $(3){\implies}(2)$, let $(\mathcal{N}, o, S)$ be a Peano system and define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{o\}$ such that $n+k = m$.
+	To show $(\ref{item:peano}){\implies}(\ref{item:omega})$, let $(\mathcal{N}, o, S)$ be a Peano system and define $n<m$ iff $\exists k\in\mathcal{N}{\setminus} \{o\}$ such that $n+k = m$.
 	 $\langle \mathcal{N},< \rangle$ is a well ordering by \cite[Theorem 5.23]{Moscho}. The fact that it also has type $\omega$ is trivial from the definition of $<$.
 \end{proof}
 
